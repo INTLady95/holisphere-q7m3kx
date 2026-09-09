@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOLISPHERE — Return to yourself</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css?v=20260910a">
+<style>
+  :root { --accent:#d4b06a; --sand:#f3ecdf; --ink:#1d2a26; --sea:#1f5041; --line:rgba(29,42,38,.16); }
+  body { font-family:"Inter", sans-serif; font-weight:300; }
+  .brand { display:flex; align-items:center; gap:10px; } .brand img { width:40px; height:40px; filter:drop-shadow(0 2px 8px rgba(0,0,0,.35)); }
+  .brand b { font-family:"Cormorant Garamond", serif; font-weight:400; font-size:22px; letter-spacing:.32em; }
+  /* ---- top bar in the world: brand + dropdown menus + mode buttons ---- */
+  #top { right:18px; justify-content:space-between; z-index:6; }
+  .dds { display:flex; gap:8px; flex-wrap:wrap; }
+  #menu { top:74px; bottom:auto; max-height:calc(100vh - 100px); overflow:auto; scrollbar-width:thin; padding-right:4px; }
+  body.site-split #dds-world, body.site-split #top .modes { display:none; }
+  .dd { position:relative; } .dd > button { color:#fff; background:var(--glass2); border:1px solid rgba(212,176,106,.35); backdrop-filter:blur(8px); padding:8px 14px; border-radius:999px; cursor:pointer; font:inherit; font-size:13px; backdrop-filter:blur(6px); }
+  .dd ul { position:absolute; left:0; top:calc(100% + 6px); min-width:240px; list-style:none; background:rgba(16,50,40,.42); border:1px solid rgba(212,176,106,.35); border-radius:14px; padding:8px; backdrop-filter:blur(16px); display:none; z-index:20; box-shadow:0 12px 40px rgba(0,0,0,.2); }
+  .dd:hover ul, .dd:focus-within ul { display:block; }
+  .dd li button { width:100%; text-align:left; color:#fff; background:none; border:0; padding:9px 12px; border-radius:9px; cursor:pointer; font:inherit; font-size:13.5px; display:flex; justify-content:space-between; gap:12px; }
+  .dd li button:hover { background:rgba(212,176,106,.16); } .dd li button small { opacity:.6; font-size:11px; }
+  .modes { display:flex; gap:8px; } .modes button { color:#fff; background:var(--glass2); border:1px solid rgba(212,176,106,.35); padding:8px 14px; border-radius:999px; cursor:pointer; font:inherit; font-size:13px; backdrop-filter:blur(8px); }
+  .modes button.primary { background:var(--gold); color:var(--g1); border-color:var(--gold); }
+  #title { font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold2); }
+  #video { position:fixed; inset:0; z-index:8; background:var(--g1); transition:opacity 1s; }
+  #video video { width:100%; height:100%; object-fit:cover; }
+  #video.hide { opacity:0; pointer-events:none; }
+  #video .over { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:0 clamp(20px,6vw,90px) clamp(60px,9vh,110px); background:linear-gradient(to top, rgba(15,47,37,.75), transparent 55%); }
+  #video p.k { font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); margin-bottom:14px; }
+  #video h1 { font-family:"Cormorant Garamond", serif; font-size:clamp(48px,8vw,124px); line-height:.9; font-weight:400; max-width:14ch; }
+  #video h1 em { font-style:italic; color:var(--accent); }
+  #video p.s { margin-top:18px; font-size:15px; opacity:.9; max-width:46ch; }
+  #skip { position:absolute; right:22px; bottom:22px; color:#fff; background:var(--glass2); border:1px solid rgba(212,176,106,.4); backdrop-filter:blur(8px); padding:10px 18px; border-radius:999px; cursor:pointer; font:inherit; font-size:14px; }
+  /* ---- the ordinary site: full overlay or left half ---- */
+  #site { background:var(--sand); color:var(--ink); left:0; top:0; bottom:0; right:0; transition:opacity .5s; }
+  body.site-split #site { right:50%; box-shadow:8px 0 30px rgba(15,47,37,.3); }
+  body.site-split #menu, body.site-split #hint { display:none; }
+  body.site-split #top, body.site-split #title { left:calc(50% + 18px); }
+  body.site-split #deg { bottom:110px; }
+  body.site-split #deg { left:auto; }
+  body.site-split #card { left:auto; right:18px; width:min(300px, 46vw); }
+  .site-header { min-height:64px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:10px clamp(16px,3vw,40px); border-bottom:1px solid var(--line); position:sticky; top:0; background:color-mix(in srgb, var(--sand) 94%, transparent); backdrop-filter:blur(18px); z-index:3; }
+  .site-header .brand b { color:var(--ink); } .site-header .brand img { filter:none; content:url("assets/logo-sygnet-color.svg"); }
+  .site-header .dd > button { color:var(--ink); background:none; border:1px solid var(--line); }
+  .site-header .dd ul { background:var(--sand); border-color:var(--line); } .site-header .dd li button { color:var(--ink); } .site-header .dd li button:hover { background:rgba(29,42,38,.07); }
+  .site-header .modes button { color:var(--ink); background:none; border:1px solid var(--line); } .site-header .modes button.primary { background:var(--ink); color:#fff; border-color:var(--ink); }
+  #split-bar { position:fixed; z-index:9; top:10px; left:50%; transform:translateX(-50%); display:none; gap:6px; }
+  body.site-split #split-bar { display:flex; }
+  #split-bar button { width:34px; height:34px; border-radius:50%; border:1px solid rgba(212,176,106,.5); background:var(--glass); color:#fff; cursor:pointer; font:inherit; font-size:15px; backdrop-filter:blur(8px); box-shadow:0 4px 16px rgba(15,47,37,.35); }
+  #split-bar button:hover { background:var(--gold); color:var(--g1); }
+  .sec { padding:clamp(34px,5vw,64px) clamp(16px,4vw,56px); border-bottom:1px solid var(--line); scroll-margin-top:70px; }
+  .sec h2 { font-family:"Cormorant Garamond", serif; font-size:clamp(30px,4vw,54px); line-height:1; font-weight:400; margin-bottom:8px; color:var(--g2); }
+  .sec .k { font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--sea); margin-bottom:10px; }
+  .sec p { max-width:64ch; font-size:15px; line-height:1.6; margin-bottom:10px; }
+  .sec .world-link { display:inline-block; margin-top:10px; font-size:13px; color:var(--sea); text-decoration:none; border:1px solid var(--line); padding:7px 12px; border-radius:999px; cursor:pointer; background:none; font:inherit; }
+  .note { font-size:12.5px; color:#7a5e2a; background:#f5e9cf; border-left:3px solid var(--accent); padding:8px 12px; border-radius:6px; max-width:64ch; margin-top:8px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:14px; }
+  .grid article { background:#fff9ef; border:1px solid var(--line); padding:16px; border-radius:12px; } .grid strong { display:block; font-family:"Cormorant Garamond", serif; font-size:22px; margin-bottom:4px; font-weight:500; } .grid p { font-size:13.5px; margin:0; }
+  .grid small { color:var(--sea); }
+  form.f { display:grid; gap:10px; max-width:520px; margin-top:12px; } form.f label { font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--sea); }
+  form.f input, form.f select, form.f textarea { width:100%; font:inherit; font-size:14px; padding:10px 12px; border:1px solid var(--line); border-radius:10px; background:#fff; color:var(--ink); }
+  form.f button, .btn { background:var(--g2); color:#fff; border:0; padding:12px 20px; border-radius:999px; font:inherit; font-size:14px; cursor:pointer; }
+  .out { background:#fff; border:1px dashed var(--line); padding:12px; border-radius:10px; font-size:13.5px; white-space:pre-wrap; margin-top:8px; display:none; }
+  /* calendar */
+  .cal { max-width:520px; margin-top:12px; background:#fff9ef; border:1px solid var(--line); border-radius:14px; padding:14px; }
+  .cal-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; } .cal-head button { background:none; border:1px solid var(--line); border-radius:999px; padding:4px 10px; cursor:pointer; font:inherit; }
+  .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:4px; } .cal-grid span { font-size:11px; text-align:center; opacity:.6; padding:4px 0; }
+  .cal-grid button { aspect-ratio:1; border:1px solid transparent; background:none; border-radius:8px; font:inherit; font-size:13px; cursor:pointer; color:var(--ink); }
+  .cal-grid button:hover { border-color:var(--line); } .cal-grid button.in { background:#efe3c8; } .cal-grid button.edge { background:var(--g2); color:#fff; } .cal-grid button.past { opacity:.3; cursor:default; }
+  .cal-sum { font-size:13.5px; margin-top:10px; }
+  .comments article { background:#fff; border:1px solid var(--line); padding:12px 14px; border-radius:10px; margin-bottom:8px; font-size:14px; } .comments article b { display:block; font-size:12px; color:var(--sea); margin-bottom:4px; }
+  .stars { color:var(--accent); letter-spacing:2px; }
+  .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; margin-top:12px; } .gallery img { width:100%; aspect-ratio:3/2; object-fit:cover; border-radius:10px; }
+  .reception { margin-top:12px; border-top:1px solid rgba(212,176,106,.25); padding-top:12px; }
+  .book-btn { width:100%; background:var(--gold); color:var(--g1); border:0; padding:10px 14px; border-radius:999px; font:inherit; font-size:13.5px; cursor:pointer; letter-spacing:.02em; }
+  .book-form { display:grid; gap:7px; margin-top:10px; } .book-form b { color:var(--gold2); font-weight:500; font-size:13px; letter-spacing:.08em; text-transform:uppercase; } .book-form .room { font-size:13px; opacity:.85; }
+  .book-form label { display:grid; gap:3px; font-size:11px; letter-spacing:.06em; text-transform:uppercase; opacity:.8; }
+  .book-form input, .book-form select { font:inherit; font-size:13px; padding:7px 9px; border-radius:8px; border:1px solid rgba(212,176,106,.35); background:rgba(255,255,255,.08); color:#fff; color-scheme:dark; }
+  .book-form button { background:var(--gold); color:var(--g1); border:0; padding:9px 12px; border-radius:999px; font:inherit; font-size:13px; cursor:pointer; }
+  .book-out { font-size:12.5px; line-height:1.45; background:rgba(212,176,106,.15); border-radius:8px; padding:8px 10px; }
+  .ledger { margin-top:22px; } .ledger h3 { font-family:"Cormorant Garamond", serif; font-weight:500; font-size:22px; margin-bottom:8px; }
+  .tbl { overflow-x:auto; border:1px solid var(--line); border-radius:10px; background:#fff; } table { border-collapse:collapse; font-size:12.5px; min-width:640px; } th, td { padding:7px 10px; border-bottom:1px solid var(--line); text-align:left; white-space:nowrap; } th { background:#efe6d3; font-weight:500; }
+  .btn.small { margin-top:8px; padding:8px 14px; font-size:12.5px; }
+  footer { padding:30px clamp(16px,4vw,56px); font-size:12.5px; opacity:.7; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+  @media (max-width:900px) { body.site-split #site { right:0; } body.site-split #top, body.site-split #card, body.site-split #title, body.site-split #deg { display:none; } }
+</style>
+</head>
+<body>
+<div id="fade" style="opacity:1; background:#f4e7cf"></div><div id="vignette"></div><div id="bars"></div>
+<div id="loader" class="ui hide"><div class="brand"><img src="assets/logo-sygnet-white.svg" alt=""><b>HOLISPHERE</b></div><div class="loader-text">…</div><div id="bar"><i></i></div><small id="pct"></small></div>
+<div id="spots"></div>
+<div id="top" class="ui"><span class="brand"><img src="assets/logo-sygnet-white.svg" alt=""><b>HOLISPHERE</b></span><nav class="dds" id="dds-world"></nav><div class="modes"><button id="menu-toggle">☰ Menu</button><button id="m-page" class="primary">Full page</button><button id="m-split">Split screen</button><button class="lang-btn" title="EN / PL">PL</button></div></div>
+<img id="logo-mark" src="assets/logo-sygnet-gold.svg" alt="">
+
+<div id="card" class="ui"><h2></h2><img alt=""><p></p><a href="#"></a></div>
+<div id="deg">↺ 360° <b>0°</b><button id="spin">Spin</button></div>
+<div id="infobar"><button id="info-toggle" type="button"><i>ⓘ</i><span id="title"></span></button><button id="info-book" type="button">Book</button></div>
+<nav id="menu"></nav>
+<div id="hint" class="ui" style="left:auto; right:18px; bottom:18px;"></div>
+
+<div id="video"><video id="intro-video" src="assets/holi/kr-approach.mp4" muted autoplay playsinline preload="auto"></video>
+  <div class="over"><p class="k" id="intro-k"></p><h1 id="intro-h"></h1><p class="s" id="intro-s"></p></div>
+  <button id="skip">Skip intro →</button></div>
+
+<div id="split-bar"><button id="sb-full" type="button" title="Full page">⇱</button><button id="sb-close" type="button" title="Close">✕</button></div>
+<section id="site" class="ui">
+  <header class="site-header"><span class="brand"><img src="assets/logo-sygnet-white.svg" alt=""><b>HOLISPHERE</b></span><nav class="dds" id="dds-site"></nav><div class="modes"><button id="s-split">Split screen</button><button id="s-world" class="primary">Back to the world</button><button class="lang-btn" title="EN / PL">PL</button></div></header>
+  <div id="site-body"></div>
+  <footer><span>© 2026 HOLISPHERE · Return to yourself</span><span id="footer-note"></span></footer>
+</section>
+
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js" } }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script type="module" src="holisphere-app.js?v=20260910a"></script>
+</body>
+</html>
