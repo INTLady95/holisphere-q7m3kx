@@ -7,12 +7,12 @@
 <title>HOLISPHERE — Return to yourself</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared.css?v=20260910a">
+<link rel="stylesheet" href="shared.css?v=20260910b">
 <style>
   :root { --accent:#d4b06a; --sand:#f3ecdf; --ink:#1d2a26; --sea:#1f5041; --line:rgba(29,42,38,.16); }
   body { font-family:"Inter", sans-serif; font-weight:300; }
-  .brand { display:flex; align-items:center; gap:10px; } .brand img { width:40px; height:40px; filter:drop-shadow(0 2px 8px rgba(0,0,0,.35)); }
-  .brand b { font-family:"Cormorant Garamond", serif; font-weight:400; font-size:22px; letter-spacing:.32em; }
+  .brand { display:flex; align-items:center; gap:10px; } .brand img { width:30px; height:30px; filter:drop-shadow(0 2px 8px rgba(0,0,0,.35)); }
+  .brand b { font-family:"Inter", sans-serif; font-weight:400; font-size:15px; letter-spacing:.42em; }
   /* ---- top bar in the world: brand + dropdown menus + mode buttons ---- */
   #top { right:18px; justify-content:space-between; z-index:6; }
   .dds { display:flex; gap:8px; flex-wrap:wrap; }
@@ -20,7 +20,7 @@
   body.site-split #dds-world, body.site-split #top .modes { display:none; }
   .dd { position:relative; } .dd > button { color:#fff; background:var(--glass2); border:1px solid rgba(212,176,106,.35); backdrop-filter:blur(8px); padding:8px 14px; border-radius:999px; cursor:pointer; font:inherit; font-size:13px; backdrop-filter:blur(6px); }
   .dd ul { position:absolute; left:0; top:calc(100% + 6px); min-width:240px; list-style:none; background:rgba(16,50,40,.42); border:1px solid rgba(212,176,106,.35); border-radius:14px; padding:8px; backdrop-filter:blur(16px); display:none; z-index:20; box-shadow:0 12px 40px rgba(0,0,0,.2); }
-  .dd:hover ul, .dd:focus-within ul { display:block; }
+  .dd:hover ul, .dd:focus-within ul { display:block; } .dd.closed ul { display:none !important; }
   .dd li button { width:100%; text-align:left; color:#fff; background:none; border:0; padding:9px 12px; border-radius:9px; cursor:pointer; font:inherit; font-size:13.5px; display:flex; justify-content:space-between; gap:12px; }
   .dd li button:hover { background:rgba(212,176,106,.16); } .dd li button small { opacity:.6; font-size:11px; }
   .modes { display:flex; gap:8px; } .modes button { color:#fff; background:var(--glass2); border:1px solid rgba(212,176,106,.35); padding:8px 14px; border-radius:999px; cursor:pointer; font:inherit; font-size:13px; backdrop-filter:blur(8px); }
@@ -44,7 +44,7 @@
   body.site-split #deg { left:auto; }
   body.site-split #card { left:auto; right:18px; width:min(300px, 46vw); }
   .site-header { min-height:64px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:10px clamp(16px,3vw,40px); border-bottom:1px solid var(--line); position:sticky; top:0; background:color-mix(in srgb, var(--sand) 94%, transparent); backdrop-filter:blur(18px); z-index:3; }
-  .site-header .brand b { color:var(--ink); } .site-header .brand img { filter:none; content:url("assets/logo-sygnet-color.svg"); }
+  .site-header .brand b { color:var(--ink); } .site-header .brand img { filter:none; content:url("assets/logo-ring-green.svg"); }
   .site-header .dd > button { color:var(--ink); background:none; border:1px solid var(--line); }
   .site-header .dd ul { background:var(--sand); border-color:var(--line); } .site-header .dd li button { color:var(--ink); } .site-header .dd li button:hover { background:rgba(29,42,38,.07); }
   .site-header .modes button { color:var(--ink); background:none; border:1px solid var(--line); } .site-header .modes button.primary { background:var(--ink); color:#fff; border-color:var(--ink); }
@@ -91,10 +91,10 @@
 </head>
 <body>
 <div id="fade" style="opacity:1; background:#f4e7cf"></div><div id="vignette"></div><div id="bars"></div>
-<div id="loader" class="ui hide"><div class="brand"><img src="assets/logo-sygnet-white.svg" alt=""><b>HOLISPHERE</b></div><div class="loader-text">…</div><div id="bar"><i></i></div><small id="pct"></small></div>
+<div id="loader" class="ui hide"><div class="brand"><img src="assets/logo-ring-white.svg" alt=""><b>HOLISPHERE</b></div><div class="loader-text">…</div><div id="bar"><i></i></div><small id="pct"></small></div>
 <div id="spots"></div>
-<div id="top" class="ui"><span class="brand"><img src="assets/logo-sygnet-white.svg" alt=""><b>HOLISPHERE</b></span><nav class="dds" id="dds-world"></nav><div class="modes"><button id="menu-toggle">☰ Menu</button><button id="m-page" class="primary">Full page</button><button id="m-split">Split screen</button><button class="lang-btn" title="EN / PL">PL</button></div></div>
-<img id="logo-mark" src="assets/logo-sygnet-gold.svg" alt="">
+<div id="top" class="ui"><span class="brand"><img src="assets/logo-ring-white.svg" alt=""><b>HOLISPHERE</b></span><nav class="dds" id="dds-world"></nav><div class="modes"><button id="menu-toggle">☰ Menu</button><button id="m-page" class="primary">Full page</button><button id="m-split">Split screen</button><button class="lang-btn" title="EN / PL">PL</button></div></div>
+<img id="logo-mark" src="assets/logo-ring-gold.svg" alt="">
 
 <div id="card" class="ui"><h2></h2><img alt=""><p></p><a href="#"></a></div>
 <div id="deg">↺ 360° <b>0°</b><button id="spin">Spin</button></div>
@@ -108,13 +108,13 @@
 
 <div id="split-bar"><button id="sb-full" type="button" title="Full page">⇱</button><button id="sb-close" type="button" title="Close">✕</button></div>
 <section id="site" class="ui">
-  <header class="site-header"><span class="brand"><img src="assets/logo-sygnet-white.svg" alt=""><b>HOLISPHERE</b></span><nav class="dds" id="dds-site"></nav><div class="modes"><button id="s-split">Split screen</button><button id="s-world" class="primary">Back to the world</button><button class="lang-btn" title="EN / PL">PL</button></div></header>
+  <header class="site-header"><span class="brand"><img src="assets/logo-ring-white.svg" alt=""><b>HOLISPHERE</b></span><nav class="dds" id="dds-site"></nav><div class="modes"><button id="s-split">Split screen</button><button id="s-world" class="primary">Back to the world</button><button class="lang-btn" title="EN / PL">PL</button></div></header>
   <div id="site-body"></div>
   <footer><span>© 2026 HOLISPHERE · Return to yourself</span><span id="footer-note"></span></footer>
 </section>
 
 <script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js" } }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
-<script type="module" src="holisphere-app.js?v=20260910a"></script>
+<script type="module" src="holisphere-app.js?v=20260910b"></script>
 </body>
 </html>

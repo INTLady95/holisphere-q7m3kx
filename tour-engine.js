@@ -3,9 +3,9 @@
 import * as THREE from "three";
 
 export function createTour(opts) {
-  const { stations, first, ui, onArrive } = opts;
+  const { stations, first, ui, onArrive, onPage } = opts;
   const R = 10;                                   // radius of the curved photo wall
-  const scene = new THREE.Scene(); scene.background = new THREE.Color(0x000000);
+  const scene = new THREE.Scene(); scene.background = new THREE.Color(0x0f2f25);   // never black: deep green between panels
   const camera = new THREE.PerspectiveCamera(46, innerWidth / innerHeight, 0.1, 100);
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   const view = { x: 0, w: innerWidth, h: innerHeight };            // where the world is drawn (split view moves it right)
@@ -88,7 +88,7 @@ export function createTour(opts) {
   function makeSpot(s, g) {
     const el = document.createElement("button"); el.type = "button"; el.className = "spot" + (s.cls ? " " + s.cls : "");
     el.innerHTML = `<i></i><span>${s.name}</span>` + (s.tip ? `<em class="tip">${s.tip}</em>` : "");
-    el.onclick = (e) => { e.stopPropagation(); if (state.busy) return; go(s); };
+    el.onclick = (e) => { e.stopPropagation(); if (state.busy) return; if (s.action === "page" && onPage) return onPage(s); go(s); };
     ui.spotsLayer.appendChild(el);
     return { el, def: s, world: uvToWorld(s.u, s.v, g) };
   }
@@ -136,7 +136,7 @@ export function createTour(opts) {
       if (state.full360) { base.yaw = down.base + dx * 0.004; look.yaw = base.yaw - nx * 0.5; }
       else look.yaw = THREE.MathUtils.clamp(down.yaw + dx * 0.0025, -state.lim.yaw, state.lim.yaw);
       look.pitch = THREE.MathUtils.clamp(down.pitch + dy * 0.0025, -state.lim.pitch, state.lim.pitch); }
-    else if (!("ontouchstart" in window)) { look.yaw = state.full360 ? base.yaw - nx * 0.5 : -nx * state.lim.yaw; look.pitch = -ny * state.lim.pitch; }
+    else if (!("ontouchstart" in window)) { look.yaw = state.full360 ? base.yaw - nx * 0.35 : -nx * state.lim.yaw * 0.5; look.pitch = -ny * state.lim.pitch * 0.5; }
   });
   renderer.domElement.addEventListener("pointerdown", e => { down = { x: e.clientX, y: e.clientY, yaw: cam.yaw, pitch: cam.pitch, base: base.yaw }; dragged = false; });
   // full 360° turn on demand (button), 9 s, cinematic

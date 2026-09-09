@@ -121,26 +121,26 @@ function buildStations() {
   const Sx = (stKey, prop, base, extra = {}) => Object.assign({}, base, { name: st(stKey)[prop + "Name"] || base.name, tip: st(stKey)[prop + "Tip"] || base.tip }, extra);
   return {
     hotel: { img: A + "kr-approach-last.jpg", arc: 80, label: st("hotel").label, section: "philosophy", card: card("philosophy", "hotel"),
-      spots: [ S("spheres", 0.5, 0.22), S("nature", 0.42, 0.78), S("programs", 0.9, 0.35) ] },
+      spots: [ S("spheres", 0.5, 0.3), S("nature", 0.42, 0.78), S("programs", 0.9, 0.4) ] },
     beach: { img: A + "kr-beach.jpg", arc: 80, label: st("beach").label, section: "nature", card: card("nature", "beach"),
       spots: [ S("philosophy", 0.5, 0.35), S("spheres", 0.85, 0.3) ] },
     aerial: { img: A + "kr-aerial.jpg", arc: 72, label: st("aerial").label, section: "spheres", card: card("locations", "aerial"),
       spots: [ S("programs", 0.62, 0.35), S("suites", 0.73, 0.62, { to: "dome-night" }), S("spa", 0.32, 0.23), S("nature", 0.33, 0.69, { to: "pool" }), S("stay", 0.23, 0.5, { cls: "final" }), S("locations", 0.9, 0.5) ] },
-    "dome-day": { panels: [ { img: A + "kr-dome-day.jpg", yaw: 0, arc: 96 }, { img: A + "bali-pool-day.jpg", yaw: 120, arc: 96 }, { img: A + "bali-restaurant-day.jpg", yaw: 240, arc: 96 } ], label: st("dome-day").label, section: "programs", card: card("programs", "dome-day", { link: link("dome-day", "interior-4a") }),
+    "dome-day": { panels: [ { img: A + "kr-dome-day.jpg", yaw: 0, arc: 121 }, { img: A + "bali-pool-day.jpg", yaw: 120, arc: 121 }, { img: A + "bali-restaurant-day.jpg", yaw: 240, arc: 121 } ], label: st("dome-day").label, section: "programs", card: card("programs", "dome-day", { link: link("dome-day", "interior-4a") }),
       spots: [ S("suites", 0.53, 0.6, { cls: "final" }), S("spheres", 0.08, 0.86), Sx("dome-day", "night", S("suites", 0.93, 0.32, { to: "dome-night" })), S("nature", 0.6, 0.72, { panel: 1, to: "pool" }), S("spa", 0.45, 0.6, { panel: 2 }) ] },
     "dome-night": { img: A + "kr-dome-night.jpg", arc: 84, label: st("dome-night").label, section: "suites", card: card("suites", "dome-night", { link: link("dome-night", "interior-7d") }),
       spots: [ Sx("dome-night", "enter", S("suites", 0.5, 0.6, { to: "interior-7d", cls: "final" })), Sx("dome-night", "day", S("programs", 0.93, 0.32, { to: "dome-day" })), S("spheres", 0.08, 0.86) ] },
-    "interior-4a": { panels: [ { img: A + "bali-int-4a.jpg", yaw: 0, arc: 88 }, { img: A + "bali-int-4a-v2.jpg", yaw: 92, arc: 84 }, { img: A + "bali-int-4a-v3.jpg", yaw: 182, arc: 84 }, { img: A + "bali-int-4a-v4.jpg", yaw: 272, arc: 84 } ], label: st("interior-4a").label, section: "suites", room: "RETURN", card: card("suites", "interior-4a"),
+    "interior-4a": { panels: [ { img: A + "bali-int-4a.jpg", yaw: 0, arc: 91 }, { img: A + "bali-int-4a-v2.jpg", yaw: 90, arc: 91 }, { img: A + "bali-int-4a-v3.jpg", yaw: 180, arc: 91 }, { img: A + "bali-int-4a-v4.jpg", yaw: 270, arc: 91 } ], label: st("interior-4a").label, section: "suites", room: "RETURN", card: card("suites", "interior-4a"),
       spots: [ Sx("interior-4a", "other", S("suites", 0.28, 0.45, { to: "interior-7d" })), Sx("interior-4a", "exit", S("programs", 0.5, 0.84)), S("booking", 0.8, 0.5, { cls: "final" }) ] },
-    "interior-7d": { panels: [ { img: A + "bali-int-7d.jpg", yaw: 0, arc: 96 }, { img: A + "bali-int-7d-v2.jpg", yaw: 120, arc: 96 }, { img: A + "bali-int-7d-v3.jpg", yaw: 240, arc: 96 } ], label: st("interior-7d").label, section: "suites", room: "RECONNECT", card: card("programs", "interior-7d"),
+    "interior-7d": { panels: [ { img: A + "bali-int-7d.jpg", yaw: 0, arc: 121 }, { img: A + "bali-int-7d-v2.jpg", yaw: 120, arc: 121 }, { img: A + "bali-int-7d-v3.jpg", yaw: 240, arc: 121 } ], label: st("interior-7d").label, section: "suites", room: "RECONNECT", card: card("programs", "interior-7d"),
       spots: [ Sx("interior-7d", "exit", S("suites", 0.5, 0.84, { to: "dome-night" })), S("booking", 0.75, 0.45, { cls: "final" }) ] },
     pool: { img: A + "bali-pool-day.jpg", arc: 88, label: st("pool").label, section: "kitchen", card: card("kitchen", "pool"),
       spots: [ S("programs", 0.3, 0.55), S("spheres", 0.5, 0.84) ] },
     restaurant: { img: A + "bali-restaurant-day.jpg", arc: 88, label: st("restaurant").label, section: "spa", card: card("spa", "restaurant"),
       spots: [ Sx("restaurant", "enter", S("spa", 0.42, 0.58, { to: "interior-16m" })), S("spheres", 0.5, 0.84) ] },
-    "interior-16m": { panels: [ { img: A + "bali-int-16m.jpg", yaw: 0, arc: 96 }, { img: A + "bali-int-16m-v2.jpg", yaw: 120, arc: 96 }, { img: A + "bali-int-16m-v3.jpg", yaw: 240, arc: 96 } ], label: st("interior-16m").label, section: "spa", room: "SPA", card: card("spa", "interior-16m"),
+    "interior-16m": { panels: [ { img: A + "bali-int-16m.jpg", yaw: 0, arc: 121 }, { img: A + "bali-int-16m-v2.jpg", yaw: 120, arc: 121 }, { img: A + "bali-int-16m-v3.jpg", yaw: 240, arc: 121 } ], label: st("interior-16m").label, section: "spa", room: "SPA", card: card("spa", "interior-16m"),
       spots: [ Sx("interior-16m", "exit", S("spa", 0.5, 0.84, { to: "restaurant" })), S("booking", 0.75, 0.45, { cls: "final" }), Sx("interior-16m", "gym", S("spa", 0.5, 0.5, { panel: 2, to: "gym" })) ] },
-    gym: { panels: [ { img: A + "bali-int-gym-v2.jpg", yaw: 0, arc: 100 }, { img: A + "bali-int-gym-v3.jpg", yaw: 180, arc: 100 } ], label: st("gym").label, section: "spa", card: card("spa", "gym"),
+    gym: { panels: [ { img: A + "bali-int-gym-v2.jpg", yaw: 0, arc: 181 }, { img: A + "bali-int-gym-v3.jpg", yaw: 180, arc: 181 } ], label: st("gym").label, section: "spa", card: card("spa", "gym"),
       spots: [ Sx("gym", "back", S("spa", 0.5, 0.86, { to: "interior-16m" })), S("booking", 0.8, 0.4, { cls: "final", panel: 1 }) ] },
     lobby: { img: A + "bali-lobby-day.jpg", arc: 88, label: st("lobby").label, section: "stay", card: card("stay", "lobby", { link: link("lobby", null, "page") }),
       spots: [ Sx("lobby", "page", S("booking", 0.62, 0.5, { cls: "final" })), S("spheres", 0.1, 0.9) ] },
@@ -170,11 +170,12 @@ function buildDropdowns(host) {
   host.innerHTML = "";
   GROUP_KEYS.forEach(g => { const keys = ORDER.filter(k => sec(k).group === g); const dd = document.createElement("div"); dd.className = "dd";
     dd.innerHTML = `<button type="button">${L.ui.groups[g]} ▾</button><ul>${keys.map(k => `<li><button type="button" data-k="${k}" title="${sec(k).tip.replace(/"/g, "&quot;")}"><span>${sec(k).name}</span><small>${PAGE_ONLY.has(k) ? L.ui.pageTag : L.ui.both}</small></button></li>`).join("")}</ul>`;
-    dd.querySelectorAll("li button").forEach(b => b.onclick = () => { const k = b.dataset.k; host.id === "dds-site" ? openPage(k, document.body.classList.contains("site-split") ? "split" : "full") : openSection(k); });
+    dd.querySelectorAll("li button").forEach(b => b.onclick = () => { const k = b.dataset.k; dd.classList.add("closed"); host.id === "dds-site" ? openPage(k, document.body.classList.contains("site-split") ? "split" : "full") : openSection(k); });
+    dd.addEventListener("mouseleave", () => dd.classList.remove("closed"));
     host.appendChild(dd); });
 }
 function buildMenu() {
-  menu.innerHTML = `<p class="menu-head"><span><img src="assets/logo-sygnet-gold.svg" alt="">${L.ui.menuHead}</span><button id="menu-close" type="button">${L.ui.collapse}</button></p>`; items = {};
+  menu.innerHTML = `<p class="menu-head"><span><img src="assets/logo-ring-gold.svg" alt="">${L.ui.menuHead}</span><button id="menu-close" type="button">${L.ui.collapse}</button></p>`; items = {};
   ORDER.forEach(key => { const d = sec(key); const b = document.createElement("button"); b.type = "button"; b.className = "menu-item"; items[key] = b;
     b.innerHTML = `<b>${d.name}</b><small>${PAGE_ONLY.has(key) ? L.ui.pageTag : L.ui.imgTag}</small><em class="tip">${d.tip}</em>`; b.onclick = () => { closeMenu(); openSection(key); }; menu.appendChild(b); });
   $("menu-close").onclick = closeMenu;
@@ -189,7 +190,7 @@ function applyUiTexts() {
 
 // ===================== TOUR =====================
 let firstArrival = true;
-const tour = createTour({ stations, first: "hotel", ui, onArrive(def, key) {
+const tour = createTour({ stations, first: "hotel", ui, onPage: s => openPage(s.section, settings.mode), onArrive(def, key) {
   Object.entries(items).forEach(([k, b]) => b.classList.toggle("on", k === def.section));
   if (firstArrival) openMenu(); else closeMenu(); firstArrival = false;
   decorateCard(def);
