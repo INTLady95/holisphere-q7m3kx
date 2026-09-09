@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/logo-ring-gold.svg" type="image/svg+xml">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HOLISPHERE — Return to yourself</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared.css?v=20260910u">
+<link rel="stylesheet" href="shared.css?v=20260910v">
 <style>
   :root { --accent:#d4b06a; --sand:#f3ecdf; --ink:#1d2a26; --sea:#1f5041; --line:rgba(29,42,38,.16); }
   body { font-family:"Inter", sans-serif; font-weight:300; }
@@ -164,6 +165,17 @@
   .foot h4 { font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--gold2); margin-bottom:12px; } .foot a { display:block; color:#f4efe6; text-decoration:none; font-size:14px; margin-bottom:8px; } .foot .brand b { color:#fff; letter-spacing:.42em; font-size:14px; } .foot .brand img { width:26px; height:26px; content:url("assets/logo-ring-gold.svg"); }
   .foot .news { display:flex; gap:8px; flex-wrap:wrap; } .foot .news input { flex:1; min-width:160px; font:inherit; font-size:13px; padding:9px 12px; border:1px solid rgba(212,176,106,.4); border-radius:999px; background:rgba(255,255,255,.08); color:#fff; } .foot .news small { width:100%; font-size:11.5px; color:var(--gold2); }
   .legal { padding:14px clamp(20px,6vw,80px) 30px; background:var(--g1); font-size:12px; opacity:.65; }
+  /* reception form inside the info card */
+  .reception { margin-top:12px; border-top:1px solid rgba(212,176,106,.25); padding-top:12px; }
+  .book-form { display:grid; gap:7px; } .book-form b { color:var(--gold2); font-weight:500; font-size:12px; letter-spacing:.08em; text-transform:uppercase; } .book-form .room { font-size:13px; opacity:.85; }
+  .book-form label { display:grid; gap:3px; font-size:11px; letter-spacing:.06em; text-transform:uppercase; opacity:.85; }
+  .book-form input, .book-form select { font:inherit; font-size:13px; padding:7px 9px; border-radius:8px; border:1px solid rgba(212,176,106,.35); background:rgba(255,255,255,.08); color:#fff; color-scheme:dark; }
+  .book-form button { background:var(--gold); color:var(--g1); border:0; padding:9px 12px; border-radius:999px; font:inherit; font-size:13px; cursor:pointer; }
+  .book-out { font-size:12.5px; line-height:1.45; background:rgba(212,176,106,.15); border-radius:8px; padding:8px 10px; }
+  body.site-split .book-wrap { grid-template-columns:1fr; }
+  #site .cardx small { color:var(--gold2); opacity:.9; }
+  #minimap.big .mm-stage { margin-top:24px; }
+  .onb-row { flex-wrap:nowrap; } .onb-dots { white-space:nowrap; }
   /* overrides: header buttons + labels on the dark page */
   #site .site-header .modes button, #site .site-header .lang-btn, #site .site-header .dd > button { color:#fff; }
   #site .site-header .modes button.primary { background:var(--gold); color:var(--g1); border-color:var(--gold); }
@@ -230,6 +242,6 @@
 
 <script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js" } }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
-<script type="module" src="holisphere-app.js?v=20260910u"></script>
+<script type="module" src="holisphere-app.js?v=20260910v"></script>
 </body>
 </html>

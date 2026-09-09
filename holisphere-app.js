@@ -11,7 +11,7 @@ en: {
   onb: { next: "Read it? Click me →", done: "Read it? Click me, we are done →", replay: "Show the guide again", steps: [
     { t: "#menu-toggle", h: "Everything is here", p: "I just opened the menu for you: every section, the most needed first. One click opens it, one click closes it." },
     { t: ".spot", h: "Dots are the same sections", p: "Watch: I hover a dot, a one-line summary appears. Then I click it and we fly into that place." },
-    { t: "#m-page", h: "The ordinary page, any time", p: "I opened the split screen: the classic page on the left, the picture still alive on the right. Full page shows only the page." },
+    { t: "#split-bar", h: "The ordinary page, any time", p: "I opened the split screen: the classic page on the left, the picture still alive on the right. Full page shows only the page." },
     { t: "#infobar", h: "Book where you stand", p: "We are inside a suite. The gold Book button opens a small reception: dates, guests, name. The request lands in our booking list." },
     { t: "#minimap", h: "The map", p: "Real islands from the map, then our resort from above. Hover a dot for its name, click to fly there. Scroll or pinch to zoom, drag to move, ▲ back to the islands, 3D tilts it." },
     { t: ".lang-btn", h: "English or Polish", p: "Switch the language here on any screen. That is all. Now the place is yours." } ] },
@@ -65,7 +65,7 @@ pl: {
   onb: { next: "Przeczytane? Kliknij mnie →", done: "Przeczytane? Kliknij, to już wszystko →", replay: "Pokaż przewodnik ponownie", steps: [
     { t: "#menu-toggle", h: "Wszystko jest tutaj", p: "Właśnie otworzyłem dla Ciebie menu: wszystkie działy, od najpotrzebniejszych. Jedno kliknięcie otwiera, jedno zamyka." },
     { t: ".spot", h: "Kropki to te same działy", p: "Patrz: najeżdżam na kropkę, pojawia się jedno zdanie. Potem klikam i wlatujemy do tego miejsca." },
-    { t: "#m-page", h: "Zwykła strona w każdej chwili", p: "Otworzyłem podzielony ekran: klasyczna strona po lewej, obraz nadal żywy po prawej. „Full page” pokazuje samą stronę." },
+    { t: "#split-bar", h: "Zwykła strona w każdej chwili", p: "Otworzyłem podzielony ekran: klasyczna strona po lewej, obraz nadal żywy po prawej. „Full page” pokazuje samą stronę." },
     { t: "#infobar", h: "Rezerwuj tam, gdzie stoisz", p: "Jesteśmy w apartamencie. Złoty przycisk Book otwiera małą recepcję: daty, goście, imię. Zapytanie trafia na naszą listę rezerwacji." },
     { t: "#minimap", h: "Mapa", p: "Prawdziwe wyspy z mapy, potem nasz resort z góry. Najedź na punkt, żeby zobaczyć nazwę, kliknij, żeby tam polecieć. Kółko albo dwa palce = zoom, przeciągnij = przesuń, ▲ wraca do wysp, 3D pochyla mapę." },
     { t: ".lang-btn", h: "English albo polski", p: "Tu zmienisz język na każdym ekranie. To wszystko. Teraz to miejsce jest Twoje." } ] },
@@ -241,7 +241,7 @@ function decorateCard(def) {
 // ===================== BOOKING LEDGER (categories = section; optional Google Sheet endpoint) =====================
 const ledger = JSON.parse(localStorage.getItem("holi-bookings") || "[]");
 function addBooking(b) {
-  const rec = Object.assign({ id: ledger.length + 1, date: new Date().toISOString().slice(0, 16).replace("T", " "), lang: settings.lang }, b);
+  const rec = Object.assign({ id: ledger.length + 1, date: new Date().toLocaleString("sv-SE").slice(0, 16), lang: settings.lang }, b);
   ledger.push(rec); localStorage.setItem("holi-bookings", JSON.stringify(ledger)); drawLedger();
   if (BOOKING_ENDPOINT) fetch(BOOKING_ENDPOINT, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(rec) }).catch(() => {});
   return rec;
@@ -321,7 +321,7 @@ function buildPage() {
   $("cal-next").onclick = () => { calM = new Date(calM.getFullYear(), calM.getMonth() + 1, 1); drawCal(); };
   drawCal();
   $("f-book").onsubmit = e => { e.preventDefault(); const f = new FormData(e.target);
-    const rec = addBooking({ category: sec("booking").name, room: `${f.get("program")} · ${f.get("loc")}`, station: "page", in: dIn ? dIn.toISOString().slice(0, 10) : "", out: dOut ? dOut.toISOString().slice(0, 10) : "", guests: f.get("guests"), who: f.get("who") });
+    const rec = addBooking({ category: sec("booking").name, room: `${f.get("program")} · ${f.get("loc")}`, station: "page", in: dIn ? dIn.toLocaleDateString("sv-SE") : "", out: dOut ? dOut.toLocaleDateString("sv-SE") : "", guests: f.get("guests"), who: f.get("who") });
     const o = $("out-book"); o.style.display = "block"; o.textContent = `${P.requestFor} #${rec.id}\n${P.dates}: ${dIn && dOut ? fmt(dIn) + " → " + fmt(dOut) : P.tbd}\n${P.program}: ${f.get("program")}\n${P.location}: ${f.get("loc")}\n${L.ui.guests}: ${f.get("guests")}\n${f.get("who")}\n\n${L.ui.copyHint}`; };
   $("f-msg").onsubmit = e => { e.preventDefault(); const f = new FormData(e.target); const o = $("out-msg"); o.style.display = "block"; o.textContent = `${f.get("topic")}\n${f.get("msg")}\n— ${f.get("who")}\n\n${L.ui.copyHint}`; };
   // comments
@@ -361,7 +361,7 @@ function buildMiniMap() {
   const svg = el.querySelector("svg"), V = MAP.V;
   const apply = () => { svg.setAttribute("viewBox", `${V.x} ${V.y} ${V.w} ${V.h}`); svg.style.setProperty("--mmf", (5.5 * V.w / 210) + "px"); el.classList.toggle("zoomed", V.w < 140); };
   const clamp = () => { V.x = Math.min(Math.max(V.x, -20), 230 - V.w); V.y = Math.min(Math.max(V.y, -20), 140 - V.h); };
-  const zoomAt = (f, px = 0.5, py = 0.5) => { const nw = Math.min(210, Math.max(30, V.w / f)), nh = nw * 120 / 210; V.x += (V.w - nw) * px; V.y += (V.h - nh) * py; V.w = nw; V.h = nh; clamp(); apply(); };
+  const zoomAt = (f, px = 0.5, py = 0.5) => { const nw = Math.min(210, Math.max(30, V.w / f)), nh = nw * 120 / 210; V.x += (V.w - nw) * px; V.y += (V.h - nh) * py; V.w = nw; V.h = nh; if (nw >= 210) { V.x = 0; V.y = 0; } clamp(); apply(); };
   const reset = () => { V.x = 0; V.y = 0; V.w = 210; V.h = 120; apply(); };
   function render() {
     const I = MAP.islands; let inner = `<rect class="sea" x="-40" y="-40" width="290" height="200"/>`;
@@ -386,8 +386,7 @@ function buildMiniMap() {
       inner += `<g id="mm-cross" class="cross"><line x1="-6" y1="0" x2="6" y2="0"/><line x1="0" y1="-6" x2="0" y2="6"/><circle r="3.2"/><text id="mm-xy" x="7" y="-4"></text></g>`;
     }
     svg.innerHTML = inner;
-    svg.querySelectorAll(".pt.site").forEach(g => g.addEventListener("click", e => { e.stopPropagation(); if (moved) return; MAP.mode = g.dataset.resort; reset(); render(); updateMiniMap(tour.state.key); }));
-    svg.querySelectorAll(".pt[data-k]").forEach(g => g.addEventListener("click", e => { e.stopPropagation(); if (moved || tour.state.busy) return; tour.go({ to: g.dataset.k, _virtual: true }); }));
+    svg.querySelectorAll(".pt").forEach(g => g.addEventListener("click", e => { e.stopPropagation(); if (!e.isTrusted) { if (g.dataset.resort) { MAP.mode = g.dataset.resort; reset(); render(); updateMiniMap(tour.state.key); } else if (g.dataset.k && !tour.state.busy) tour.go({ to: g.dataset.k, _virtual: true }); } }));
     el.querySelector("[data-z=back]").style.display = MAP.mode === "islands" ? "none" : "";
     el.classList.toggle("resort", MAP.mode !== "islands");
   }
@@ -397,12 +396,15 @@ function buildMiniMap() {
     else if (z === "back") { MAP.mode = "islands"; reset(); render(); updateMiniMap(tour.state.key); } });
   svg.addEventListener("wheel", e => { e.preventDefault(); const r = svg.getBoundingClientRect(); zoomAt(e.deltaY < 0 ? 1.25 : 0.8, (e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height); }, { passive: false });
   const ptrs = new Map(); let drag = null, pinch = null, moved = false;
-  svg.addEventListener("pointerdown", e => { e.stopPropagation(); svg.setPointerCapture(e.pointerId); ptrs.set(e.pointerId, [e.clientX, e.clientY]); moved = false;
+  let downTarget = null;
+  svg.addEventListener("pointerdown", e => { e.stopPropagation(); svg.setPointerCapture(e.pointerId); ptrs.set(e.pointerId, [e.clientX, e.clientY]); moved = false; downTarget = e.target.closest ? e.target.closest(".pt") : null;
     if (ptrs.size === 1) drag = { x: e.clientX, y: e.clientY, vx: V.x, vy: V.y }; if (ptrs.size === 2) { const [a, b] = [...ptrs.values()]; pinch = { d: Math.hypot(a[0] - b[0], a[1] - b[1]), w: V.w }; drag = null; } });
   svg.addEventListener("pointermove", e => { if (!ptrs.has(e.pointerId)) return; ptrs.set(e.pointerId, [e.clientX, e.clientY]); const r = svg.getBoundingClientRect();
     if (ptrs.size === 2 && pinch) { const [a, b] = [...ptrs.values()]; const d = Math.hypot(a[0] - b[0], a[1] - b[1]); const nw = Math.min(210, Math.max(30, pinch.w * pinch.d / d)); const cx = (a[0] + b[0]) / 2 - r.left, cy = (a[1] + b[1]) / 2 - r.top; V.x += (V.w - nw) * cx / r.width; V.y += (V.h - nw * 120 / 210) * cy / r.height; V.w = nw; V.h = nw * 120 / 210; clamp(); apply(); moved = true; }
     else if (drag) { const dx = (e.clientX - drag.x) / r.width * V.w, dy = (e.clientY - drag.y) / r.height * V.h; if (Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y) > 4) moved = true; V.x = drag.vx - dx; V.y = drag.vy - dy; clamp(); apply(); } });
-  const up = e => { ptrs.delete(e.pointerId); if (ptrs.size < 2) pinch = null; if (ptrs.size === 0) drag = null; };
+  const up = e => { ptrs.delete(e.pointerId); if (ptrs.size < 2) pinch = null; if (ptrs.size === 0) { drag = null; if (!moved && downTarget) { const g = downTarget; downTarget = null;
+        if (g.dataset.resort) { MAP.mode = g.dataset.resort; reset(); render(); updateMiniMap(tour.state.key); }
+        else if (g.dataset.k && !tour.state.busy) tour.go({ to: g.dataset.k, _virtual: true }); } } };
   svg.addEventListener("pointerup", up); svg.addEventListener("pointercancel", up);
   el.addEventListener("wheel", e => e.preventDefault(), { passive: false });
   el.classList.toggle("three", MAP.three);
@@ -410,11 +412,11 @@ function buildMiniMap() {
   if (MAP.islands) { render(); apply(); } else fetch("assets/map-islands.json").then(r => r.json()).then(j => { MAP.islands = j; render(); apply(); updateMiniMap(tour.state.key); }).catch(() => { MAP.mode = "kohrong"; render(); apply(); });
 }
 function updateMiniMap(key) {
-  const you = $("mm-you"), you2 = $("mm-you2"); if (!you) return;
+  const you = $("mm-you"), you2 = $("mm-you2"); if (!you && !$("mm-cross")) return;
   let p = null;
   if (MAP.mode === "islands") { const g = document.querySelector(`#minimap .pt.site[data-resort=${STATION_ISLAND(key)}] circle`); if (g) p = [g.getAttribute("cx"), g.getAttribute("cy")]; }
   else { const g = document.querySelector(`#minimap .pt[data-k="${key}"] circle`); if (g) p = [g.getAttribute("cx"), g.getAttribute("cy")]; else if (MAP.resort[STATION_ISLAND(key)] && MAP.mode !== STATION_ISLAND(key)) { MAP.mode = STATION_ISLAND(key); MAP.reset(); MAP.render(); return updateMiniMap(key); } }
-  if (p) { [you, you2].forEach(c => c && (c.setAttribute("cx", p[0]), c.setAttribute("cy", p[1]))); const cr = $("mm-cross"); if (cr) { cr.setAttribute("transform", `translate(${p[0]},${p[1]})`); const R = MAP.resort[MAP.mode]; const W = 210, H = R.ar >= 1.75 ? 120 : 210 / R.ar, oy = (120 - H) / 2, u = W / (R.metres || 130); $("mm-xy").textContent = `X ${Math.round(p[0] / u)} · Y ${Math.round((oy + H - p[1]) / u)} m`; } }
+  if (p) { [you, you2].forEach(c => { if (c) { c.setAttribute("cx", p[0]); c.setAttribute("cy", p[1]); } }); const cr = $("mm-cross"); if (cr) { cr.setAttribute("transform", `translate(${p[0]},${p[1]})`); const R = MAP.resort[MAP.mode]; const W = 210, H = R.ar >= 1.75 ? 120 : 210 / R.ar, oy = (120 - H) / 2, u = W / (R.metres || 130); $("mm-xy").textContent = `X ${Math.round(p[0] / u)} · Y ${Math.round((oy + H - p[1]) / u)} m`; } }
   document.querySelectorAll("#minimap .pt").forEach(g => g.classList.toggle("on", g.dataset.k === key));
   $("mm-cap").textContent = (st(key).label || "") + (MAP.mode === "islands" ? "" : "  ·  " + (MAP.mode === "bali" ? "Bali" : "Koh Rong"));
 }
@@ -447,6 +449,7 @@ function onbPlace() {
   card.querySelector(".onb-dots").innerHTML = L.onb.steps.map((_, k) => `<i class="${k === onb.i ? "on" : ""}"></i>`).join("");
   card.querySelector(".onb-next").textContent = onb.i === L.onb.steps.length - 1 ? L.onb.done : L.onb.next;
   const below = r.top + r.height + 20, cw = Math.min(380, innerWidth - 36); let left = Math.min(Math.max(r.left + r.width / 2 - cw / 2, 18), innerWidth - cw - 18);
+  if (step.t === "#infobar" && innerWidth > 900) left = Math.min(innerWidth - cw - 18, 420);
   card.style.width = cw + "px"; card.style.left = left + "px";
   if (below + 200 < innerHeight) { card.style.top = below + "px"; card.style.bottom = "auto"; } else { card.style.top = "auto"; card.style.bottom = (innerHeight - r.top + 20) + "px"; }
 }
@@ -476,6 +479,7 @@ $("m-split").onclick = () => openPage(tour.state.def && tour.state.def.section, 
 $("s-split").onclick = () => { document.body.classList.contains("site-split") ? openPage(null, "full") : openPage(null, "split"); };
 $("s-world").onclick = closePage; $("sb-close").onclick = closePage; $("sb-full").onclick = () => openPage(null, "full");
 $("spin").onclick = () => tour.spin360();
+$("onb-replay").onclick = () => { closePage(); closeMenu(); ui.card.classList.remove("pin", "peek"); onbStart(); };
 const infoBtn = $("info-toggle"), bookBtn = $("info-book");
 infoBtn.onmouseenter = () => ui.card.classList.add("peek"); infoBtn.onmouseleave = () => ui.card.classList.remove("peek");
 infoBtn.onclick = () => { const on = !ui.card.classList.contains("pin"); ui.card.classList.toggle("pin", on); if (!on) ui.card.classList.remove("peek"); infoBtn.classList.toggle("on", on); };
