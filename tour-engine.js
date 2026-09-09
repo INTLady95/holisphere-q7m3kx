@@ -145,24 +145,24 @@ export function createTour(opts) {
   addEventListener("resize", () => setViewport(viewFraction));
 
   const clock = new THREE.Clock();
-  renderer.setAnimationLoop(() => {
-    const t = clock.getElapsedTime(), dt = Math.min(clock.getDelta ? 0.016 : 0.016, 0.05);
+  // compass readout for 360 stations
+  const degEl = ui.deg && ui.deg.querySelector("b");
+  function updateDeg() { if (degEl && state.full360) degEl.textContent = ((Math.round(-THREE.MathUtils.radToDeg(cam.yaw)) % 360) + 360) % 360 + "°"; }
+  let paused = false; const loop = () => {
+    const t = clock.getElapsedTime(), dt = 0.016;
     if (!state.busy) { cam.yaw += (look.yaw - cam.yaw) * 0.06; cam.pitch += (look.pitch - cam.pitch) * 0.06;
-      cam.y = Math.sin(t * 0.5) * 0.02; cam.x = Math.sin(t * 0.31) * 0.015; cam.fov = 46 + Math.sin(t * 0.25) * 0.5; }   // breathing camera = alive
+      cam.y = Math.sin(t * 0.5) * 0.02; cam.x = Math.sin(t * 0.31) * 0.015; cam.fov = 46 + Math.sin(t * 0.25) * 0.5; }
     const P = dust.geometry.attributes.position.array;
     for (let i = 0; i < N; i++) { const v = dustVel[i];
-      P[i * 3] += v[0] * dt + Math.sin(t + i) * 0.0006; P[i * 3 + 1] += v[1] * dt; P[i * 3 + 2] += v[2] * dt + rush * 0.35;   // rush: dust streams past you
+      P[i * 3] += v[0] * dt + Math.sin(t + i) * 0.0006; P[i * 3 + 1] += v[1] * dt; P[i * 3 + 2] += v[2] * dt + rush * 0.35;
       if (P[i * 3 + 2] > 0.2) { P[i * 3 + 2] = -9; P[i * 3] = (Math.random() - 0.5) * 9; P[i * 3 + 1] = (Math.random() - 0.5) * 5; }
       if (P[i * 3 + 1] < -2.6) P[i * 3 + 1] = 2.6; if (P[i * 3 + 1] > 2.6) P[i * 3 + 1] = -2.6; if (Math.abs(P[i * 3]) > 4.6) P[i * 3] = -P[i * 3] * 0.98; }
     dust.geometry.attributes.position.needsUpdate = true; dust.material.size = 0.055 + rush * 0.12; dust.material.opacity = 0.42 + rush * 0.35;
     applyCam(); updateSpots(); updateDeg(); renderer.render(scene, camera);
-  });
-
-  // compass readout for 360 stations
-  const degEl = ui.deg && ui.deg.querySelector("b");
-  function updateDeg() { if (degEl && state.full360) degEl.textContent = ((Math.round(-THREE.MathUtils.radToDeg(cam.yaw)) % 360) + 360) % 360 + "°"; }
-  const api = { go, loadStation, showCard, spin360, cam, state, camera, base, look, setViewport: f => { viewFraction = f; setViewport(f); } };
+  };
+  function setPaused(v) { paused = v; renderer.setAnimationLoop(v ? null : loop); }
+  const api = { go, loadStation, showCard, spin360, cam, state, camera, base, look, setPaused, setViewport: f => { viewFraction = f; setViewport(f); } };
   window.__tour = api;
-  loadStation(first);
+  loadStation(first); setPaused(false);
   return api;
 }

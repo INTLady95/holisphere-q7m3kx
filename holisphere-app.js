@@ -13,7 +13,7 @@ en: {
     { t: ".spot", h: "Dots are the same sections", p: "Watch: I hover a dot, a one-line summary appears. Then I click it and we fly into that place." },
     { t: "#m-page", h: "The ordinary page, any time", p: "I opened the split screen: the classic page on the left, the picture still alive on the right. Full page shows only the page." },
     { t: "#infobar", h: "Book where you stand", p: "We are inside a suite. The gold Book button opens a small reception: dates, guests, name. The request lands in our booking list." },
-    { t: "#minimap", h: "The map", p: "Every place is a dot. Hover to see its name, click to fly there. Scroll or pinch with two fingers to zoom, drag to move, ⤢ makes it bigger." },
+    { t: "#minimap", h: "The map", p: "Real islands from the map, then our resort from above. Hover a dot for its name, click to fly there. Scroll or pinch to zoom, drag to move, ▲ back to the islands, 3D tilts it." },
     { t: ".lang-btn", h: "English or Polish", p: "Switch the language here on any screen. That is all. Now the place is yours." } ] },
   ui: { bookStay: "Book your stay", explore: "Explore", discover: "Discover", exploreWorld: "Explore the world", heroK: "Koh Rong · Cambodia  ·  Bali · Indonesia", heroH: "Return to yourself.", heroS: "Regenerative luxury in glass domes among rice terraces and on a private beach. Science for your biology. Space for your soul.", introK: "Welcome", accK: "Accommodation", progK: "Programmes", wellK: "Wellness", dineK: "Dining", natK: "Nature", locK: "Destinations", jourK: "Your journey", steps: [["Before you arrive", "A short, elegant form: sleep, fatigue, diet, allergies, temperature, pillows, privacy. Never a diagnosis."], ["The Exhale", "No desk, no paperwork. A welcome by name, silence, a cool drink, the first contact with nature."], ["The Return", "A simple personal protocol for the days after, and one or two practices to keep."]], news: "Stay in touch", newsPh: "Your e-mail", newsBtn: "Subscribe", newsNote: "(proposal) Newsletter address to be decided.", legal: "© 2026 HOLISPHERE · Return to yourself · Privacy · Terms", colExplore: "Explore", colContact: "Contact", openingBali: "Bali opens Oct/Nov 2026 · Koh Rong stage 1 Dec 2026", lookAround: "Look around", menu: "☰ Menu", collapse: "Collapse ×", menuHead: "Menu · most wanted first", page: "Full page", split: "Split screen", world: "Back to the world", worldSee: "See this place in the world →", pageSee: "See the ordinary page →", hint: "Dots = site sections. Hover = summary, click = enter. ☰ Menu = full list, “Full page” always at hand.", skip: "Skip intro →", introK: "Koh Rong · Cambodia · regenerative premium hospitality", introH: "Return <em>to yourself.</em>", introS: "In a moment you will see the site menu. Explore the pictures or open the ordinary page at any time.", pageTag: "page", imgTag: "picture", both: "picture + page", spin: "Spin", book: "Book this room", bookTitle: "Reception · book here", arrive: "Arrival", depart: "Departure", guests: "Guests", who: "Name · e-mail", send: "Send request", sent: "Request recorded", inCategory: "in category", ledger: "Booking ledger (all rooms, by category)", exportCsv: "Export CSV", noBookings: "No requests yet.", copyHint: "Copy and send (address to be decided).", groups: { stay: "Stay", place: "Place", about: "About", help: "Help" }, footer: "Texts: brand documents (Tomek, 09.2026). Items marked “(proposal)” await a decision.", lang: "PL" },
   sections: {
@@ -67,7 +67,7 @@ pl: {
     { t: ".spot", h: "Kropki to te same działy", p: "Patrz: najeżdżam na kropkę, pojawia się jedno zdanie. Potem klikam i wlatujemy do tego miejsca." },
     { t: "#m-page", h: "Zwykła strona w każdej chwili", p: "Otworzyłem podzielony ekran: klasyczna strona po lewej, obraz nadal żywy po prawej. „Full page” pokazuje samą stronę." },
     { t: "#infobar", h: "Rezerwuj tam, gdzie stoisz", p: "Jesteśmy w apartamencie. Złoty przycisk Book otwiera małą recepcję: daty, goście, imię. Zapytanie trafia na naszą listę rezerwacji." },
-    { t: "#minimap", h: "Mapa", p: "Każde miejsce to punkt. Najedź, żeby zobaczyć nazwę, kliknij, żeby tam polecieć. Kółko albo dwa palce = zoom, przeciągnij = przesuń, ⤢ powiększa mapę." },
+    { t: "#minimap", h: "Mapa", p: "Prawdziwe wyspy z mapy, potem nasz resort z góry. Najedź na punkt, żeby zobaczyć nazwę, kliknij, żeby tam polecieć. Kółko albo dwa palce = zoom, przeciągnij = przesuń, ▲ wraca do wysp, 3D pochyla mapę." },
     { t: ".lang-btn", h: "English albo polski", p: "Tu zmienisz język na każdym ekranie. To wszystko. Teraz to miejsce jest Twoje." } ] },
   ui: { bookStay: "Zarezerwuj pobyt", explore: "Zobacz", discover: "Odkryj", exploreWorld: "Zwiedzaj świat", heroK: "Koh Rong · Kambodża  ·  Bali · Indonezja", heroH: "Wróć do siebie.", heroS: "Regeneracyjny luksus w szklanych kopułach wśród tarasów ryżowych i na prywatnej plaży. Nauka dla biologii. Przestrzeń dla duszy.", introK: "Witamy", accK: "Apartamenty", progK: "Programy", wellK: "Wellness", dineK: "Kuchnia", natK: "Natura", locK: "Kierunki", jourK: "Twoja podróż", steps: [["Przed przyjazdem", "Krótki, elegancki formularz: sen, zmęczenie, dieta, alergie, temperatura, poduszki, prywatność. Nigdy diagnoza."], ["The Exhale", "Bez lady, bez papierów. Powitanie po imieniu, cisza, chłodny napój, pierwszy kontakt z naturą."], ["The Return", "Prosty osobisty protokół na kolejne dni i jedna–dwie praktyki do zachowania."]], news: "Bądźmy w kontakcie", newsPh: "Twój e-mail", newsBtn: "Zapisz się", newsNote: "(propozycja) Adres newslettera do ustalenia.", legal: "© 2026 HOLISPHERE · Return to yourself · Prywatność · Regulamin", colExplore: "Odkryj", colContact: "Kontakt", openingBali: "Bali: otwarcie X/XI 2026 · Koh Rong etap 1: XII 2026", lookAround: "Rozejrzyj się", menu: "☰ Menu", collapse: "Zwiń ×", menuHead: "Menu · od najczęściej szukanego", page: "Zwykła strona", split: "Podziel ekran", world: "Wróć do świata", worldSee: "Zobacz to miejsce w świecie →", pageSee: "Zobacz zwykłą stronę →", hint: "Kropki = działy strony. Najedź = skrót, kliknij = wejdź. ☰ Menu = cała lista, „Zwykła strona” zawsze pod ręką.", skip: "Pomiń intro →", introK: "Koh Rong · Kambodża · regeneracyjna gościnność premium", introH: "Wróć <em>do siebie.</em>", introS: "Za chwilę zobaczysz menu strony. Możesz zwiedzać obrazy albo w każdej chwili otworzyć zwykłą stronę.", pageTag: "strona", imgTag: "obraz", both: "obraz + strona", spin: "Obróć", book: "Zarezerwuj ten pokój", bookTitle: "Recepcja · rezerwuj tutaj", arrive: "Przyjazd", depart: "Wyjazd", guests: "Goście", who: "Imię · e-mail", send: "Wyślij zapytanie", sent: "Zapytanie zapisane", inCategory: "w kategorii", ledger: "Rejestr rezerwacji (wszystkie pokoje, wg kategorii)", exportCsv: "Eksport CSV", noBookings: "Jeszcze nie ma zapytań.", copyHint: "Skopiuj i wyślij (adres do ustalenia).", groups: { stay: "Pobyt", place: "Miejsce", about: "O nas", help: "Pomoc" }, footer: "Teksty: dokumenty marki (Tomek, 09.2026). Fragmenty oznaczone „(propozycja)” czekają na decyzję.", lang: "EN" },
   sections: {
@@ -175,10 +175,10 @@ function openSection(key) { const d = sec(key); if (PAGE_ONLY.has(key)) return o
 function openPage(anchor, mode) {
   document.body.classList.remove("site-full", "site-split");
   document.body.classList.add(mode === "split" && innerWidth > 900 ? "site-split" : "site-full");
-  ui.site.classList.add("show"); tour.setViewport(document.body.classList.contains("site-split") ? 0.5 : 1); closeMenu();
+  ui.site.classList.add("show"); const split = document.body.classList.contains("site-split"); tour.setViewport(split ? 0.5 : 1); tour.setPaused(!split); closeMenu(); const hv = ui.site.querySelector(".hero video"); hv && hv.play().catch(() => {});
   if (anchor) setTimeout(() => { const el = $("sec-" + anchor); el && el.scrollIntoView({ behavior: "smooth", block: "start" }); }, 60);
 }
-function closePage() { ui.site.classList.remove("show"); document.body.classList.remove("site-full", "site-split"); tour.setViewport(1); }
+function closePage() { ui.site.classList.remove("show"); document.body.classList.remove("site-full", "site-split"); tour.setViewport(1); tour.setPaused(false); const hv = ui.site.querySelector(".hero video"); hv && hv.pause(); }
 const GROUP_KEYS = ["stay", "place", "about", "help"];
 function buildDropdowns(host) {
   host.innerHTML = "";
@@ -259,12 +259,12 @@ function buildPage() {
   const cardsRow = items => `<div class="cards">${items.map(c => `<article class="cardx"><figure>${img(c.img, c.title)}</figure><div><h3>${c.title}</h3>${c.small ? `<small>${c.small}</small>` : ""}<p>${c.text}</p>${c.k ? `<button class="world-link inline" data-w="${c.k}" data-st="${c.st || ""}">${U.explore} →</button>` : ""}</div></article>`).join("")}</div>`;
   const grid = rows => `<div class="grid">${rows.map(r => `<article><strong>${r[0]}</strong>${r.length > 2 ? `<small>${r[1]}</small><p>${r[2]}</p>` : `<p>${r[1]}</p>`}</article>`).join("")}</div>`;
   const BG = { booking: "bali-lobby-day.jpg", programs: "bali-int-4a.jpg", suites: "kr-dome-day.jpg", prices: "bali-pool-day.jpg", contact: "kr-beach.jpg", locations: "bali-birdeye.jpg", spa: "bali-int-16m.jpg", kitchen: "bali-restaurant-day.jpg", nature: "kr-beach.jpg", stay: "bali-lobby-day.jpg", reviews: "bali-dome-day.jpg", spheres: "kr-aerial.jpg", faq: "bali-int-gym-v2.jpg", investors: "kr-approach-last.jpg", settings: "bali-int-4a-v2.jpg" };
-  const sec_ = (k, cls, inner) => `<section class="sec ${cls}" id="sec-${k}" style="background-image:url('assets/holi/${BG[k] || "kr-aerial.jpg"}')"><div class="wash"></div><div class="glass">${inner}</div></section>`;
+  const sec_ = (k, cls, inner) => `<section class="sec ${cls}" id="sec-${k}" style="background-image:url('assets/holi-sm/${BG[k] || "kr-aerial.jpg"}')"><div class="wash"></div><div class="glass">${inner}</div></section>`;
   const S = k => sec(k);
   const parts = [];
   // HERO (philosophy): full-bleed video, one line, one button
-  parts.push(`<section class="hero" id="sec-philosophy"><video src="assets/holi/kr-approach.mp4" poster="assets/holi/kr-approach-last.jpg" muted loop playsinline autoplay preload="metadata"></video><div class="hero-in"><p class="k">${U.heroK}</p><h1>${U.heroH}</h1><p class="sub">${U.heroS}</p><div class="hero-cta"><a href="#sec-booking" class="btn gold" data-scroll="booking">${U.bookStay}</a><button class="btn ghost world-link" data-w="philosophy">${U.exploreWorld} →</button></div></div><div class="hero-bar">${U.openingBali}</div></section>`);
-  parts.push(`<section class="sec intro" style="background-image:url('assets/holi/kr-dome-night.jpg')"><div class="wash"></div><div class="glass center"><p class="k">${U.introK}</p><p class="lead">${S("philosophy").text}</p>${worldBtn("philosophy", U.worldSee)}</div></section>`);
+  parts.push(`<section class="hero" id="sec-philosophy"><video src="assets/holi/kr-approach.mp4" poster="assets/holi/kr-approach-last.jpg" muted loop playsinline preload="none"></video><div class="hero-in"><p class="k">${U.heroK}</p><h1>${U.heroH}</h1><p class="sub">${U.heroS}</p><div class="hero-cta"><a href="#sec-booking" class="btn gold" data-scroll="booking">${U.bookStay}</a><button class="btn ghost world-link" data-w="philosophy">${U.exploreWorld} →</button></div></div><div class="hero-bar">${U.openingBali}</div></section>`);
+  parts.push(`<section class="sec intro" style="background-image:url('assets/holi-sm/kr-dome-night.jpg')"><div class="wash"></div><div class="glass center"><p class="k">${U.introK}</p><p class="lead">${S("philosophy").text}</p>${worldBtn("philosophy", U.worldSee)}</div></section>`);
   ORDER.filter(k => k !== "philosophy").forEach(k => {
     switch (k) {
       case "booking": parts.push(sec_(k, "s-booking", head(U.bookStay, S(k).name, P.bookingIntro) + `<div class="book-wrap"><div class="cal"><div class="cal-head"><button id="cal-prev" type="button">‹</button><b id="cal-title"></b><button id="cal-next" type="button">›</button></div><div class="cal-grid" id="cal-grid"></div><div class="cal-sum" id="cal-sum">${P.calHint}</div></div>
@@ -345,33 +345,76 @@ document.querySelectorAll(".lang-btn").forEach(b => b.onclick = () => setLanguag
 tour.stations = stations;
 
 
-// ===================== MINI-MAP (like in games): islands, places, "you are here" =====================
-const MAP = { islands: [ { key: "kohrong", label: "Koh Rong", d: "M18,58 C14,34 40,22 66,26 C90,30 106,44 102,66 C98,88 70,100 46,94 C26,90 20,76 18,58 Z" }, { key: "bali", label: "Bali", d: "M126,72 C122,50 142,36 164,40 C184,44 196,58 192,78 C188,96 166,106 148,100 C132,96 128,86 126,72 Z" } ],
-  pos: { hotel: [40, 80], beach: [26, 62], aerial: [58, 44], "dome-day": [76, 58], "dome-night": [88, 46], "interior-4a": [74, 74], "interior-7d": [90, 70], pool: [60, 88], restaurant: [46, 46], "interior-16m": [34, 40], gym: [30, 50], lobby: [56, 66], bali: [156, 58], "bali-dome": [172, 76] } };
+// ===================== MINI-MAP: real islands (OpenStreetMap outlines) → resort level (aerial render), 2D / 3D =====================
+const MAP = {
+  resort: {
+    kohrong: { img: "assets/holi-sm/kr-aerial.jpg", ar: 1, metres: 130, pos: { aerial: [0.5, 0.55], "dome-day": [0.62, 0.35], "interior-4a": [0.66, 0.29], "dome-night": [0.73, 0.62], "interior-7d": [0.78, 0.67], restaurant: [0.32, 0.23], "interior-16m": [0.37, 0.18], gym: [0.27, 0.3], pool: [0.33, 0.69], lobby: [0.23, 0.5], beach: [0.9, 0.5], hotel: [0.55, 0.78] } },
+    bali:    { img: "assets/holi-sm/bali-birdeye.jpg", ar: 1.75, metres: 90, pos: { bali: [0.5, 0.72], "bali-dome": [0.6, 0.52], pool: [0.5, 0.4], "dome-night": [0.22, 0.32] } } },
+  islands: null, mode: "islands", three: false, V: { x: 0, y: 0, w: 210, h: 120 } };
+const STATION_ISLAND = k => (MAP.resort.bali.pos[k] && k !== "pool" && k !== "dome-night") ? "bali" : "kohrong";
 function buildMiniMap() {
   const el = $("minimap"); if (!el) return;
-  el.innerHTML = `<div class="mm-tools"><button type="button" data-z="in" title="+">+</button><button type="button" data-z="out" title="−">−</button><button type="button" data-z="reset" title="⟲">⟲</button><button type="button" data-z="big" title="⤢">⤢</button></div>
-    <svg viewBox="0 0 210 120">${MAP.islands.map(i => `<path class="isl" d="${i.d}"/>`).join("")}${MAP.islands.map(i => `<text class="lbl" x="${i.key === "bali" ? 158 : 60}" y="112">${i.label}</text>`).join("")}
-    ${Object.entries(MAP.pos).map(([k, [x, y]]) => `<g class="pt" data-k="${k}"><circle cx="${x}" cy="${y}" r="3.2"/><text x="${x}" y="${y - 5.5}">${(st(k).label || k)}</text></g>`).join("")}<circle id="mm-you" class="you" r="4.5"/><circle id="mm-you2" class="you2" r="9"/></svg><span id="mm-cap"></span>`;
-  const svg = el.querySelector("svg"); const V = { x: 0, y: 0, w: 210, h: 120 };
-  const apply = () => { svg.setAttribute("viewBox", `${V.x} ${V.y} ${V.w} ${V.h}`); el.classList.toggle("zoomed", V.w < 140); };
-  const zoomAt = (f, px = 0.5, py = 0.5) => { const nw = Math.min(210, Math.max(40, V.w / f)), nh = nw * 120 / 210; V.x += (V.w - nw) * px; V.y += (V.h - nh) * py; V.w = nw; V.h = nh; clamp(); apply(); };
+  el.innerHTML = `<div class="mm-tools"><button type="button" data-z="back" title="Islands">▲</button><button type="button" data-z="in">+</button><button type="button" data-z="out">−</button><button type="button" data-z="reset">⟲</button><button type="button" data-z="3d">3D</button><button type="button" data-z="big">⤢</button></div><div class="mm-stage"><svg viewBox="0 0 210 120"></svg></div><span id="mm-cap"></span>`;
+  const svg = el.querySelector("svg"), V = MAP.V;
+  const apply = () => { svg.setAttribute("viewBox", `${V.x} ${V.y} ${V.w} ${V.h}`); svg.style.setProperty("--mmf", (5.5 * V.w / 210) + "px"); el.classList.toggle("zoomed", V.w < 140); };
   const clamp = () => { V.x = Math.min(Math.max(V.x, -20), 230 - V.w); V.y = Math.min(Math.max(V.y, -20), 140 - V.h); };
-  el.querySelectorAll(".mm-tools button").forEach(b => b.onclick = e => { e.stopPropagation(); const z = b.dataset.z; if (z === "in") zoomAt(1.5); else if (z === "out") zoomAt(1 / 1.5); else if (z === "reset") { V.x = 0; V.y = 0; V.w = 210; V.h = 120; apply(); } else el.classList.toggle("big"); });
+  const zoomAt = (f, px = 0.5, py = 0.5) => { const nw = Math.min(210, Math.max(30, V.w / f)), nh = nw * 120 / 210; V.x += (V.w - nw) * px; V.y += (V.h - nh) * py; V.w = nw; V.h = nh; clamp(); apply(); };
+  const reset = () => { V.x = 0; V.y = 0; V.w = 210; V.h = 120; apply(); };
+  function render() {
+    const I = MAP.islands; let inner = `<rect class="sea" x="-40" y="-40" width="290" height="200"/>`;
+    if (MAP.mode === "islands" && I) {
+      const place = (isl, ox, oy, sc) => isl.rings.map(r => `<path class="land" d="M${r.map(([x, y]) => `${(ox + x * sc).toFixed(1)},${(oy + y * sc).toFixed(1)}`).join("L")}Z"/>`).join("") ;
+      const k = I.kohrong, bl = I.bali; const ks = 92 / Math.max(k.w, k.h), bs = 92 / Math.max(bl.w, bl.h);
+      const tiles = (isl, ox, oy, sc, clipId) => `<clipPath id="${clipId}">${isl.rings.map(r => `<path d="M${r.map(([x, y]) => `${(ox + x * sc).toFixed(1)},${(oy + y * sc).toFixed(1)}`).join("L")}Z"/>`).join("")}</clipPath><g clip-path="url(#${clipId})">${(isl.tiles || []).map(t => `<image href="${t.url}" x="${(ox + t.x * sc).toFixed(1)}" y="${(oy + t.y * sc).toFixed(1)}" width="${(t.w * sc).toFixed(1)}" height="${(t.h * sc).toFixed(1)}" preserveAspectRatio="none"/>`).join("")}</g>`;
+      inner += `<g class="isl3d">${tiles(k, 6, 8, ks, "clipK")}${tiles(bl, 112, 30, bs, "clipB")}${place(k, 6, 8, ks)}${place(bl, 112, 30, bs)}</g>`;
+      inner += `<text class="lbl" x="52" y="112">Koh Rong · Cambodia · ${k.km} km</text><text class="lbl" x="158" y="112">Bali · Indonesia · ${bl.km} km</text>`;
+      const kp = [6 + k.site[0] * ks, 8 + k.site[1] * ks], bp = [112 + bl.site[0] * bs, 30 + bl.site[1] * bs];
+      inner += `<g class="pt site" data-resort="kohrong"><circle cx="${kp[0]}" cy="${kp[1]}" r="3.6"/><text x="${kp[0]}" y="${kp[1] - 6}">HOLISPHERE Koh Rong</text></g><g class="pt site" data-resort="bali"><circle cx="${bp[0]}" cy="${bp[1]}" r="3.6"/><text x="${bp[0]}" y="${bp[1] - 6}">HOLISPHERE Bali</text></g>`;
+      inner += `<circle id="mm-you" class="you" r="4.5"/><circle id="mm-you2" class="you2" r="9"/>`;
+    } else if (MAP.mode !== "islands") {
+      const R = MAP.resort[MAP.mode]; const W = 210, H = R.ar >= 1.75 ? 120 : 210 / R.ar, oy = (120 - H) / 2;
+      inner += `<image href="${R.img}" x="0" y="${oy}" width="${W}" height="${H}" preserveAspectRatio="none"/>`;
+      // coordinate grid in metres (approximate scale of the aerial view) + static axes
+      const M = R.metres || 130, step = M >= 100 ? 20 : 10, u = W / M; let grid = "";
+      for (let m = 0; m <= M; m += step) { const x = (m * u).toFixed(1); grid += `<line class="gl" x1="${x}" y1="${oy}" x2="${x}" y2="${oy + H}"/><text class="gt" x="${x}" y="${(oy + H - 1.5).toFixed(1)}">${m}</text>`; }
+      for (let m = 0; m * u <= H; m += step) { const y = (oy + H - m * u).toFixed(1); grid += `<line class="gl" x1="0" y1="${y}" x2="${W}" y2="${y}"/><text class="gt" x="1.5" y="${(+y - 1).toFixed(1)}" text-anchor="start">${m}</text>`; }
+      inner += `<g class="grid">${grid}<text class="gt ax" x="${W - 2}" y="${(oy + H - 1.5).toFixed(1)}" text-anchor="end">X · m</text><text class="gt ax" x="1.5" y="${(oy + 6).toFixed(1)}" text-anchor="start">Y · m</text></g>`;
+      inner += Object.entries(R.pos).map(([k, [u, v]]) => `<g class="pt" data-k="${k}"><circle cx="${(u * W).toFixed(1)}" cy="${(oy + v * H).toFixed(1)}" r="3.2"/><text x="${(u * W).toFixed(1)}" y="${(oy + v * H - 5.5).toFixed(1)}">${st(k).label || k}</text></g>`).join("");
+      inner += `<g id="mm-cross" class="cross"><line x1="-6" y1="0" x2="6" y2="0"/><line x1="0" y1="-6" x2="0" y2="6"/><circle r="3.2"/><text id="mm-xy" x="7" y="-4"></text></g>`;
+    }
+    svg.innerHTML = inner;
+    svg.querySelectorAll(".pt.site").forEach(g => g.addEventListener("click", e => { e.stopPropagation(); if (moved) return; MAP.mode = g.dataset.resort; reset(); render(); updateMiniMap(tour.state.key); }));
+    svg.querySelectorAll(".pt[data-k]").forEach(g => g.addEventListener("click", e => { e.stopPropagation(); if (moved || tour.state.busy) return; tour.go({ to: g.dataset.k, _virtual: true }); }));
+    el.querySelector("[data-z=back]").style.display = MAP.mode === "islands" ? "none" : "";
+    el.classList.toggle("resort", MAP.mode !== "islands");
+  }
+  el.querySelectorAll(".mm-tools button").forEach(b => b.onclick = e => { e.stopPropagation(); const z = b.dataset.z;
+    if (z === "in") zoomAt(1.5); else if (z === "out") zoomAt(1 / 1.5); else if (z === "reset") reset(); else if (z === "big") el.classList.toggle("big");
+    else if (z === "3d") { MAP.three = !MAP.three; el.classList.toggle("three", MAP.three); b.classList.toggle("on", MAP.three); }
+    else if (z === "back") { MAP.mode = "islands"; reset(); render(); updateMiniMap(tour.state.key); } });
   svg.addEventListener("wheel", e => { e.preventDefault(); const r = svg.getBoundingClientRect(); zoomAt(e.deltaY < 0 ? 1.25 : 0.8, (e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height); }, { passive: false });
   const ptrs = new Map(); let drag = null, pinch = null, moved = false;
   svg.addEventListener("pointerdown", e => { e.stopPropagation(); svg.setPointerCapture(e.pointerId); ptrs.set(e.pointerId, [e.clientX, e.clientY]); moved = false;
     if (ptrs.size === 1) drag = { x: e.clientX, y: e.clientY, vx: V.x, vy: V.y }; if (ptrs.size === 2) { const [a, b] = [...ptrs.values()]; pinch = { d: Math.hypot(a[0] - b[0], a[1] - b[1]), w: V.w }; drag = null; } });
   svg.addEventListener("pointermove", e => { if (!ptrs.has(e.pointerId)) return; ptrs.set(e.pointerId, [e.clientX, e.clientY]); const r = svg.getBoundingClientRect();
-    if (ptrs.size === 2 && pinch) { const [a, b] = [...ptrs.values()]; const d = Math.hypot(a[0] - b[0], a[1] - b[1]); const nw = Math.min(210, Math.max(40, pinch.w * pinch.d / d)); const cx = (a[0] + b[0]) / 2 - r.left, cy = (a[1] + b[1]) / 2 - r.top; V.x += (V.w - nw) * cx / r.width; V.y += (V.h - nw * 120 / 210) * cy / r.height; V.w = nw; V.h = nw * 120 / 210; clamp(); apply(); moved = true; }
+    if (ptrs.size === 2 && pinch) { const [a, b] = [...ptrs.values()]; const d = Math.hypot(a[0] - b[0], a[1] - b[1]); const nw = Math.min(210, Math.max(30, pinch.w * pinch.d / d)); const cx = (a[0] + b[0]) / 2 - r.left, cy = (a[1] + b[1]) / 2 - r.top; V.x += (V.w - nw) * cx / r.width; V.y += (V.h - nw * 120 / 210) * cy / r.height; V.w = nw; V.h = nw * 120 / 210; clamp(); apply(); moved = true; }
     else if (drag) { const dx = (e.clientX - drag.x) / r.width * V.w, dy = (e.clientY - drag.y) / r.height * V.h; if (Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y) > 4) moved = true; V.x = drag.vx - dx; V.y = drag.vy - dy; clamp(); apply(); } });
   const up = e => { ptrs.delete(e.pointerId); if (ptrs.size < 2) pinch = null; if (ptrs.size === 0) drag = null; };
   svg.addEventListener("pointerup", up); svg.addEventListener("pointercancel", up);
-  el.querySelectorAll(".pt").forEach(g => g.addEventListener("click", e => { e.stopPropagation(); if (moved || tour.state.busy) return; tour.go({ to: g.dataset.k, _virtual: true }); }));
   el.addEventListener("wheel", e => e.preventDefault(), { passive: false });
+  el.classList.toggle("three", MAP.three);
+  MAP.render = render; MAP.reset = reset;
+  if (MAP.islands) { render(); apply(); } else fetch("assets/map-islands.json").then(r => r.json()).then(j => { MAP.islands = j; render(); apply(); updateMiniMap(tour.state.key); }).catch(() => { MAP.mode = "kohrong"; render(); apply(); });
 }
-function updateMiniMap(key) { const p = MAP.pos[key]; if (!p) return; ["mm-you", "mm-you2"].forEach(id => { const c = $(id); c.setAttribute("cx", p[0]); c.setAttribute("cy", p[1]); }); document.querySelectorAll("#minimap .pt").forEach(g => g.classList.toggle("on", g.dataset.k === key)); $("mm-cap").textContent = st(key).label || ""; }
-
+function updateMiniMap(key) {
+  const you = $("mm-you"), you2 = $("mm-you2"); if (!you) return;
+  let p = null;
+  if (MAP.mode === "islands") { const g = document.querySelector(`#minimap .pt.site[data-resort=${STATION_ISLAND(key)}] circle`); if (g) p = [g.getAttribute("cx"), g.getAttribute("cy")]; }
+  else { const g = document.querySelector(`#minimap .pt[data-k="${key}"] circle`); if (g) p = [g.getAttribute("cx"), g.getAttribute("cy")]; else if (MAP.resort[STATION_ISLAND(key)] && MAP.mode !== STATION_ISLAND(key)) { MAP.mode = STATION_ISLAND(key); MAP.reset(); MAP.render(); return updateMiniMap(key); } }
+  if (p) { [you, you2].forEach(c => c && (c.setAttribute("cx", p[0]), c.setAttribute("cy", p[1]))); const cr = $("mm-cross"); if (cr) { cr.setAttribute("transform", `translate(${p[0]},${p[1]})`); const R = MAP.resort[MAP.mode]; const W = 210, H = R.ar >= 1.75 ? 120 : 210 / R.ar, oy = (120 - H) / 2, u = W / (R.metres || 130); $("mm-xy").textContent = `X ${Math.round(p[0] / u)} · Y ${Math.round((oy + H - p[1]) / u)} m`; } }
+  document.querySelectorAll("#minimap .pt").forEach(g => g.classList.toggle("on", g.dataset.k === key));
+  $("mm-cap").textContent = (st(key).label || "") + (MAP.mode === "islands" ? "" : "  ·  " + (MAP.mode === "bali" ? "Bali" : "Koh Rong"));
+}
 // ===================== ONBOARDING: a guided demo that performs each action for the visitor (no skip) =====================
 const onb = { i: 0, el: $("onb"), active: false, target: null, busy: false };
 const wait = ms => new Promise(r => setTimeout(r, ms));
@@ -398,7 +441,7 @@ const DEMO = [
   async () => { openPage(tour.state.def && tour.state.def.section, "split"); await wait(700); },   // 3: split screen opens by itself
   async () => { closePage(); await wait(300); if (tour.state.key !== "interior-4a") { tour.go({ to: "interior-4a", _virtual: true }); await waitIdle(); }
     $("info-book").click(); await wait(400); },                                                      // 4: inside a suite, the reception opens
-  async () => { ui.card.classList.remove("pin", "peek"); $("info-toggle").classList.remove("on"); $("minimap").classList.add("big"); await wait(500); },   // 5: map, enlarged for the demo
+  async () => { ui.card.classList.remove("pin", "peek"); $("info-toggle").classList.remove("on"); $("minimap").classList.add("big"); await wait(900); const site = document.querySelector("#minimap .pt.site[data-resort=kohrong]"); if (site) { site.dispatchEvent(new MouseEvent("click", { bubbles: true })); await wait(900); } },   // 5: map: islands → resort level
   async () => { $("minimap").classList.remove("big"); await wait(200); },   // 6: language
 ];
 async function onbShow() { onb.busy = true; onb.el.querySelector(".onb-next").disabled = true; onbPlace(); try { await DEMO[onb.i](); } catch (e) { console.warn(e); } onbPlace(); onb.busy = false; onb.el.querySelector(".onb-next").disabled = false; }
