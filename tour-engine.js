@@ -5,7 +5,13 @@ import * as THREE from "three";
 export function createTour(opts) {
   const { stations, first, ui, onArrive, onPage } = opts;
   const R = 10;                                   // radius of the curved photo wall
-  const scene = new THREE.Scene(); scene.background = new THREE.Color(0x0f2f25);   // never black: deep green between panels
+  const scene = new THREE.Scene(); scene.background = new THREE.Color(0x0f2f25);
+  // sky dome behind the photo walls: soft blue above, light haze at the horizon, warm ground tone below
+  { const c = document.createElement("canvas"); c.width = 4; c.height = 512; const g = c.getContext("2d"); const gr = g.createLinearGradient(0, 0, 0, 512);
+    gr.addColorStop(0, "#7fb3e0"); gr.addColorStop(0.28, "#b9d6ec"); gr.addColorStop(0.47, "#e3ecf1"); gr.addColorStop(0.52, "#dfe7dc"); gr.addColorStop(0.7, "#a9b79b"); gr.addColorStop(1, "#6e7f66");
+    g.fillStyle = gr; g.fillRect(0, 0, 4, 512);
+    const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace;
+    const sky = new THREE.Mesh(new THREE.SphereGeometry(60, 32, 24), new THREE.MeshBasicMaterial({ map: tex, side: THREE.BackSide, depthWrite: false })); sky.renderOrder = -1; scene.add(sky); }
   const camera = new THREE.PerspectiveCamera(46, innerWidth / innerHeight, 0.1, 100);
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   const view = { x: 0, w: innerWidth, h: innerHeight };            // where the world is drawn (split view moves it right)
