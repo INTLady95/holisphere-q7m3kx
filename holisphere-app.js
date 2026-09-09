@@ -555,11 +555,44 @@ infoBtn.onmouseenter = () => ui.card.classList.add("peek"); infoBtn.onmouseleave
 infoBtn.onclick = () => { const on = !ui.card.classList.contains("pin"); ui.card.classList.toggle("pin", on); if (!on) ui.card.classList.remove("peek"); infoBtn.classList.toggle("on", on); };
 ui.card.onmouseenter = () => ui.card.classList.add("peek"); ui.card.onmouseleave = () => { if (!ui.card.classList.contains("pin")) ui.card.classList.remove("peek"); };
 bookBtn.onclick = () => { const f = ui.card.querySelector(".book-form"); if (!f) return openPage("booking", settings.mode); ui.card.classList.add("pin"); infoBtn.classList.add("on"); f.hidden = false; };
+// ===================== WELCOME (once per device) + ocean sound (Web Audio, no file) =====================
+const ocean = { ctx: null, gain: null, on: false };
+function oceanStart() {
+  try {
+    if (!ocean.ctx) { const C = new (window.AudioContext || window.webkitAudioContext)(); ocean.ctx = C;
+      const len = C.sampleRate * 4, buf = C.createBuffer(1, len, C.sampleRate), d = buf.getChannelData(0); let last = 0;
+      for (let i = 0; i < len; i++) { const w = Math.random() * 2 - 1; last = (last + 0.02 * w) / 1.02; d[i] = last * 3.5; }   // brown noise = deep water
+      const src = C.createBufferSource(); src.buffer = buf; src.loop = true;
+      const lp = C.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 700;
+      const lfoGain = C.createGain(); lfoGain.gain.value = 0.55; const lfo = C.createOscillator(); lfo.type = "sine"; lfo.frequency.value = 0.11; const lfoDepth = C.createGain(); lfoDepth.gain.value = 0.45; lfo.connect(lfoDepth); lfoDepth.connect(lfoGain.gain);   // slow swell ≈ 9 s per wave
+      const foamSrc = C.createBufferSource(); const fl = C.sampleRate * 2, fb = C.createBuffer(1, fl, C.sampleRate), fd = fb.getChannelData(0); for (let i = 0; i < fl; i++) fd[i] = (Math.random() * 2 - 1) * 0.25; foamSrc.buffer = fb; foamSrc.loop = true;
+      const hp = C.createBiquadFilter(); hp.type = "bandpass"; hp.frequency.value = 2600; hp.Q.value = 0.6; const foamGain = C.createGain(); foamGain.gain.value = 0.18; const lfo2 = C.createOscillator(); lfo2.frequency.value = 0.11; const d2 = C.createGain(); d2.gain.value = 0.16; lfo2.connect(d2); d2.connect(foamGain.gain);
+      ocean.gain = C.createGain(); ocean.gain.gain.value = 0;
+      src.connect(lp); lp.connect(lfoGain); lfoGain.connect(ocean.gain); foamSrc.connect(hp); hp.connect(foamGain); foamGain.connect(ocean.gain); ocean.gain.connect(C.destination);
+      src.start(); foamSrc.start(); lfo.start(); lfo2.start(); }
+    ocean.ctx.resume(); ocean.gain.gain.cancelScheduledValues(ocean.ctx.currentTime); ocean.gain.gain.linearRampToValueAtTime(0.5, ocean.ctx.currentTime + 2.5); ocean.on = true; $("sound").textContent = "🔊";
+  } catch (e) { console.warn("no audio", e); }
+}
+function oceanStop(fade = 2) { if (!ocean.ctx) return; ocean.gain.gain.cancelScheduledValues(ocean.ctx.currentTime); ocean.gain.gain.linearRampToValueAtTime(0, ocean.ctx.currentTime + fade); ocean.on = false; $("sound").textContent = "🔇"; }
+$("sound").onclick = () => ocean.on ? oceanStop(0.6) : oceanStart();
+const wl = $("welcome");
+function showWelcome() {
+  wl.classList.add("show"); const v = wl.querySelector("video"); v.play().catch(() => {});
+  gsap.timeline({ delay: 0.4 }).to(wl.querySelector("img"), { opacity: 1, duration: 1 })
+    .fromTo(wl.querySelectorAll(".wl-line"), { opacity: 0, y: 14, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.1, stagger: 1.0, ease: "power2.out" }, 0.6)
+    .to(wl.querySelector(".wl-pl"), { opacity: 1, duration: 0.8 }, "-=0.3").to($("wl-begin"), { opacity: 1, duration: 0.8 }, "-=0.4");
+}
+let langChosen = false;
+$("wl-begin").onclick = () => { oceanStart(); localStorage.setItem("holi-welcome-done", "1");
+  gsap.to(wl, { opacity: 0, duration: 1.2, onComplete() { wl.classList.remove("show"); wl.style.opacity = ""; wl.querySelector("video").pause(); $("langpick").classList.add("show"); } }); };
+
 // intro video → first station
 const vid = $("intro-video"), box = $("video"); let started = false;
 function endIntro() { if (started) return; started = true; tour.setPaused(false); box.classList.add("hide"); gsap.to(ui.fade, { opacity: 0, duration: 1.2 }); setTimeout(() => { vid.pause(); vid.removeAttribute("src"); vid.load(); }, 1200);
-  if (!localStorage.getItem("holi-onb-done")) setTimeout(() => $("langpick").classList.add("show"), 900); }
-$("langpick").querySelectorAll("button").forEach(b => b.onclick = () => { $("langpick").classList.remove("show"); if (settings.lang !== b.dataset.lang) setLanguage(b.dataset.lang); else saveSettings(); setTimeout(onbStart, 500); });
+  if (!localStorage.getItem("holi-onb-done")) { if (langChosen) setTimeout(() => { oceanStop(3); onbStart(); }, 900); else setTimeout(() => $("langpick").classList.add("show"), 900); } }
+$("langpick").querySelectorAll("button").forEach(b => b.onclick = () => { $("langpick").classList.remove("show"); if (settings.lang !== b.dataset.lang) setLanguage(b.dataset.lang); else saveSettings(); langChosen = true;
+  if (started) setTimeout(onbStart, 500); else { $("video").classList.remove("hide"); vid.play().catch(endIntro); setTimeout(() => { if (!started && (vid.paused || vid.readyState < 2)) endIntro(); }, 4000); } });
 vid.addEventListener("ended", endIntro); vid.addEventListener("error", endIntro); $("skip").onclick = endIntro;
 if (localStorage.getItem("holi-onb-done") && SAVED_STATE) { restoreState(); endIntro(); }
+else if (!localStorage.getItem("holi-welcome-done")) { $("video").classList.add("hide"); showWelcome(); }   // first visit: welcome → language → drone intro → guide
 else { vid.play().catch(endIntro); setTimeout(() => { if (!started && (vid.paused || vid.readyState < 2)) endIntro(); }, 4000); }

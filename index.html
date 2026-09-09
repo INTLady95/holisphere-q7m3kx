@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<link rel="stylesheet" href="shared.css?v=20260911c">
+<link rel="stylesheet" href="shared.css?v=20260911d">
 <style>
   :root { --accent:#d4b06a; --sand:#f3ecdf; --ink:#1d2a26; --sea:#1f5041; --line:rgba(29,42,38,.16); }
   body { font-family:"Inter", sans-serif; font-weight:300; }
@@ -87,6 +87,18 @@
   #mm-cap { display:block; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold2); text-align:center; margin-top:4px; }
   body.site-split #minimap { display:none; } body.flight #minimap { opacity:.35; }
   #deg { bottom:236px; }
+  #welcome { position:fixed; inset:0; z-index:15; display:none; align-items:center; justify-content:center; background:var(--g1); }
+  #welcome.show { display:flex; }
+  #welcome video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.9; }
+  #welcome .wl-wash { position:absolute; inset:0; background:radial-gradient(ellipse at center, rgba(15,47,37,.15), rgba(15,47,37,.7)); }
+  #welcome .wl-card { position:relative; text-align:center; max-width:min(720px, calc(100vw - 40px)); padding:clamp(26px,5vw,54px) clamp(22px,5vw,60px); background:rgba(12,40,32,.42); border:1px solid rgba(212,176,106,.5); border-radius:26px; backdrop-filter:blur(12px); box-shadow:0 30px 80px rgba(0,0,0,.4); color:#fff; }
+  #welcome .wl-card img { width:56px; height:56px; margin-bottom:14px; opacity:0; }
+  #welcome .wl-line { font-family:"Cormorant Garamond", serif; font-weight:400; line-height:1.25; opacity:0; margin:0 0 12px; }
+  #welcome .l1 { font-size:clamp(30px,4.6vw,54px); color:var(--gold2); } #welcome .l2, #welcome .l3 { font-size:clamp(18px,2.2vw,26px); } #welcome .l4 { font-size:clamp(22px,2.8vw,32px); font-style:italic; color:var(--gold2); margin-top:6px; }
+  #welcome .wl-pl { font-size:13px; line-height:1.5; opacity:0; color:rgba(255,255,255,.8); margin:14px 0 18px; }
+  #wl-begin { opacity:0; background:var(--gold); color:var(--g1); border:0; padding:14px 26px; border-radius:999px; font:inherit; font-size:15px; cursor:pointer; letter-spacing:.02em; }
+  #wl-begin:hover { filter:brightness(1.08); }
+  #sound { width:36px; padding:0 !important; }
   #onb-replay { width:36px; padding:0 !important; font-weight:500; }
   #onb { position:fixed; inset:0; z-index:12; display:none; }
   #onb.show { display:block; }
@@ -250,7 +262,7 @@
 <div id="fade" style="opacity:1; background:#f4e7cf"></div><div id="vignette"></div><div id="bars"></div>
 <div id="loader" class="ui hide"><div class="brand"><img src="assets/logo-ring-white.svg" alt=""><b>HOLISPHERE</b></div><div class="loader-text">…</div><div id="bar"><i></i></div><small id="pct"></small></div>
 <div id="spots"></div>
-<div id="top" class="ui"><span class="brand"><img src="assets/logo-ring-white.svg" alt=""><b>HOLISPHERE</b></span><nav class="dds" id="dds-world"></nav><div class="modes"><button id="menu-toggle">☰ Menu</button><button id="m-page" class="primary">Full page</button><button id="m-split">Split screen</button><button class="lang-btn" title="EN / PL">PL</button><button id="onb-replay" type="button">?</button></div></div>
+<div id="top" class="ui"><span class="brand"><img src="assets/logo-ring-white.svg" alt=""><b>HOLISPHERE</b></span><nav class="dds" id="dds-world"></nav><div class="modes"><button id="menu-toggle">☰ Menu</button><button id="m-page" class="primary">Full page</button><button id="m-split">Split screen</button><button class="lang-btn" title="EN / PL">PL</button><button id="sound" type="button" title="Ocean sound">🔊</button><button id="onb-replay" type="button">?</button></div></div>
 <img id="logo-mark" src="assets/logo-ring-gold.svg" alt="">
 
 <div id="card" class="ui"><h2></h2><img alt=""><p></p><a href="#"></a></div>
@@ -263,6 +275,8 @@
   <div class="over"><p class="k" id="intro-k"></p><h1 id="intro-h"></h1><p class="s" id="intro-s"></p></div>
   <button id="skip">Skip intro →</button></div>
 
+<div id="welcome"><video src="assets/holi/kr-beach-loop.mp4" muted loop playsinline autoplay preload="auto"></video><div class="wl-wash"></div>
+  <div class="wl-card"><img src="assets/logo-ring-gold.svg" alt=""><p class="wl-line l1">Welcome to HOLISPHERE Resorts</p><p class="wl-line l2">This is a new visual concept of our website: you can explore it as a world, or read it as an ordinary page.</p><p class="wl-line l3">Six short steps will show you how. Then the place is yours.</p><p class="wl-line l4">Have a beautiful journey.</p><p class="wl-pl">Witaj w HOLISPHERE Resorts. To nowa wizualna koncepcja naszej strony: możesz ją zwiedzać jak świat albo czytać jak zwykłą stronę. Sześć krótkich kroków pokaże Ci jak. Pięknej podróży.</p><button type="button" id="wl-begin">Begin the journey · Rozpocznij podróż →</button></div></div>
 <div id="langpick"><div class="lp-card"><img src="assets/logo-ring-gold.svg" alt=""><h2>HOLISPHERE</h2><p>Choose your language · Wybierz język</p><div class="lp-row"><button type="button" data-lang="en">English</button><button type="button" data-lang="pl">Polski</button></div></div></div>
 <div id="drag-hint"><div class="dh-anim"><i class="arr l">←</i><b>☜</b><i class="arr r">→</i></div><span></span></div>
 <div id="minimap" title="Map"></div>
@@ -279,6 +293,6 @@
 <script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js" } }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script type="module" src="holisphere-app.js?v=20260911c"></script>
+<script type="module" src="holisphere-app.js?v=20260911d"></script>
 </body>
 </html>
