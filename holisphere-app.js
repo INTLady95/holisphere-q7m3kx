@@ -465,7 +465,7 @@ ui.card.onmouseenter = () => ui.card.classList.add("peek"); ui.card.onmouseleave
 bookBtn.onclick = () => { const f = ui.card.querySelector(".book-form"); if (!f) return openPage("booking", settings.mode); ui.card.classList.add("pin"); infoBtn.classList.add("on"); f.hidden = false; };
 // intro video → first station
 const vid = $("intro-video"), box = $("video"); let started = false;
-function endIntro() { if (started) return; started = true; box.classList.add("hide"); gsap.to(ui.fade, { opacity: 0, duration: 1.2 }); setTimeout(() => vid.pause(), 1200);
+function endIntro() { if (started) return; started = true; tour.setPaused(false); box.classList.add("hide"); gsap.to(ui.fade, { opacity: 0, duration: 1.2 }); setTimeout(() => { vid.pause(); vid.removeAttribute("src"); vid.load(); }, 1200);
   if (!localStorage.getItem("holi-onb-done")) setTimeout(() => $("langpick").classList.add("show"), 900); }
 $("langpick").querySelectorAll("button").forEach(b => b.onclick = () => { $("langpick").classList.remove("show"); if (settings.lang !== b.dataset.lang) setLanguage(b.dataset.lang); else saveSettings(); setTimeout(onbStart, 500); });
 vid.addEventListener("ended", endIntro); vid.addEventListener("error", endIntro); $("skip").onclick = endIntro;

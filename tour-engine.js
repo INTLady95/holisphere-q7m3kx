@@ -33,7 +33,7 @@ export function createTour(opts) {
   function applyCam() { camera.position.set(cam.x, cam.y, cam.z); camera.lookAt(camera.position.clone().add(dirVec())); camera.fov = cam.fov; camera.aspect = view.w / view.h; camera.updateProjectionMatrix(); }
   function setViewport(fraction) {                                  // 1 = full window, 0.5 = right half
     view.w = Math.round(innerWidth * fraction); view.x = innerWidth - view.w; view.h = innerHeight;
-    renderer.setSize(view.w, view.h); renderer.domElement.style.left = view.x + "px"; renderer.domElement.style.width = view.w + "px";
+    renderer.setPixelRatio(Math.min(devicePixelRatio, fraction < 1 ? 1.25 : 1.5)); renderer.setSize(view.w, view.h); renderer.domElement.style.left = view.x + "px"; renderer.domElement.style.width = view.w + "px";
     ui.spotsLayer.style.left = view.x + "px"; ui.spotsLayer.style.width = view.w + "px";
     applyCam(); updateLimits();
   }
@@ -160,9 +160,14 @@ export function createTour(opts) {
     dust.geometry.attributes.position.needsUpdate = true; dust.material.size = 0.055 + rush * 0.12; dust.material.opacity = 0.42 + rush * 0.35;
     applyCam(); updateSpots(); updateDeg(); renderer.render(scene, camera);
   };
-  function setPaused(v) { paused = v; renderer.setAnimationLoop(v ? null : loop); }
+  let userPaused = false, autoPaused = false;
+  function applyPause() { const v = userPaused || autoPaused; if (v === paused) return; paused = v; renderer.setAnimationLoop(v ? null : loop); }
+  function setPaused(v) { userPaused = v; applyPause(); }
+  // sleep when the tab is hidden or the window loses focus (several open windows must not all render)
+  document.addEventListener("visibilitychange", () => { autoPaused = document.hidden; applyPause(); });
+  addEventListener("blur", () => { autoPaused = true; applyPause(); }); addEventListener("focus", () => { autoPaused = document.hidden; applyPause(); });
   const api = { go, loadStation, showCard, spin360, cam, state, camera, base, look, setPaused, setViewport: f => { viewFraction = f; setViewport(f); } };
   window.__tour = api;
-  loadStation(first); setPaused(false);
+  loadStation(first); paused = true; renderer.setAnimationLoop(null); userPaused = true;   // stays asleep until the app says go (after the intro)
   return api;
 }
