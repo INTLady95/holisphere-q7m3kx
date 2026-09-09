@@ -31,7 +31,7 @@ en: {
     philosophy:{ name: "Philosophy · Return to yourself", tip: "Regenerative premium hospitality: time, silence, space, privacy, choice, no friction.", group: "about", title: "Return to yourself", text: "Science for your biology. Space for your soul. HOLISPHERE is not a hotel with a list of treatments but its own category: regenerative luxury. We understand luxury as time, silence, space, privacy, choice and the absence of friction. People before technology, regulation before optimisation." },
     spheres:   { name: "Five spheres of renewal", tip: "Stillness · Vitality · Connection · Nature · Meaning. Every stay touches all five, in proportions set by the guest.", group: "about", title: "Five Spheres of Renewal", text: "Stillness: fewer stimuli, silence, breath, sleep. Vitality: contact with the body, movement, massage, food, heat and cold. Connection: closeness with yourself and others. Nature: natural rhythm, light, water, greenery, rice fields. Meaning: a new perspective, creativity, gratitude, local culture. The 4R process: Regulate → Restore → Reconnect → Rise." },
     faq:       { name: "Questions & help", tip: "Getting there, children, diet, devices, privacy: short answers.", group: "help" },
-    investors: { name: "Investors", tip: "Bali under construction, Koh Rong stage 1 from Dec 2026 ($0.5–0.6M), stage 2 hotel from ~$3M.", group: "about" },
+    investors: { name: "Investors", tip: "A staged project: Bali under construction, Koh Rong next, more destinations planned. The investor pack is shared on request.", group: "about" },
     settings:  { name: "Settings", tip: "Language, currency, default view, less motion.", group: "help" },
   },
   stations: {
@@ -53,10 +53,10 @@ en: {
   page: {
     bookingIntro: "Choose dates and a programme. We send a request, not an automatic reservation: a stay begins with a short conversation about what you need.", calHint: "Click the arrival day, then the departure day.", program: "Programme", location: "Location", programs: ["RETURN · 3 nights", "RECONNECT · 4 nights (couples)", "REVITALISE · 5–7 nights", "STAY YOUR WAY"], locations: ["Bali · Tegalalang", "Koh Rong · Cambodia"], bookingNote: "(proposal) The booking address, confirmation and deposit are to be agreed with the team. The pre-arrival form (sleep, diet, allergies, temperature, pillows) is sent after confirmation.",
     pricesIntro: "The price list for stays and programmes is in preparation. An intimate place for up to about 30 guests; guests pay luxury rates for silence and privacy.", prices: [["Deposit", "30% at confirmation, the rest 14 days before arrival. (proposal)"], ["Payment", "Card, bank transfer, in Asia also local payments. (proposal)"], ["Cancellation", "Free up to 30 days before arrival; one free date change. (proposal)"], ["Included", "The programme, the daily rhythm (movement, breath, nature, sleep ritual), massages and sauna per programme, breakfasts. (proposal based on the opening standard)"]],
-    contactIntro: "Write to us and we answer by name. An individual stay, a couple, a retreat, a private event or a long stay.", topic: "Topic", topics: ["Stay", "Couple · RECONNECT", "Retreat / private event", "Cooperation", "Other"], message: "Message", msgPh: "What do you need?", sendMsg: "Send message", contactNote: "(proposal) Target address: contact@holisphere… to be decided. For now the form shows the text to copy.",
+    contactIntro: "Write to us and we answer by name. An individual stay, a couple, a retreat, a private event or a long stay.", topic: "Topic", topics: ["Stay", "Couple · RECONNECT", "Retreat / private event", "Investors", "Cooperation", "Other"], message: "Message", msgPh: "What do you need?", sendMsg: "Send message", contactNote: "(proposal) Target address: contact@holisphere… to be decided. For now the form shows the text to copy.",
     reviewsIntro: "Guest reviews and comments. The Bali resort opens at the turn of October and November 2026, so the first reviews will come after the pilot test stay.", rating: "Rating", comment: "Comment", name: "Name", addComment: "Add comment", reviewsNote: "(proposal) In the demo, comments are saved only in this browser.", noComments: "No comments yet.",
     faq: [["Getting there", "Bali: 15 min from Ubud, the last stretch is narrow, light electric vehicles from the main road. Koh Rong: boat from Sihanoukville. (Koh Rong: proposal)"], ["Devices and data", "Measurements only voluntary, as trends. A stay without devices and without sharing data is always possible."], ["Diet and allergies", "We ask in the pre-arrival form; the kitchen is fresh, local, without ideology."], ["Privacy", "Consent before touch, measurement and data. Confidentiality is part of the product. Rules on drones and photos."], ["Is it treatment?", "No. We do not diagnose and do not replace therapy. Amber methods only after qualification with a specialist."], ["Children", "To be decided. (not in the documents)"]],
-    investorsText: "Bali (2,000 m², 13 domes) under construction, opening Oct/Nov 2026; stage 2 with a lagoon and cabins on water. Koh Rong: 3,040 m² with 75 m of beach; stage 1 from Dec 2026 (domes, $0.5–0.6M), stage 2 a hotel of 24–30 rooms (from ~$3M), stage 3 villas ($5–6M+). Drawsko lake district: spring 2027. Costa Rica: concept.", investorsNote: "Investor materials are shared individually (dossier, pipeline). No promises of a “guaranteed return”.",
+    investorsText: "HOLISPHERE grows in stages: Bali (13 domes among rice terraces) is under construction and opens at the turn of October and November 2026; Koh Rong in Cambodia follows with domes on a private beach and, later, a small sea-view hotel; further destinations are in planning. We work with a small circle of private investors and family offices who share the idea of regenerative hospitality.", investorsNote: "The investor pack (project description, numbers, timeline) is shared individually after a conversation. Write to us through the contact form with the subject “Investors”.",
     language: "Language", currency: "Currency", defaultView: "Default view", viewSplit: "Split screen (page + world)", viewFull: "Ordinary page, full screen", motion: "Motion and effects", motionOn: "Full effects", motionOff: "Less motion", save: "Save", saved: "Saved. Default view: ", programsGrid: [["RETURN", "3 nights", "Quiet, sleep, massage, nature, mental space."], ["RECONNECT", "4 nights · couples", "Privacy, touch, conversation, closeness, rituals for two."], ["REVITALISE", "5–7 nights", "Movement, recovery, nutrition, sleep, biological rhythm."], ["STAY YOUR WAY", "any length", "Full comfort with no obligation to take part."]],
     ledgerCols: ["#", "Date", "Category", "Room / place", "Arrival", "Departure", "Guests", "Who", "Language"], requestFor: "REQUEST", dates: "Dates", tbd: "to be agreed",
   },
@@ -107,10 +107,10 @@ pl: {
   page: {
     bookingIntro: "Wybierz daty i program. Wysyłamy zapytanie, a nie automatyczną rezerwację: pobyt zaczyna się od krótkiej rozmowy o tym, czego potrzebujesz.", calHint: "Kliknij dzień przyjazdu, potem dzień wyjazdu.", program: "Program", location: "Lokalizacja", programs: ["RETURN · 3 noce", "RECONNECT · 4 noce (dla par)", "REVITALISE · 5–7 nocy", "STAY YOUR WAY"], locations: ["Bali · Tegalalang", "Koh Rong · Kambodża"], bookingNote: "(propozycja) Adres rezerwacji, potwierdzenie i zaliczka do ustalenia z zespołem. Formularz przed przyjazdem (sen, dieta, alergie, temperatura, poduszki) wysyłamy po potwierdzeniu.",
     pricesIntro: "Cennik pobytów i programów jest w przygotowaniu. Kameralny obiekt do ok. 30 gości; za ciszę i prywatność płaci się stawki luksusowe.", prices: [["Zaliczka", "30% przy potwierdzeniu, reszta 14 dni przed przyjazdem. (propozycja)"], ["Płatność", "Karta, przelew, w Azji także lokalne płatności. (propozycja)"], ["Anulowanie", "Bez kosztów do 30 dni przed przyjazdem; zmiana terminu bezpłatna raz. (propozycja)"], ["W cenie", "Program, codzienny rytm (ruch, oddech, natura, rytuał snu), masaże i sauna wg programu, śniadania. (propozycja na bazie standardu otwarcia)"]],
-    contactIntro: "Napisz, a odpowiemy po imieniu. Pobyt indywidualny, dla par, retreat, wydarzenie zamknięte lub pobyt długoterminowy.", topic: "Temat", topics: ["Pobyt", "Para · RECONNECT", "Retreat / wydarzenie zamknięte", "Współpraca", "Inne"], message: "Wiadomość", msgPh: "Czego potrzebujesz?", sendMsg: "Wyślij wiadomość", contactNote: "(propozycja) Docelowy adres: kontakt@holisphere… do decyzji. Teraz formularz pokazuje treść do skopiowania.",
+    contactIntro: "Napisz, a odpowiemy po imieniu. Pobyt indywidualny, dla par, retreat, wydarzenie zamknięte lub pobyt długoterminowy.", topic: "Temat", topics: ["Pobyt", "Para · RECONNECT", "Retreat / wydarzenie zamknięte", "Inwestorzy", "Współpraca", "Inne"], message: "Wiadomość", msgPh: "Czego potrzebujesz?", sendMsg: "Wyślij wiadomość", contactNote: "(propozycja) Docelowy adres: kontakt@holisphere… do decyzji. Teraz formularz pokazuje treść do skopiowania.",
     reviewsIntro: "Opinie gości i komentarze. Obiekt na Bali otwiera się na przełomie października i listopada 2026, więc pierwsze opinie pojawią się po pilotażowym pobycie testowym.", rating: "Ocena", comment: "Komentarz", name: "Imię", addComment: "Dodaj komentarz", reviewsNote: "(propozycja) W demo komentarze zapisują się tylko w tej przeglądarce.", noComments: "Jeszcze nie ma komentarzy.",
     faq: [["Dojazd", "Bali: 15 min od Ubud, ostatni odcinek wąski, lekkie pojazdy elektryczne z drogi głównej. Koh Rong: łódź z Sihanoukville. (Koh Rong: propozycja)"], ["Urządzenia i dane", "Pomiary tylko dobrowolne, jako trendy. Pobyt bez urządzeń i bez udostępniania danych zawsze możliwy."], ["Dieta i alergie", "Pytamy w formularzu przed przyjazdem; kuchnia świeża, lokalna, bez ideologii."], ["Prywatność", "Zgoda przed dotykiem, pomiarem i danymi. Poufność jest częścią produktu. Zasady dot. dronów i zdjęć."], ["Czy to leczenie?", "Nie. Nie diagnozujemy i nie zastępujemy terapii. Metody bursztynowe tylko po kwalifikacji ze specjalistą."], ["Dzieci", "Do ustalenia. (brak w dokumentach)"]],
-    investorsText: "Bali (2 000 m², 13 kopuł) w budowie, otwarcie X/XI 2026; etap 2 z laguną i domkami na wodzie. Koh Rong: 3 040 m² z 75 m plaży; etap 1 od XII 2026 (kopuły, 0,5–0,6 mln USD), etap 2 hotel 24–30 pokoi (od ~3 mln USD), etap 3 wille (5–6 mln USD+). Pojezierze Drawskie: wiosna 2027. Kostaryka: koncepcja.", investorsNote: "Materiały dla inwestorów udostępniamy indywidualnie (dossier, pipeline). Bez obietnic „gwarantowanego zwrotu”.",
+    investorsText: "HOLISPHERE rośnie etapami: Bali (13 kopuł wśród tarasów ryżowych) jest w budowie i otwiera się na przełomie października i listopada 2026; potem Koh Rong w Kambodży z kopułami na prywatnej plaży, a później kameralny hotel z widokiem na morze; kolejne kierunki w planach. Pracujemy z wąskim gronem inwestorów prywatnych i family offices, którym bliska jest idea regeneracyjnej gościnności.", investorsNote: "Pakiet inwestorski (opis projektu, liczby, harmonogram) udostępniamy indywidualnie po rozmowie. Napisz przez formularz kontaktowy z tematem „Inwestorzy”.",
     language: "Język", currency: "Waluta", defaultView: "Domyślny widok", viewSplit: "Podzielony ekran (strona + świat)", viewFull: "Zwykła strona na cały ekran", motion: "Ruch i efekty", motionOn: "Pełne efekty", motionOff: "Mniej ruchu", save: "Zapisz", saved: "Zapisano. Domyślny widok: ", programsGrid: [["RETURN", "3 noce", "Wyciszenie, sen, masaż, natura, przestrzeń mentalna."], ["RECONNECT", "4 noce · pary", "Prywatność, dotyk, rozmowa, bliskość, rytuały dla dwojga."], ["REVITALISE", "5–7 nocy", "Ruch, regeneracja, odżywianie, sen, rytm biologiczny."], ["STAY YOUR WAY", "dowolnie", "Pełen komfort bez obowiązku uczestnictwa."]],
     ledgerCols: ["#", "Data", "Kategoria", "Pokój / miejsce", "Przyjazd", "Wyjazd", "Goście", "Kto", "Język"], requestFor: "ZAPYTANIE", dates: "Daty", tbd: "do ustalenia",
   },
@@ -118,6 +118,8 @@ pl: {
 };
 
 // ===================== STATE =====================
+let pendingRestore = null;
+const SAVED_STATE = (() => { try { return JSON.parse(localStorage.getItem("holi-state") || "null"); } catch (e) { return null; } })();   // read before anything overwrites it
 const settings = Object.assign({ mode: innerWidth > 900 ? "split" : "full", lang: "en", currency: "EUR", motion: "on" }, JSON.parse(localStorage.getItem("holi-settings") || "{}"));
 const saveSettings = () => localStorage.setItem("holi-settings", JSON.stringify(settings));
 let L = TXT[settings.lang] || TXT.en;
@@ -177,8 +179,9 @@ function openPage(anchor, mode) {
   document.body.classList.add(mode === "split" && innerWidth > 900 ? "site-split" : "site-full");
   ui.site.classList.add("show"); const split = document.body.classList.contains("site-split"); tour.setViewport(split ? 0.5 : 1); tour.setPaused(!split); closeMenu(); const hv = ui.site.querySelector(".hero video"); hv && hv.play().catch(() => {});
   if (anchor) setTimeout(() => { const el = $("sec-" + anchor); el && el.scrollIntoView({ behavior: "smooth", block: "start" }); }, 60);
+  setTimeout(() => { scrollSpy(); saveState(); }, 120);
 }
-function closePage() { ui.site.classList.remove("show"); document.body.classList.remove("site-full", "site-split"); tour.setViewport(1); tour.setPaused(false); const hv = ui.site.querySelector(".hero video"); hv && hv.pause(); }
+function closePage() { ui.site.classList.remove("show"); document.body.classList.remove("site-full", "site-split"); tour.setViewport(1); tour.setPaused(false); const hv = ui.site.querySelector(".hero video"); hv && hv.pause(); $("sidenav").classList.remove("show"); $("totop").classList.remove("show"); saveState(); }
 const GROUP_KEYS = ["stay", "place", "about", "help"];
 function buildDropdowns(host) {
   host.innerHTML = "";
@@ -211,7 +214,7 @@ const tour = createTour({ stations, first: "hotel", ui, onPage: s => openPage(s.
   Object.entries(items).forEach(([k, b]) => b.classList.toggle("on", k === def.section));
   if (firstArrival && localStorage.getItem("holi-onb-done")) openMenu(); else if (!onb.active) closeMenu(); firstArrival = false;
   if (onb.active) onbPlace(); updateMiniMap(key);
-  showDragHint(!!def.panels);
+  showDragHint(!!def.panels); if (pendingRestore) setTimeout(applyRestore, 60); else saveState();
   decorateCard(def);
 } });
 const _go = tour.go; tour.go = (s) => { if (s.action === "page") return openPage(s.section, settings.mode); return _go(s); };
@@ -337,11 +340,43 @@ function buildPage() {
   drawLedger();
 }
 
+// ===================== SIDE NAVIGATOR (dots by the scrollbar), TO-TOP, REMEMBER PLACE =====================
+const PAGE_KEYS = ["philosophy"].concat(ORDER.filter(k => k !== "philosophy"));
+function buildSideNav() {
+  const nav = $("sidenav"); nav.innerHTML = `<button type="button" class="sn-open" title="Sections">☰</button><div class="sn-dots">${PAGE_KEYS.map(k => `<button type="button" class="sn-dot" data-k="${k}"><i></i><span>${sec(k).name}</span></button>`).join("")}</div><div class="sn-list">${PAGE_KEYS.map(k => `<button type="button" data-k="${k}">${sec(k).name}</button>`).join("")}</div>`;
+  const go = k => { const el = $("sec-" + k); el && el.scrollIntoView({ behavior: "smooth", block: "start" }); nav.classList.remove("open"); };
+  nav.querySelectorAll(".sn-dot, .sn-list button").forEach(b => b.onclick = () => go(b.dataset.k));
+  nav.querySelector(".sn-open").onclick = () => nav.classList.toggle("open");
+  ui.site.addEventListener("click", e => { if (!e.target.closest("#sidenav")) nav.classList.remove("open"); });
+  $("totop").onclick = () => ui.site.scrollTo({ top: 0, behavior: "smooth" });
+}
+let spyRaf = 0;
+function scrollSpy() {
+  const top = ui.site.scrollTop, h = ui.site.clientHeight; let cur = PAGE_KEYS[0];
+  PAGE_KEYS.forEach(k => { const el = $("sec-" + k); if (el && el.offsetTop - 140 <= top) cur = k; });
+  document.querySelectorAll("#sidenav .sn-dot").forEach(d => d.classList.toggle("on", d.dataset.k === cur));
+  $("totop").classList.toggle("show", top > h * 0.6);
+  $("sidenav").classList.toggle("show", ui.site.classList.contains("show"));
+}
+ui.site.addEventListener("scroll", () => { if (!spyRaf) spyRaf = requestAnimationFrame(() => { spyRaf = 0; scrollSpy(); saveState(); }); }, { passive: true });
+// remember where the visitor was (page open? which mode? how far scrolled? which place in the world?)
+function saveState() { if (pendingRestore) return; try { localStorage.setItem("holi-state", JSON.stringify({ page: ui.site.classList.contains("show"), split: document.body.classList.contains("site-split"), scroll: ui.site.scrollTop, station: tour.state.key, t: Date.now() })); } catch (e) {} }
+function restoreState() {
+  const st = SAVED_STATE; if (!st || !localStorage.getItem("holi-onb-done")) return false;
+  pendingRestore = st; const t = setInterval(() => { if (!pendingRestore) return clearInterval(t); if (tour.state.key && !tour.state.busy) { clearInterval(t); applyRestore(); } }, 200); return true;
+}
+function applyRestore() {
+  const st = pendingRestore; if (!st) return; pendingRestore = null;
+  const open = () => { if (st.page) { openPage(null, st.split ? "split" : "full"); setTimeout(() => { ui.site.scrollTop = st.scroll || 0; scrollSpy(); }, 120); } };
+  if (st.station && st.station !== tour.state.key && stations[st.station]) tour.loadStation(st.station).then(open, open); else open();
+}
+addEventListener("beforeunload", saveState);
+
 // ===================== LANGUAGE =====================
 function setLanguage(lang) {
   settings.lang = lang; saveSettings(); L = TXT[lang];
   stations = buildStations(); Object.keys(stations).forEach(k => { tour.stations[k] = stations[k]; });
-  applyUiTexts(); buildDropdowns($("dds-world")); buildDropdowns($("dds-site")); buildMenu(); buildPage(); buildMiniMap();
+  applyUiTexts(); buildDropdowns($("dds-world")); buildDropdowns($("dds-site")); buildMenu(); buildPage(); buildMiniMap(); buildSideNav();
   if (tour.state.key) tour.loadStation(tour.state.key);        // re-create hotspots and card in the new language
 }
 document.querySelectorAll(".lang-btn").forEach(b => b.onclick = () => setLanguage(settings.lang === "pl" ? "en" : "pl"));
@@ -471,7 +506,7 @@ function onbEnd() { onb.active = false; onb.el.classList.remove("show"); localSt
 onb.el.querySelector(".onb-next").onclick = () => { if (onb.busy) return; if (onb.i >= L.onb.steps.length - 1) return onbEnd(); onb.i++; onbShow(); };
 addEventListener("resize", () => onb.active && onbPlace());
 // ===================== WIRING =====================
-applyUiTexts(); buildDropdowns($("dds-world")); buildDropdowns($("dds-site")); buildMenu(); buildPage(); buildMiniMap();
+applyUiTexts(); buildDropdowns($("dds-world")); buildDropdowns($("dds-site")); buildMenu(); buildPage(); buildMiniMap(); buildSideNav();
 menuBtn.onclick = () => menu.classList.contains("open") ? closeMenu() : openMenu();
 addEventListener("keydown", e => { if (e.key === "Escape") closeMenu(); });
 $("m-page").onclick = () => openPage(tour.state.def && tour.state.def.section, "full");
@@ -491,4 +526,5 @@ function endIntro() { if (started) return; started = true; tour.setPaused(false)
   if (!localStorage.getItem("holi-onb-done")) setTimeout(() => $("langpick").classList.add("show"), 900); }
 $("langpick").querySelectorAll("button").forEach(b => b.onclick = () => { $("langpick").classList.remove("show"); if (settings.lang !== b.dataset.lang) setLanguage(b.dataset.lang); else saveSettings(); setTimeout(onbStart, 500); });
 vid.addEventListener("ended", endIntro); vid.addEventListener("error", endIntro); $("skip").onclick = endIntro;
-vid.play().catch(endIntro); setTimeout(() => { if (!started && (vid.paused || vid.readyState < 2)) endIntro(); }, 4000);
+if (localStorage.getItem("holi-onb-done") && SAVED_STATE) { restoreState(); endIntro(); }
+else { vid.play().catch(endIntro); setTimeout(() => { if (!started && (vid.paused || vid.readyState < 2)) endIntro(); }, 4000); }
