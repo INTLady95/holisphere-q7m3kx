@@ -583,13 +583,13 @@ function showWelcome() {
     .to(wl.querySelector(".wl-pl"), { opacity: 1, duration: 0.8 }, "-=0.3").to($("wl-begin"), { opacity: 1, duration: 0.8 }, "-=0.4");
 }
 let langChosen = false;
-$("wl-begin").onclick = () => { oceanStart(); localStorage.setItem("holi-welcome-done", "1");
+$("wl-begin").onclick = () => { localStorage.setItem("holi-welcome-done", "1");
   gsap.to(wl, { opacity: 0, duration: 1.2, onComplete() { wl.classList.remove("show"); wl.style.opacity = ""; wl.querySelector("video").pause(); $("langpick").classList.add("show"); } }); };
 
 // intro video → first station
 const vid = $("intro-video"), box = $("video"); let started = false;
 function endIntro() { if (started) return; started = true; tour.setPaused(false); box.classList.add("hide"); gsap.to(ui.fade, { opacity: 0, duration: 1.2 }); setTimeout(() => { vid.pause(); vid.removeAttribute("src"); vid.load(); }, 1200);
-  if (!localStorage.getItem("holi-onb-done")) { if (langChosen) setTimeout(() => { oceanStop(3); onbStart(); }, 900); else setTimeout(() => $("langpick").classList.add("show"), 900); } }
+  if (!localStorage.getItem("holi-onb-done")) { if (langChosen) setTimeout(onbStart, 900); else setTimeout(() => $("langpick").classList.add("show"), 900); } }
 $("langpick").querySelectorAll("button").forEach(b => b.onclick = () => { $("langpick").classList.remove("show"); if (settings.lang !== b.dataset.lang) setLanguage(b.dataset.lang); else saveSettings(); langChosen = true;
   if (started) setTimeout(onbStart, 500); else { $("video").classList.remove("hide"); vid.play().catch(endIntro); setTimeout(() => { if (!started && (vid.paused || vid.readyState < 2)) endIntro(); }, 4000); } });
 vid.addEventListener("ended", endIntro); vid.addEventListener("error", endIntro); $("skip").onclick = endIntro;
