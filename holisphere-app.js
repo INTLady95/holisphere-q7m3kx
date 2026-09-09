@@ -8,12 +8,12 @@ const BOOKING_ENDPOINT = "";
 // Facts from Tomek's brand bible, project description 01.09.2026, facts & checklist, DOME 4A drawings. "(proposal)" = not decided yet.
 const TXT = {
 en: {
-  onb: { skip: "Skip", next: "Next", done: "Got it", replay: "Show the guide again", steps: [
-    { t: "#menu-toggle", h: "Everything is here", p: "One click opens the full list of sections, most needed first. One click closes it." },
-    { t: ".spot", h: "Dots are the same sections", p: "Hover a dot to read a one-line summary. Click it to enter that place." },
-    { t: "#m-page", h: "The ordinary page, any time", p: "Full page opens the classic site. Split screen keeps the picture on the right." },
-    { t: "#infobar", h: "Book where you stand", p: "In every suite a gold Book button appears here: dates, guests, name. The request lands in our booking list." },
-    { t: ".lang-btn", h: "English or Polish", p: "Switch the language on any screen. That is all. Enjoy the view." } ] },
+  onb: { next: "Read it? Click me →", done: "Read it? Click me, we are done →", replay: "Show the guide again", steps: [
+    { t: "#menu-toggle", h: "Everything is here", p: "I just opened the menu for you: every section, the most needed first. One click opens it, one click closes it." },
+    { t: ".spot", h: "Dots are the same sections", p: "Watch: I hover a dot, a one-line summary appears. Then I click it and we fly into that place." },
+    { t: "#m-page", h: "The ordinary page, any time", p: "I opened the split screen: the classic page on the left, the picture still alive on the right. Full page shows only the page." },
+    { t: "#infobar", h: "Book where you stand", p: "We are inside a suite. The gold Book button opens a small reception: dates, guests, name. The request lands in our booking list." },
+    { t: ".lang-btn", h: "English or Polish", p: "Switch the language here on any screen. That is all. Now the place is yours." } ] },
   ui: { menu: "☰ Menu", collapse: "Collapse ×", menuHead: "Menu · most wanted first", page: "Full page", split: "Split screen", world: "Back to the world", worldSee: "See this place in the world →", pageSee: "See the ordinary page →", hint: "Dots = site sections. Hover = summary, click = enter. ☰ Menu = full list, “Full page” always at hand.", skip: "Skip intro →", introK: "Koh Rong · Cambodia · regenerative premium hospitality", introH: "Return <em>to yourself.</em>", introS: "In a moment you will see the site menu. Explore the pictures or open the ordinary page at any time.", pageTag: "page", imgTag: "picture", both: "picture + page", spin: "Spin", book: "Book this room", bookTitle: "Reception · book here", arrive: "Arrival", depart: "Departure", guests: "Guests", who: "Name · e-mail", send: "Send request", sent: "Request recorded", inCategory: "in category", ledger: "Booking ledger (all rooms, by category)", exportCsv: "Export CSV", noBookings: "No requests yet.", copyHint: "Copy and send (address to be decided).", groups: { stay: "Stay", place: "Place", about: "About", help: "Help" }, footer: "Texts: brand documents (Tomek, 09.2026). Items marked “(proposal)” await a decision.", lang: "PL" },
   sections: {
     booking:   { name: "Booking · calendar", tip: "Pick dates and a programme, send a request. We answer by name.", group: "stay" },
@@ -61,12 +61,12 @@ en: {
   },
 },
 pl: {
-  onb: { skip: "Pomiń", next: "Dalej", done: "Rozumiem", replay: "Pokaż przewodnik ponownie", steps: [
-    { t: "#menu-toggle", h: "Wszystko jest tutaj", p: "Jedno kliknięcie otwiera pełną listę działów, od najpotrzebniejszych. Jedno kliknięcie zamyka." },
-    { t: ".spot", h: "Kropki to te same działy", p: "Najedź na kropkę, żeby przeczytać jedno zdanie. Kliknij, żeby wejść." },
-    { t: "#m-page", h: "Zwykła strona w każdej chwili", p: "„Full page” otwiera klasyczną stronę. „Split screen” zostawia obraz po prawej." },
-    { t: "#infobar", h: "Rezerwuj tam, gdzie stoisz", p: "W każdym apartamencie pojawia się tu złoty przycisk Book: daty, goście, imię. Zapytanie trafia na naszą listę rezerwacji." },
-    { t: ".lang-btn", h: "English albo polski", p: "Zmień język na każdym ekranie. To wszystko. Miłego oglądania." } ] },
+  onb: { next: "Przeczytane? Kliknij mnie →", done: "Przeczytane? Kliknij, to już wszystko →", replay: "Pokaż przewodnik ponownie", steps: [
+    { t: "#menu-toggle", h: "Wszystko jest tutaj", p: "Właśnie otworzyłem dla Ciebie menu: wszystkie działy, od najpotrzebniejszych. Jedno kliknięcie otwiera, jedno zamyka." },
+    { t: ".spot", h: "Kropki to te same działy", p: "Patrz: najeżdżam na kropkę, pojawia się jedno zdanie. Potem klikam i wlatujemy do tego miejsca." },
+    { t: "#m-page", h: "Zwykła strona w każdej chwili", p: "Otworzyłem podzielony ekran: klasyczna strona po lewej, obraz nadal żywy po prawej. „Full page” pokazuje samą stronę." },
+    { t: "#infobar", h: "Rezerwuj tam, gdzie stoisz", p: "Jesteśmy w apartamencie. Złoty przycisk Book otwiera małą recepcję: daty, goście, imię. Zapytanie trafia na naszą listę rezerwacji." },
+    { t: ".lang-btn", h: "English albo polski", p: "Tu zmienisz język na każdym ekranie. To wszystko. Teraz to miejsce jest Twoje." } ] },
   ui: { menu: "☰ Menu", collapse: "Zwiń ×", menuHead: "Menu · od najczęściej szukanego", page: "Zwykła strona", split: "Podziel ekran", world: "Wróć do świata", worldSee: "Zobacz to miejsce w świecie →", pageSee: "Zobacz zwykłą stronę →", hint: "Kropki = działy strony. Najedź = skrót, kliknij = wejdź. ☰ Menu = cała lista, „Zwykła strona” zawsze pod ręką.", skip: "Pomiń intro →", introK: "Koh Rong · Kambodża · regeneracyjna gościnność premium", introH: "Wróć <em>do siebie.</em>", introS: "Za chwilę zobaczysz menu strony. Możesz zwiedzać obrazy albo w każdej chwili otworzyć zwykłą stronę.", pageTag: "strona", imgTag: "obraz", both: "obraz + strona", spin: "Obróć", book: "Zarezerwuj ten pokój", bookTitle: "Recepcja · rezerwuj tutaj", arrive: "Przyjazd", depart: "Wyjazd", guests: "Goście", who: "Imię · e-mail", send: "Wyślij zapytanie", sent: "Zapytanie zapisane", inCategory: "w kategorii", ledger: "Rejestr rezerwacji (wszystkie pokoje, wg kategorii)", exportCsv: "Eksport CSV", noBookings: "Jeszcze nie ma zapytań.", copyHint: "Skopiuj i wyślij (adres do ustalenia).", groups: { stay: "Pobyt", place: "Miejsce", about: "O nas", help: "Pomoc" }, footer: "Teksty: dokumenty marki (Tomek, 09.2026). Fragmenty oznaczone „(propozycja)” czekają na decyzję.", lang: "EN" },
   sections: {
     booking:   { name: "Rezerwacja · kalendarz", tip: "Wybierz daty i program, wyślij zapytanie. Odpowiadamy po imieniu.", group: "stay" },
@@ -205,7 +205,8 @@ function applyUiTexts() {
 let firstArrival = true;
 const tour = createTour({ stations, first: "hotel", ui, onPage: s => openPage(s.section, settings.mode), onArrive(def, key) {
   Object.entries(items).forEach(([k, b]) => b.classList.toggle("on", k === def.section));
-  if (firstArrival && localStorage.getItem("holi-onb-done")) openMenu(); else closeMenu(); firstArrival = false;
+  if (firstArrival && localStorage.getItem("holi-onb-done")) openMenu(); else if (!onb.active) closeMenu(); firstArrival = false;
+  if (onb.active) onbPlace(); updateMiniMap(key);
   decorateCard(def);
 } });
 const _go = tour.go; tour.go = (s) => { if (s.action === "page") return openPage(s.section, settings.mode); return _go(s); };
@@ -309,34 +310,59 @@ function buildPage() {
 function setLanguage(lang) {
   settings.lang = lang; saveSettings(); L = TXT[lang];
   stations = buildStations(); Object.keys(stations).forEach(k => { tour.stations[k] = stations[k]; });
-  applyUiTexts(); buildDropdowns($("dds-world")); buildDropdowns($("dds-site")); buildMenu(); buildPage();
+  applyUiTexts(); buildDropdowns($("dds-world")); buildDropdowns($("dds-site")); buildMenu(); buildPage(); buildMiniMap();
   if (tour.state.key) tour.loadStation(tour.state.key);        // re-create hotspots and card in the new language
 }
 document.querySelectorAll(".lang-btn").forEach(b => b.onclick = () => setLanguage(settings.lang === "pl" ? "en" : "pl"));
 tour.stations = stations;
 
-// ===================== ONBOARDING (first visit; "?" replays) =====================
-const onb = { i: 0, el: $("onb"), active: false };
+
+// ===================== MINI-MAP (like in games): islands, places, "you are here" =====================
+const MAP = { islands: [ { key: "kohrong", label: "Koh Rong", d: "M18,58 C14,34 40,22 66,26 C90,30 106,44 102,66 C98,88 70,100 46,94 C26,90 20,76 18,58 Z" }, { key: "bali", label: "Bali", d: "M126,72 C122,50 142,36 164,40 C184,44 196,58 192,78 C188,96 166,106 148,100 C132,96 128,86 126,72 Z" } ],
+  pos: { hotel: [40, 80], beach: [26, 62], aerial: [58, 44], "dome-day": [76, 58], "dome-night": [88, 46], "interior-4a": [74, 74], "interior-7d": [90, 70], pool: [60, 88], restaurant: [46, 46], "interior-16m": [34, 40], gym: [30, 50], lobby: [56, 66], bali: [156, 58], "bali-dome": [172, 76] } };
+function buildMiniMap() {
+  const el = $("minimap"); if (!el) return;
+  el.innerHTML = `<svg viewBox="0 0 210 120">${MAP.islands.map(i => `<path class="isl" d="${i.d}"/>`).join("")}${MAP.islands.map(i => `<text class="lbl" x="${i.key === "bali" ? 158 : 60}" y="${i.key === "bali" ? 112 : 112}">${i.label}</text>`).join("")}
+    ${Object.entries(MAP.pos).map(([k, [x, y]]) => `<g class="pt" data-k="${k}"><circle cx="${x}" cy="${y}" r="3.2"/><title>${(st(k).label || k)}</title></g>`).join("")}<circle id="mm-you" class="you" r="4.5"/><circle id="mm-you2" class="you2" r="9"/></svg><span id="mm-cap"></span>`;
+  el.querySelectorAll(".pt").forEach(g => g.onclick = () => { if (tour.state.busy) return; tour.go({ to: g.dataset.k, _virtual: true }); });
+}
+function updateMiniMap(key) { const p = MAP.pos[key]; if (!p) return; ["mm-you", "mm-you2"].forEach(id => { const c = $(id); c.setAttribute("cx", p[0]); c.setAttribute("cy", p[1]); }); document.querySelectorAll("#minimap .pt").forEach(g => g.classList.toggle("on", g.dataset.k === key)); $("mm-cap").textContent = st(key).label || ""; }
+
+// ===================== ONBOARDING: a guided demo that performs each action for the visitor (no skip) =====================
+const onb = { i: 0, el: $("onb"), active: false, target: null, busy: false };
+const wait = ms => new Promise(r => setTimeout(r, ms));
+const waitIdle = async (ms = 7000) => { const t0 = Date.now(); while (tour.state.busy && Date.now() - t0 < ms) await wait(100); await wait(250); };
 function onbPlace() {
-  const step = L.onb.steps[onb.i]; let t = document.querySelector(step.t); if (t && t.offsetParent === null && step.t === ".spot") t = [...document.querySelectorAll(".spot")].find(e => e.style.display !== "none");
+  const step = L.onb.steps[onb.i]; let t = onb.target || document.querySelector(step.t);
+  if (t && step.t === ".spot" && t.style.display === "none") t = [...document.querySelectorAll(".spot")].find(e => e.style.display !== "none");
   const ring = onb.el.querySelector(".onb-ring"), card = onb.el.querySelector(".onb-card");
   const r = t ? t.getBoundingClientRect() : { left: innerWidth / 2 - 30, top: innerHeight / 2 - 20, width: 60, height: 40 };
   ring.style.left = (r.left - 10) + "px"; ring.style.top = (r.top - 10) + "px"; ring.style.width = (r.width + 20) + "px"; ring.style.height = (r.height + 20) + "px";
   card.querySelector("h3").textContent = step.h; card.querySelector("p").textContent = step.p;
   card.querySelector(".onb-dots").innerHTML = L.onb.steps.map((_, k) => `<i class="${k === onb.i ? "on" : ""}"></i>`).join("");
-  card.querySelector(".onb-next").textContent = onb.i === L.onb.steps.length - 1 ? L.onb.done : L.onb.next; card.querySelector(".onb-skip").textContent = L.onb.skip;
-  const below = r.top + r.height + 20, cw = Math.min(360, innerWidth - 36); let left = Math.min(Math.max(r.left + r.width / 2 - cw / 2, 18), innerWidth - cw - 18);
+  card.querySelector(".onb-next").textContent = onb.i === L.onb.steps.length - 1 ? L.onb.done : L.onb.next;
+  const below = r.top + r.height + 20, cw = Math.min(380, innerWidth - 36); let left = Math.min(Math.max(r.left + r.width / 2 - cw / 2, 18), innerWidth - cw - 18);
   card.style.width = cw + "px"; card.style.left = left + "px";
-  if (below + 190 < innerHeight) { card.style.top = below + "px"; card.style.bottom = "auto"; } else { card.style.top = "auto"; card.style.bottom = (innerHeight - r.top + 20) + "px"; }
+  if (below + 200 < innerHeight) { card.style.top = below + "px"; card.style.bottom = "auto"; } else { card.style.top = "auto"; card.style.bottom = (innerHeight - r.top + 20) + "px"; }
 }
-function onbStart() { onb.i = 0; onb.active = true; onb.el.classList.add("show"); closeMenu(); onbPlace(); }
+const DEMO = [
+  async () => { openMenu(); await wait(500); },                                                    // 1: menu opens by itself
+  async () => { closeMenu(); await wait(300);                                                        // 2: hover a dot, then fly into it
+    const sp = tour.state.spots.find(x => x.el.style.display !== "none" && x.def.to && !x.def.action);
+    if (!sp) return; onb.target = sp.el; onbPlace(); sp.el.classList.add("demo-hover"); await wait(1600); sp.el.classList.remove("demo-hover");
+    onb.target = null; tour.go(sp.def); await waitIdle(); },
+  async () => { openPage(tour.state.def && tour.state.def.section, "split"); await wait(700); },   // 3: split screen opens by itself
+  async () => { closePage(); await wait(300); if (tour.state.key !== "interior-4a") { tour.go({ to: "interior-4a", _virtual: true }); await waitIdle(); }
+    $("info-book").click(); await wait(400); },                                                      // 4: inside a suite, the reception opens
+  async () => { ui.card.classList.remove("pin", "peek"); $("info-toggle").classList.remove("on"); await wait(200); },   // 5: language
+];
+async function onbShow() { onb.busy = true; onb.el.querySelector(".onb-next").disabled = true; onbPlace(); try { await DEMO[onb.i](); } catch (e) { console.warn(e); } onbPlace(); onb.busy = false; onb.el.querySelector(".onb-next").disabled = false; }
+function onbStart() { onb.i = 0; onb.active = true; onb.el.classList.add("show"); onbShow(); }
 function onbEnd() { onb.active = false; onb.el.classList.remove("show"); localStorage.setItem("holi-onb-done", "1"); }
-onb.el.querySelector(".onb-next").onclick = () => { if (onb.i >= L.onb.steps.length - 1) return onbEnd(); onb.i++; onbPlace(); };
-onb.el.querySelector(".onb-skip").onclick = onbEnd;
-$("onb-replay").onclick = onbStart; $("onb-replay").title = L.onb.replay;
+onb.el.querySelector(".onb-next").onclick = () => { if (onb.busy) return; if (onb.i >= L.onb.steps.length - 1) return onbEnd(); onb.i++; onbShow(); };
 addEventListener("resize", () => onb.active && onbPlace());
 // ===================== WIRING =====================
-applyUiTexts(); buildDropdowns($("dds-world")); buildDropdowns($("dds-site")); buildMenu(); buildPage();
+applyUiTexts(); buildDropdowns($("dds-world")); buildDropdowns($("dds-site")); buildMenu(); buildPage(); buildMiniMap();
 menuBtn.onclick = () => menu.classList.contains("open") ? closeMenu() : openMenu();
 addEventListener("keydown", e => { if (e.key === "Escape") closeMenu(); });
 $("m-page").onclick = () => openPage(tour.state.def && tour.state.def.section, "full");
