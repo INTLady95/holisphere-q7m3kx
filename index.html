@@ -7,7 +7,7 @@
 <title>HOLISPHERE — Return to yourself</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared.css?v=20260910s">
+<link rel="stylesheet" href="shared.css?v=20260910t">
 <style>
   :root { --accent:#d4b06a; --sand:#f3ecdf; --ink:#1d2a26; --sea:#1f5041; --line:rgba(29,42,38,.16); }
   body { font-family:"Inter", sans-serif; font-weight:300; }
@@ -172,6 +172,32 @@
   #minimap .land { fill:rgba(214,235,194,.18); stroke:#e9cf95; stroke-width:.8; }
   @media (max-width:900px) { .sec.split-sec .glass { grid-template-columns:1fr; } .sec.split-sec.rev .glass figure { order:0; } .book-wrap { grid-template-columns:1fr; } .foot { grid-template-columns:1fr 1fr; } .strip { grid-template-columns:1fr; } }
   @media (max-width:900px) { body.site-split #site { right:0; } body.site-split #top, body.site-split #card, body.site-split #title, body.site-split #deg { display:none; } }
+
+  /* ---------- phone layout ---------- */
+  @media (max-width: 640px) {
+    #top { left:10px; right:10px; top:10px; gap:6px; }
+    #top .brand b { font-size:12px; letter-spacing:.3em; } #top .brand img { width:24px; height:24px; }
+    #dds-world { display:none !important; }
+    #top .modes { gap:5px; } #top .modes button { padding:7px 10px; font-size:12px; }
+    #m-split { display:none !important; }
+    #menu { top:58px; left:10px; width:calc(100vw - 20px); max-height:calc(100vh - 80px); }
+    #minimap { width:44vw; right:10px; bottom:96px; padding:6px 6px 4px; } #minimap.big { width:calc(100vw - 20px); }
+    #minimap .mm-tools { top:4px; right:5px; gap:2px; } #minimap .mm-tools button { min-width:18px; height:18px; font-size:10px; padding:0 4px; }
+    #mm-cap { font-size:8px; }
+    #deg { left:10px; right:auto; bottom:96px; padding:6px 10px; font-size:11px; gap:6px; } #deg button { padding:4px 8px; font-size:11px; }
+    #infobar { left:10px; bottom:10px; right:10px; gap:6px; } #infobar button { height:34px; padding:0 10px 0 8px; font-size:11px; flex:1; justify-content:center; } #title { font-size:9px; letter-spacing:.12em; }
+    #hint { display:none; }
+    #card { left:10px; right:10px; width:auto; bottom:52px; max-height:calc(100vh - 130px); padding:14px; }
+    #drag-hint span { font-size:12px; padding:7px 12px; max-width:80vw; white-space:normal; }
+    .spot span { font-size:11px; padding:4px 9px; }
+    #onb .onb-card { padding:14px 14px 12px; } #onb h3 { font-size:21px; } #onb p { font-size:13.5px; }
+    .lp-card { padding:26px 20px 22px; margin:0 14px; } .lp-row { flex-direction:column; } .lp-row button { min-width:200px; }
+    #split-bar { display:none !important; }
+    .site-header { padding:8px 12px; } .site-header .brand b { font-size:12px; } .site-header .dds { display:none; } .site-header .modes { flex-wrap:wrap; gap:5px; } .site-header .modes button, .site-header .modes a { padding:7px 10px; font-size:12px; }
+    .hero { height:70vh; min-height:360px; } .hero-in { padding:0 18px 46px; } #site .hero h1 { font-size:42px; }
+    .sec { padding:26px 12px; } .sec .glass { padding:16px; border-radius:14px; } .s-head h2 { font-size:30px; }
+    .book-wrap { grid-template-columns:1fr; } .foot { grid-template-columns:1fr; gap:18px; }
+  }
 </style>
 </head>
 <body>
@@ -204,6 +230,6 @@
 
 <script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js" } }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
-<script type="module" src="holisphere-app.js?v=20260910s"></script>
+<script type="module" src="holisphere-app.js?v=20260910t"></script>
 </body>
 </html>

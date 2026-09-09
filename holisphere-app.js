@@ -194,6 +194,8 @@ function buildMenu() {
   ORDER.forEach(key => { const d = sec(key); const b = document.createElement("button"); b.type = "button"; b.className = "menu-item"; items[key] = b;
     b.innerHTML = `<b>${d.name}</b><small>${PAGE_ONLY.has(key) ? L.ui.pageTag : L.ui.imgTag}</small><em class="tip">${d.tip}</em>`; b.onclick = () => { closeMenu(); openSection(key); }; menu.appendChild(b); });
   $("menu-close").onclick = closeMenu;
+  if (innerWidth <= 640) { const row = document.createElement("div"); row.className = "menu-row"; row.innerHTML = `<button type="button" class="menu-item" data-act="page"><b>${L.ui.page}</b></button><button type="button" class="menu-item" data-act="lang"><b>EN / PL</b></button>`; menu.appendChild(row);
+    row.querySelector("[data-act=page]").onclick = () => { closeMenu(); openPage(tour.state.def && tour.state.def.section, "full"); }; row.querySelector("[data-act=lang]").onclick = () => { closeMenu(); setLanguage(settings.lang === "pl" ? "en" : "pl"); }; }
   if (tour && tour.state.def) items[tour.state.def.section] && items[tour.state.def.section].classList.add("on");
 }
 function applyUiTexts() {
