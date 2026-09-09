@@ -352,6 +352,7 @@ bookBtn.onclick = () => { const f = ui.card.querySelector(".book-form"); if (!f)
 // intro video → first station
 const vid = $("intro-video"), box = $("video"); let started = false;
 function endIntro() { if (started) return; started = true; box.classList.add("hide"); gsap.to(ui.fade, { opacity: 0, duration: 1.2 }); setTimeout(() => vid.pause(), 1200);
-  if (!localStorage.getItem("holi-onb-done")) setTimeout(onbStart, 1400); }
+  if (!localStorage.getItem("holi-onb-done")) setTimeout(() => $("langpick").classList.add("show"), 900); }
+$("langpick").querySelectorAll("button").forEach(b => b.onclick = () => { $("langpick").classList.remove("show"); if (settings.lang !== b.dataset.lang) setLanguage(b.dataset.lang); else saveSettings(); setTimeout(onbStart, 500); });
 vid.addEventListener("ended", endIntro); vid.addEventListener("error", endIntro); $("skip").onclick = endIntro;
 vid.play().catch(endIntro); setTimeout(() => { if (!started && (vid.paused || vid.readyState < 2)) endIntro(); }, 4000);

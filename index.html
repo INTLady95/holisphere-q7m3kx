@@ -7,7 +7,7 @@
 <title>HOLISPHERE — Return to yourself</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared.css?v=20260910d">
+<link rel="stylesheet" href="shared.css?v=20260910e">
 <style>
   :root { --accent:#d4b06a; --sand:#f3ecdf; --ink:#1d2a26; --sea:#1f5041; --line:rgba(29,42,38,.16); }
   body { font-family:"Inter", sans-serif; font-weight:300; }
@@ -48,6 +48,13 @@
   .site-header .dd > button { color:var(--ink); background:none; border:1px solid var(--line); }
   .site-header .dd ul { background:var(--sand); border-color:var(--line); } .site-header .dd li button { color:var(--ink); } .site-header .dd li button:hover { background:rgba(29,42,38,.07); }
   .site-header .modes button { color:var(--ink); background:none; border:1px solid var(--line); } .site-header .modes button.primary { background:var(--ink); color:#fff; border-color:var(--ink); }
+  #langpick { position:fixed; inset:0; z-index:13; display:none; align-items:center; justify-content:center; background:rgba(12,40,32,.55); backdrop-filter:blur(10px); }
+  #langpick.show { display:flex; }
+  .lp-card { text-align:center; background:rgba(16,50,40,.6); border:1px solid rgba(212,176,106,.45); border-radius:24px; padding:34px 40px 30px; box-shadow:0 20px 60px rgba(0,0,0,.35); }
+  .lp-card img { width:56px; height:56px; margin-bottom:10px; } .lp-card h2 { font-family:"Inter", sans-serif; font-weight:400; font-size:16px; letter-spacing:.42em; color:#fff; margin-bottom:6px; }
+  .lp-card p { font-size:13px; opacity:.8; margin-bottom:22px; letter-spacing:.06em; }
+  .lp-row { display:flex; gap:12px; justify-content:center; } .lp-row button { min-width:150px; padding:13px 22px; border-radius:999px; border:1px solid rgba(212,176,106,.6); background:rgba(255,255,255,.06); color:#fff; font:inherit; font-size:16px; cursor:pointer; transition:all .2s; }
+  .lp-row button:hover { background:var(--gold); color:var(--g1); }
   #onb-replay { width:36px; padding:0 !important; font-weight:500; }
   #onb { position:fixed; inset:0; z-index:12; display:none; }
   #onb.show { display:block; }
@@ -117,6 +124,7 @@
   <div class="over"><p class="k" id="intro-k"></p><h1 id="intro-h"></h1><p class="s" id="intro-s"></p></div>
   <button id="skip">Skip intro →</button></div>
 
+<div id="langpick"><div class="lp-card"><img src="assets/logo-ring-gold.svg" alt=""><h2>HOLISPHERE</h2><p>Choose your language · Wybierz język</p><div class="lp-row"><button type="button" data-lang="en">English</button><button type="button" data-lang="pl">Polski</button></div></div></div>
 <div id="onb"><div class="onb-ring"></div><div class="onb-card"><h3></h3><p></p><div class="onb-row"><div class="onb-dots"></div><div><button type="button" class="onb-skip">Skip</button><button type="button" class="onb-next">Next</button></div></div></div></div>
 <div id="split-bar"><button id="sb-full" type="button" title="Full page">⇱</button><button id="sb-close" type="button" title="Close">✕</button></div>
 <section id="site" class="ui">
@@ -127,6 +135,6 @@
 
 <script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js" } }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
-<script type="module" src="holisphere-app.js?v=20260910d"></script>
+<script type="module" src="holisphere-app.js?v=20260910e"></script>
 </body>
 </html>
