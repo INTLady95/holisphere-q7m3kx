@@ -9,7 +9,7 @@ export function createTour(opts) {
   const camera = new THREE.PerspectiveCamera(46, innerWidth / innerHeight, 0.1, 100);
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   const view = { x: 0, w: innerWidth, h: innerHeight };            // where the world is drawn (split view moves it right)
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2)); renderer.setSize(view.w, view.h);
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5)); renderer.setSize(view.w, view.h);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   document.body.prepend(renderer.domElement);
 
@@ -19,7 +19,7 @@ export function createTour(opts) {
   // --- cinematic layer: floating dust in the air between you and the picture (gives real depth) ---
   const dustCanvas = document.createElement("canvas"); dustCanvas.width = dustCanvas.height = 64;
   { const g = dustCanvas.getContext("2d"); const r = g.createRadialGradient(32, 32, 0, 32, 32, 32); r.addColorStop(0, "rgba(255,245,220,1)"); r.addColorStop(0.4, "rgba(255,240,210,.5)"); r.addColorStop(1, "rgba(255,240,210,0)"); g.fillStyle = r; g.fillRect(0, 0, 64, 64); }
-  const N = 320, dustPos = new Float32Array(N * 3), dustVel = [];
+  const N = 220, dustPos = new Float32Array(N * 3), dustVel = [];
   for (let i = 0; i < N; i++) { dustPos[i * 3] = (Math.random() - 0.5) * 9; dustPos[i * 3 + 1] = (Math.random() - 0.5) * 5; dustPos[i * 3 + 2] = -1.5 - Math.random() * 7.5; dustVel.push([(Math.random() - 0.5) * 0.08, (Math.random() - 0.3) * 0.05, (Math.random() - 0.5) * 0.05]); }
   const dustGeo = new THREE.BufferGeometry(); dustGeo.setAttribute("position", new THREE.BufferAttribute(dustPos, 3));
   const dust = new THREE.Points(dustGeo, new THREE.PointsMaterial({ map: new THREE.CanvasTexture(dustCanvas), size: 0.055, transparent: true, opacity: 0.42, depthWrite: false, blending: THREE.AdditiveBlending, sizeAttenuation: true }));
