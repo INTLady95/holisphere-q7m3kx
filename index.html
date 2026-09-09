@@ -8,7 +8,8 @@
 <title>HOLISPHERE — Return to yourself</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared.css?v=20260911b">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="shared.css?v=20260911c">
 <style>
   :root { --accent:#d4b06a; --sand:#f3ecdf; --ink:#1d2a26; --sea:#1f5041; --line:rgba(29,42,38,.16); }
   body { font-family:"Inter", sans-serif; font-weight:300; }
@@ -165,6 +166,21 @@
   .foot h4 { font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--gold2); margin-bottom:12px; } .foot a { display:block; color:#f4efe6; text-decoration:none; font-size:14px; margin-bottom:8px; } .foot .brand b { color:#fff; letter-spacing:.42em; font-size:14px; } .foot .brand img { width:26px; height:26px; content:url("assets/logo-ring-gold.svg"); }
   .foot .news { display:flex; gap:8px; flex-wrap:wrap; } .foot .news input { flex:1; min-width:160px; font:inherit; font-size:13px; padding:9px 12px; border:1px solid rgba(212,176,106,.4); border-radius:999px; background:rgba(255,255,255,.08); color:#fff; } .foot .news small { width:100%; font-size:11.5px; color:var(--gold2); }
   .legal { padding:14px clamp(20px,6vw,80px) 30px; background:var(--g1); font-size:12px; opacity:.65; }
+  /* big real map (Leaflet + Esri World Imagery) */
+  #bigmap { position:fixed; inset:0; z-index:14; display:none; background:var(--g1); }
+  #bigmap.show { display:block; }
+  #bigmap-map { position:absolute; inset:0; }
+  #bigmap .bm-bar { position:absolute; top:12px; left:12px; right:12px; z-index:1000; display:flex; justify-content:space-between; align-items:center; gap:10px; pointer-events:none; }
+  #bigmap .bm-bar > * { pointer-events:auto; }
+  #bigmap .bm-btns { display:flex; gap:6px; align-items:center; background:var(--glass); border:1px solid rgba(212,176,106,.4); border-radius:999px; padding:5px; backdrop-filter:blur(10px); }
+  #bigmap .bm-btns button { color:#fff; background:none; border:1px solid rgba(212,176,106,.35); padding:7px 12px; border-radius:999px; cursor:pointer; font:inherit; font-size:13px; } #bigmap .bm-btns button.on, #bigmap .bm-btns button:hover { background:var(--gold); color:var(--g1); }
+  #bigmap .bm-op { display:flex; align-items:center; gap:6px; font-size:11px; color:var(--gold2); padding:0 8px; } #bigmap .bm-op input { width:90px; accent-color:var(--gold); }
+  .leaflet-container { background:#0b2b33; font-family:"Inter", sans-serif; }
+  .bm-dot { width:14px; height:14px; border-radius:50%; background:var(--gold); border:2px solid #fff; box-shadow:0 0 0 6px rgba(212,176,106,.25), 0 0 16px rgba(0,0,0,.5); }
+  .bm-dot.site { width:18px; height:18px; }
+  .leaflet-popup-content-wrapper { background:rgba(12,40,32,.92); color:#fff; border:1px solid rgba(212,176,106,.4); border-radius:12px; } .leaflet-popup-tip { background:rgba(12,40,32,.92); } .leaflet-popup-content { margin:10px 14px; font-size:13px; } .leaflet-popup-content b { color:var(--gold2); font-weight:500; } .leaflet-popup-content button { margin-top:6px; background:var(--gold); color:var(--g1); border:0; padding:6px 10px; border-radius:999px; cursor:pointer; font:inherit; font-size:12px; }
+  .leaflet-control-attribution { background:rgba(12,40,32,.7) !important; color:#cfd8d3 !important; font-size:10px; } .leaflet-control-attribution a { color:var(--gold2) !important; }
+  .leaflet-bar a { background:rgba(12,40,32,.85); color:#fff; border-bottom:1px solid rgba(212,176,106,.3); } .leaflet-bar a:hover { background:var(--gold); color:var(--g1); }
   /* side navigator by the scrollbar + to-top */
   #sidenav { position:fixed; z-index:9; right:14px; top:50%; transform:translateY(-50%); display:none; flex-direction:column; align-items:flex-end; gap:8px; }
   #sidenav.show { display:flex; }
@@ -250,6 +266,7 @@
 <div id="langpick"><div class="lp-card"><img src="assets/logo-ring-gold.svg" alt=""><h2>HOLISPHERE</h2><p>Choose your language · Wybierz język</p><div class="lp-row"><button type="button" data-lang="en">English</button><button type="button" data-lang="pl">Polski</button></div></div></div>
 <div id="drag-hint"><div class="dh-anim"><i class="arr l">←</i><b>☜</b><i class="arr r">→</i></div><span></span></div>
 <div id="minimap" title="Map"></div>
+<div id="bigmap"><div id="bigmap-map"></div><div class="bm-bar"><span class="brand"><img src="assets/logo-ring-gold.svg" alt=""><b>HOLISPHERE</b></span><div class="bm-btns"><button type="button" data-go="kohrong">Koh Rong</button><button type="button" data-go="bali">Bali</button><label class="bm-op"><span id="bm-op-label">Plan</span><input type="range" min="0" max="100" value="85"></label><button type="button" id="bm-close">✕</button></div></div></div>
 <div id="onb"><div class="onb-ring"></div><div class="onb-card"><h3></h3><p></p><div class="onb-row"><div class="onb-dots"></div><div><button type="button" class="onb-next">Next</button></div></div></div></div>
 <div id="split-bar"><button id="sb-full" type="button" title="Full page">⇱</button><button id="sb-close" type="button" title="Close">✕</button></div>
 <nav id="sidenav"></nav><button id="totop" type="button" title="Top">↑</button>
@@ -261,6 +278,7 @@
 
 <script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js" } }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
-<script type="module" src="holisphere-app.js?v=20260911b"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script type="module" src="holisphere-app.js?v=20260911c"></script>
 </body>
 </html>

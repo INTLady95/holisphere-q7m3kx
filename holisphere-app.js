@@ -13,7 +13,7 @@ en: {
     { t: ".spot", h: "Dots are the same sections", p: "Watch: I hover a dot, a one-line summary appears. Then I click it and we fly into that place." },
     { t: "#split-bar", h: "The ordinary page, any time", p: "I opened the split screen: the classic page on the left, the picture still alive on the right. Full page shows only the page." },
     { t: "#infobar", h: "Book where you stand", p: "We are inside a suite. The gold Book button opens a small reception: dates, guests, name. The request lands in our booking list." },
-    { t: "#minimap", h: "The map", p: "Real islands from the map, then our resort from above. Hover a dot for its name, click to fly there. Scroll or pinch to zoom, drag to move, ▲ back to the islands, 3D tilts it." },
+    { t: "#minimap", h: "The map", p: "Real islands, then our resort from above. Hover a dot for its name, click to fly there. ⤢ opens the full satellite map, where you can zoom down to a single dome." },
     { t: ".lang-btn", h: "English or Polish", p: "Switch the language here on any screen. That is all. Now the place is yours." } ] },
   ui: { dragHint: "Grab the picture and drag left or right to look around", bookStay: "Book your stay", explore: "Explore", discover: "Discover", exploreWorld: "Explore the world", heroK: "Koh Rong · Cambodia  ·  Bali · Indonesia", heroH: "Return to yourself.", heroS: "Regenerative luxury in glass domes among rice terraces and on a private beach. Science for your biology. Space for your soul.", introK: "Welcome", accK: "Accommodation", progK: "Programmes", wellK: "Wellness", dineK: "Dining", natK: "Nature", locK: "Destinations", jourK: "Your journey", steps: [["Before you arrive", "A short, elegant form: sleep, fatigue, diet, allergies, temperature, pillows, privacy. Never a diagnosis."], ["The Exhale", "No desk, no paperwork. A welcome by name, silence, a cool drink, the first contact with nature."], ["The Return", "A simple personal protocol for the days after, and one or two practices to keep."]], news: "Stay in touch", newsPh: "Your e-mail", newsBtn: "Subscribe", newsNote: "(proposal) Newsletter address to be decided.", legal: "© 2026 HOLISPHERE · Return to yourself · Privacy · Terms", colExplore: "Explore", colContact: "Contact", openingBali: "Bali opens Oct/Nov 2026 · Koh Rong stage 1 Dec 2026", lookAround: "Look around", menu: "☰ Menu", collapse: "Collapse ×", menuHead: "Menu · most wanted first", page: "Full page", split: "Split screen", world: "Back to the world", worldSee: "See this place in the world →", pageSee: "See the ordinary page →", hint: "Dots = site sections. Hover = summary, click = enter. ☰ Menu = full list, “Full page” always at hand.", skip: "Skip intro →", introK: "Koh Rong · Cambodia · regenerative premium hospitality", introH: "Return <em>to yourself.</em>", introS: "In a moment you will see the site menu. Explore the pictures or open the ordinary page at any time.", pageTag: "page", imgTag: "picture", both: "picture + page", spin: "Spin", book: "Book this room", bookTitle: "Reception · book here", arrive: "Arrival", depart: "Departure", guests: "Guests", who: "Name · e-mail", send: "Send request", sent: "Request recorded", inCategory: "in category", ledger: "Booking ledger (all rooms, by category)", exportCsv: "Export CSV", noBookings: "No requests yet.", copyHint: "Copy and send (address to be decided).", groups: { stay: "Stay", place: "Place", about: "About", help: "Help" }, footer: "Texts: brand documents (Tomek, 09.2026). Items marked “(proposal)” await a decision.", lang: "PL" },
   sections: {
@@ -67,7 +67,7 @@ pl: {
     { t: ".spot", h: "Kropki to te same działy", p: "Patrz: najeżdżam na kropkę, pojawia się jedno zdanie. Potem klikam i wlatujemy do tego miejsca." },
     { t: "#split-bar", h: "Zwykła strona w każdej chwili", p: "Otworzyłem podzielony ekran: klasyczna strona po lewej, obraz nadal żywy po prawej. „Full page” pokazuje samą stronę." },
     { t: "#infobar", h: "Rezerwuj tam, gdzie stoisz", p: "Jesteśmy w apartamencie. Złoty przycisk Book otwiera małą recepcję: daty, goście, imię. Zapytanie trafia na naszą listę rezerwacji." },
-    { t: "#minimap", h: "Mapa", p: "Prawdziwe wyspy z mapy, potem nasz resort z góry. Najedź na punkt, żeby zobaczyć nazwę, kliknij, żeby tam polecieć. Kółko albo dwa palce = zoom, przeciągnij = przesuń, ▲ wraca do wysp, 3D pochyla mapę." },
+    { t: "#minimap", h: "Mapa", p: "Prawdziwe wyspy, potem nasz resort z góry. Najedź na punkt, żeby zobaczyć nazwę, kliknij, żeby tam polecieć. ⤢ otwiera pełną mapę satelitarną, na której przybliżysz się do pojedynczej kopuły." },
     { t: ".lang-btn", h: "English albo polski", p: "Tu zmienisz język na każdym ekranie. To wszystko. Teraz to miejsce jest Twoje." } ] },
   ui: { dragHint: "Złap obraz i przeciągnij w lewo lub w prawo, żeby się rozejrzeć", bookStay: "Zarezerwuj pobyt", explore: "Zobacz", discover: "Odkryj", exploreWorld: "Zwiedzaj świat", heroK: "Koh Rong · Kambodża  ·  Bali · Indonezja", heroH: "Wróć do siebie.", heroS: "Regeneracyjny luksus w szklanych kopułach wśród tarasów ryżowych i na prywatnej plaży. Nauka dla biologii. Przestrzeń dla duszy.", introK: "Witamy", accK: "Apartamenty", progK: "Programy", wellK: "Wellness", dineK: "Kuchnia", natK: "Natura", locK: "Kierunki", jourK: "Twoja podróż", steps: [["Przed przyjazdem", "Krótki, elegancki formularz: sen, zmęczenie, dieta, alergie, temperatura, poduszki, prywatność. Nigdy diagnoza."], ["The Exhale", "Bez lady, bez papierów. Powitanie po imieniu, cisza, chłodny napój, pierwszy kontakt z naturą."], ["The Return", "Prosty osobisty protokół na kolejne dni i jedna–dwie praktyki do zachowania."]], news: "Bądźmy w kontakcie", newsPh: "Twój e-mail", newsBtn: "Zapisz się", newsNote: "(propozycja) Adres newslettera do ustalenia.", legal: "© 2026 HOLISPHERE · Return to yourself · Prywatność · Regulamin", colExplore: "Odkryj", colContact: "Kontakt", openingBali: "Bali: otwarcie X/XI 2026 · Koh Rong etap 1: XII 2026", lookAround: "Rozejrzyj się", menu: "☰ Menu", collapse: "Zwiń ×", menuHead: "Menu · od najczęściej szukanego", page: "Zwykła strona", split: "Podziel ekran", world: "Wróć do świata", worldSee: "Zobacz to miejsce w świecie →", pageSee: "Zobacz zwykłą stronę →", hint: "Kropki = działy strony. Najedź = skrót, kliknij = wejdź. ☰ Menu = cała lista, „Zwykła strona” zawsze pod ręką.", skip: "Pomiń intro →", introK: "Koh Rong · Kambodża · regeneracyjna gościnność premium", introH: "Wróć <em>do siebie.</em>", introS: "Za chwilę zobaczysz menu strony. Możesz zwiedzać obrazy albo w każdej chwili otworzyć zwykłą stronę.", pageTag: "strona", imgTag: "obraz", both: "obraz + strona", spin: "Obróć", book: "Zarezerwuj ten pokój", bookTitle: "Recepcja · rezerwuj tutaj", arrive: "Przyjazd", depart: "Wyjazd", guests: "Goście", who: "Imię · e-mail", send: "Wyślij zapytanie", sent: "Zapytanie zapisane", inCategory: "w kategorii", ledger: "Rejestr rezerwacji (wszystkie pokoje, wg kategorii)", exportCsv: "Eksport CSV", noBookings: "Jeszcze nie ma zapytań.", copyHint: "Skopiuj i wyślij (adres do ustalenia).", groups: { stay: "Pobyt", place: "Miejsce", about: "O nas", help: "Pomoc" }, footer: "Teksty: dokumenty marki (Tomek, 09.2026). Fragmenty oznaczone „(propozycja)” czekają na decyzję.", lang: "EN" },
   sections: {
@@ -426,7 +426,7 @@ function buildMiniMap() {
     el.classList.toggle("resort", MAP.mode !== "islands");
   }
   el.querySelectorAll(".mm-tools button").forEach(b => b.onclick = e => { e.stopPropagation(); const z = b.dataset.z;
-    if (z === "in") zoomAt(1.5); else if (z === "out") zoomAt(1 / 1.5); else if (z === "reset") reset(); else if (z === "big") el.classList.toggle("big");
+    if (z === "in") zoomAt(1.5); else if (z === "out") zoomAt(1 / 1.5); else if (z === "reset") reset(); else if (z === "big") openBigMap();
     else if (z === "3d") { MAP.three = !MAP.three; el.classList.toggle("three", MAP.three); b.classList.toggle("on", MAP.three); }
     else if (z === "back") { MAP.mode = "islands"; reset(); render(); updateMiniMap(tour.state.key); } });
   svg.addEventListener("wheel", e => { e.preventDefault(); const r = svg.getBoundingClientRect(); zoomAt(e.deltaY < 0 ? 1.25 : 0.8, (e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height); }, { passive: false });
@@ -442,6 +442,7 @@ function buildMiniMap() {
         else if (g.dataset.k && !tour.state.busy) tour.go({ to: g.dataset.k, _virtual: true }); } } };
   svg.addEventListener("pointerup", up); svg.addEventListener("pointercancel", up);
   el.addEventListener("wheel", e => e.preventDefault(), { passive: false });
+  el.addEventListener("dblclick", () => openBigMap());
   el.classList.toggle("three", MAP.three);
   MAP.render = render; MAP.reset = reset;
   if (MAP.islands) { render(); apply(); } else fetch("assets/map-islands.json").then(r => r.json()).then(j => { MAP.islands = j; render(); apply(); updateMiniMap(tour.state.key); }).catch(() => { MAP.mode = "kohrong"; render(); apply(); });
@@ -470,6 +471,40 @@ function showDragHint(on) {
 }
 document.addEventListener("pointerdown", () => { const h = $("drag-hint"); if (h.classList.contains("show")) { clearTimeout(dragTimer); h.classList.remove("show"); } }, true);
 
+// ===================== BIG REAL MAP (satellite, zoom to single domes) =====================
+const GEO = { kohrong: { lat: 10.702855, lon: 103.313150, zoom: 17, metres: 130 }, bali: { lat: -8.462113, lon: 115.266588, zoom: 17, metres: 90 } };
+let bm = null;
+function openBigMap(which) {
+  const box = $("bigmap"); box.classList.add("show"); tour.setPaused(true);
+  const Lf = window.L;
+  if (!bm && Lf) {
+    bm = { map: Lf.map("bigmap-map", { zoomControl: true, attributionControl: true, maxZoom: 19 }), layers: {} };
+    Lf.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", { maxZoom: 19, attribution: "Imagery © Esri, Maxar, Earthstar Geographics" }).addTo(bm.map);
+    Lf.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}", { maxZoom: 19, opacity: .8 }).addTo(bm.map);
+    const dot = (cls) => Lf.divIcon({ className: "", html: `<div class="bm-dot ${cls}"></div>`, iconSize: [18, 18], iconAnchor: [9, 9] });
+    Object.entries(GEO).forEach(([k, g]) => { Lf.marker([g.lat, g.lon], { icon: dot("site") }).addTo(bm.map).bindPopup(`<b>HOLISPHERE ${k === "bali" ? "Bali · Tegalalang" : "Koh Rong · Cambodia"}</b><br>${g.lat.toFixed(5)}, ${g.lon.toFixed(5)}`); });
+    // our aerial plan laid over the satellite at Koh Rong (approx. 130 m, north-up assumption) with dome markers → click = fly there
+    const R = MAP.resort.kohrong, g = GEO.kohrong, dLat = g.metres / 111320, dLon = g.metres / (111320 * Math.cos(g.lat * Math.PI / 180));
+    const b = [[g.lat - dLat / 2, g.lon - dLon / 2], [g.lat + dLat / 2, g.lon + dLon / 2]];
+    bm.plan = Lf.imageOverlay(R.img, b, { opacity: .85, interactive: false }).addTo(bm.map);
+    Object.entries(R.pos).forEach(([key, [u, v]]) => { const m = Lf.marker([b[1][0] - v * dLat, b[0][1] + u * dLon], { icon: dot("") }).addTo(bm.map);
+      m.bindPopup(`<b>${st(key).label || key}</b><br><button type="button" data-fly="${key}">${L.ui.explore} →</button>`);
+      m.on("popupopen", e => { const btn = e.popup.getElement().querySelector("[data-fly]"); btn && (btn.onclick = () => { closeBigMap(); tour.go({ to: key, _virtual: true }); }); }); });
+    const Rb = MAP.resort.bali, gb = GEO.bali, dLatB = gb.metres / 111320, dLonB = gb.metres / (111320 * Math.cos(gb.lat * Math.PI / 180));
+    Object.entries(Rb.pos).forEach(([key, [u, v]]) => { const m = Lf.marker([gb.lat + dLatB / 2 - v * dLatB, gb.lon - dLonB / 2 + u * dLonB], { icon: dot("") }).addTo(bm.map);
+      m.bindPopup(`<b>${st(key).label || key}</b><br><button type="button" data-fly="${key}">${L.ui.explore} →</button>`);
+      m.on("popupopen", e => { const btn = e.popup.getElement().querySelector("[data-fly]"); btn && (btn.onclick = () => { closeBigMap(); tour.go({ to: key, _virtual: true }); }); }); });
+    box.querySelector(".bm-op input").oninput = e => bm.plan.setOpacity(e.target.value / 100);
+    box.querySelectorAll("[data-go]").forEach(bt => bt.onclick = () => goBig(bt.dataset.go));
+    $("bm-close").onclick = closeBigMap;
+  }
+  goBig(which || STATION_ISLAND(tour.state.key));
+  setTimeout(() => bm && bm.map.invalidateSize(), 60);
+}
+function goBig(k) { const g = GEO[k]; if (!bm || !g) return; bm.map.setView([g.lat, g.lon], g.zoom); document.querySelectorAll("#bigmap [data-go]").forEach(b => b.classList.toggle("on", b.dataset.go === k)); }
+function closeBigMap() { $("bigmap").classList.remove("show"); if (!ui.site.classList.contains("show") || document.body.classList.contains("site-split")) tour.setPaused(false); }
+addEventListener("keydown", e => { if (e.key === "Escape") closeBigMap(); });
+
 // ===================== ONBOARDING: a guided demo that performs each action for the visitor (no skip) =====================
 const onb = { i: 0, el: $("onb"), active: false, target: null, busy: false };
 const wait = ms => new Promise(r => setTimeout(r, ms));
@@ -497,8 +532,8 @@ const DEMO = [
   async () => { openPage(tour.state.def && tour.state.def.section, "split"); await wait(700); },   // 3: split screen opens by itself
   async () => { closePage(); await wait(300); if (tour.state.key !== "interior-4a") { tour.go({ to: "interior-4a", _virtual: true }); await waitIdle(); }
     $("info-book").click(); await wait(400); },                                                      // 4: inside a suite, the reception opens
-  async () => { ui.card.classList.remove("pin", "peek"); $("info-toggle").classList.remove("on"); $("minimap").classList.add("big"); await wait(900); const site = document.querySelector("#minimap .pt.site[data-resort=kohrong]"); if (site) { site.dispatchEvent(new MouseEvent("click", { bubbles: true })); await wait(900); } },   // 5: map: islands → resort level
-  async () => { $("minimap").classList.remove("big"); await wait(200); },   // 6: language
+  async () => { ui.card.classList.remove("pin", "peek"); $("info-toggle").classList.remove("on"); const site = document.querySelector("#minimap .pt.site[data-resort=kohrong]"); if (site) { site.dispatchEvent(new MouseEvent("click", { bubbles: true })); await wait(900); } },   // 5: map: islands → resort level
+  async () => { await wait(200); },   // 6: language
 ];
 async function onbShow() { onb.busy = true; onb.el.querySelector(".onb-next").disabled = true; onbPlace(); try { await DEMO[onb.i](); } catch (e) { console.warn(e); } onbPlace(); onb.busy = false; onb.el.querySelector(".onb-next").disabled = false; }
 function onbStart() { onb.i = 0; onb.active = true; onb.el.classList.add("show"); onbShow(); }
