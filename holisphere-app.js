@@ -8,6 +8,12 @@ const BOOKING_ENDPOINT = "";
 // Facts from Tomek's brand bible, project description 01.09.2026, facts & checklist, DOME 4A drawings. "(proposal)" = not decided yet.
 const TXT = {
 en: {
+  onb: { skip: "Skip", next: "Next", done: "Got it", replay: "Show the guide again", steps: [
+    { t: "#menu-toggle", h: "Everything is here", p: "One click opens the full list of sections, most needed first. One click closes it." },
+    { t: ".spot", h: "Dots are the same sections", p: "Hover a dot to read a one-line summary. Click it to enter that place." },
+    { t: "#m-page", h: "The ordinary page, any time", p: "Full page opens the classic site. Split screen keeps the picture on the right." },
+    { t: "#infobar", h: "Book where you stand", p: "In every suite a gold Book button appears here: dates, guests, name. The request lands in our booking list." },
+    { t: ".lang-btn", h: "English or Polish", p: "Switch the language on any screen. That is all. Enjoy the view." } ] },
   ui: { menu: "☰ Menu", collapse: "Collapse ×", menuHead: "Menu · most wanted first", page: "Full page", split: "Split screen", world: "Back to the world", worldSee: "See this place in the world →", pageSee: "See the ordinary page →", hint: "Dots = site sections. Hover = summary, click = enter. ☰ Menu = full list, “Full page” always at hand.", skip: "Skip intro →", introK: "Koh Rong · Cambodia · regenerative premium hospitality", introH: "Return <em>to yourself.</em>", introS: "In a moment you will see the site menu. Explore the pictures or open the ordinary page at any time.", pageTag: "page", imgTag: "picture", both: "picture + page", spin: "Spin", book: "Book this room", bookTitle: "Reception · book here", arrive: "Arrival", depart: "Departure", guests: "Guests", who: "Name · e-mail", send: "Send request", sent: "Request recorded", inCategory: "in category", ledger: "Booking ledger (all rooms, by category)", exportCsv: "Export CSV", noBookings: "No requests yet.", copyHint: "Copy and send (address to be decided).", groups: { stay: "Stay", place: "Place", about: "About", help: "Help" }, footer: "Texts: brand documents (Tomek, 09.2026). Items marked “(proposal)” await a decision.", lang: "PL" },
   sections: {
     booking:   { name: "Booking · calendar", tip: "Pick dates and a programme, send a request. We answer by name.", group: "stay" },
@@ -55,6 +61,12 @@ en: {
   },
 },
 pl: {
+  onb: { skip: "Pomiń", next: "Dalej", done: "Rozumiem", replay: "Pokaż przewodnik ponownie", steps: [
+    { t: "#menu-toggle", h: "Wszystko jest tutaj", p: "Jedno kliknięcie otwiera pełną listę działów, od najpotrzebniejszych. Jedno kliknięcie zamyka." },
+    { t: ".spot", h: "Kropki to te same działy", p: "Najedź na kropkę, żeby przeczytać jedno zdanie. Kliknij, żeby wejść." },
+    { t: "#m-page", h: "Zwykła strona w każdej chwili", p: "„Full page” otwiera klasyczną stronę. „Split screen” zostawia obraz po prawej." },
+    { t: "#infobar", h: "Rezerwuj tam, gdzie stoisz", p: "W każdym apartamencie pojawia się tu złoty przycisk Book: daty, goście, imię. Zapytanie trafia na naszą listę rezerwacji." },
+    { t: ".lang-btn", h: "English albo polski", p: "Zmień język na każdym ekranie. To wszystko. Miłego oglądania." } ] },
   ui: { menu: "☰ Menu", collapse: "Zwiń ×", menuHead: "Menu · od najczęściej szukanego", page: "Zwykła strona", split: "Podziel ekran", world: "Wróć do świata", worldSee: "Zobacz to miejsce w świecie →", pageSee: "Zobacz zwykłą stronę →", hint: "Kropki = działy strony. Najedź = skrót, kliknij = wejdź. ☰ Menu = cała lista, „Zwykła strona” zawsze pod ręką.", skip: "Pomiń intro →", introK: "Koh Rong · Kambodża · regeneracyjna gościnność premium", introH: "Wróć <em>do siebie.</em>", introS: "Za chwilę zobaczysz menu strony. Możesz zwiedzać obrazy albo w każdej chwili otworzyć zwykłą stronę.", pageTag: "strona", imgTag: "obraz", both: "obraz + strona", spin: "Obróć", book: "Zarezerwuj ten pokój", bookTitle: "Recepcja · rezerwuj tutaj", arrive: "Przyjazd", depart: "Wyjazd", guests: "Goście", who: "Imię · e-mail", send: "Wyślij zapytanie", sent: "Zapytanie zapisane", inCategory: "w kategorii", ledger: "Rejestr rezerwacji (wszystkie pokoje, wg kategorii)", exportCsv: "Eksport CSV", noBookings: "Jeszcze nie ma zapytań.", copyHint: "Skopiuj i wyślij (adres do ustalenia).", groups: { stay: "Pobyt", place: "Miejsce", about: "O nas", help: "Pomoc" }, footer: "Teksty: dokumenty marki (Tomek, 09.2026). Fragmenty oznaczone „(propozycja)” czekają na decyzję.", lang: "EN" },
   sections: {
     booking:   { name: "Rezerwacja · kalendarz", tip: "Wybierz daty i program, wyślij zapytanie. Odpowiadamy po imieniu.", group: "stay" },
@@ -170,7 +182,8 @@ function buildDropdowns(host) {
   host.innerHTML = "";
   GROUP_KEYS.forEach(g => { const keys = ORDER.filter(k => sec(k).group === g); const dd = document.createElement("div"); dd.className = "dd";
     dd.innerHTML = `<button type="button">${L.ui.groups[g]} ▾</button><ul>${keys.map(k => `<li><button type="button" data-k="${k}" title="${sec(k).tip.replace(/"/g, "&quot;")}"><span>${sec(k).name}</span><small>${PAGE_ONLY.has(k) ? L.ui.pageTag : L.ui.both}</small></button></li>`).join("")}</ul>`;
-    dd.querySelectorAll("li button").forEach(b => b.onclick = () => { const k = b.dataset.k; dd.classList.add("closed"); host.id === "dds-site" ? openPage(k, document.body.classList.contains("site-split") ? "split" : "full") : openSection(k); });
+    dd.querySelector(":scope > button").onclick = () => { const open = !dd.classList.contains("open"); host.querySelectorAll(".dd").forEach(x => x.classList.remove("open")); dd.classList.toggle("open", open); dd.classList.remove("closed"); };
+    dd.querySelectorAll("li button").forEach(b => b.onclick = () => { const k = b.dataset.k; dd.classList.add("closed"); dd.classList.remove("open"); host.id === "dds-site" ? openPage(k, document.body.classList.contains("site-split") ? "split" : "full") : openSection(k); });
     dd.addEventListener("mouseleave", () => dd.classList.remove("closed"));
     host.appendChild(dd); });
 }
@@ -185,14 +198,14 @@ function applyUiTexts() {
   menuBtn.textContent = L.ui.menu; $("m-page").textContent = L.ui.page; $("m-split").textContent = L.ui.split; $("s-world").textContent = L.ui.world; $("s-split").textContent = L.ui.split;
   $("hint").textContent = L.ui.hint; $("skip").textContent = L.ui.skip; $("intro-k").textContent = L.ui.introK; $("intro-h").innerHTML = L.ui.introH; $("intro-s").textContent = L.ui.introS;
   $("spin").textContent = L.ui.spin; $("info-book").textContent = L.ui.book; $("footer-note").textContent = L.ui.footer; document.documentElement.lang = settings.lang;
-  document.querySelectorAll(".lang-btn").forEach(b => b.textContent = L.ui.lang);
+  document.querySelectorAll(".lang-btn").forEach(b => b.textContent = L.ui.lang); $("onb-replay").title = L.onb.replay; if (onb.active) onbPlace();
 }
 
 // ===================== TOUR =====================
 let firstArrival = true;
 const tour = createTour({ stations, first: "hotel", ui, onPage: s => openPage(s.section, settings.mode), onArrive(def, key) {
   Object.entries(items).forEach(([k, b]) => b.classList.toggle("on", k === def.section));
-  if (firstArrival) openMenu(); else closeMenu(); firstArrival = false;
+  if (firstArrival && localStorage.getItem("holi-onb-done")) openMenu(); else closeMenu(); firstArrival = false;
   decorateCard(def);
 } });
 const _go = tour.go; tour.go = (s) => { if (s.action === "page") return openPage(s.section, settings.mode); return _go(s); };
@@ -302,6 +315,26 @@ function setLanguage(lang) {
 document.querySelectorAll(".lang-btn").forEach(b => b.onclick = () => setLanguage(settings.lang === "pl" ? "en" : "pl"));
 tour.stations = stations;
 
+// ===================== ONBOARDING (first visit; "?" replays) =====================
+const onb = { i: 0, el: $("onb"), active: false };
+function onbPlace() {
+  const step = L.onb.steps[onb.i]; let t = document.querySelector(step.t); if (t && t.offsetParent === null && step.t === ".spot") t = [...document.querySelectorAll(".spot")].find(e => e.style.display !== "none");
+  const ring = onb.el.querySelector(".onb-ring"), card = onb.el.querySelector(".onb-card");
+  const r = t ? t.getBoundingClientRect() : { left: innerWidth / 2 - 30, top: innerHeight / 2 - 20, width: 60, height: 40 };
+  ring.style.left = (r.left - 10) + "px"; ring.style.top = (r.top - 10) + "px"; ring.style.width = (r.width + 20) + "px"; ring.style.height = (r.height + 20) + "px";
+  card.querySelector("h3").textContent = step.h; card.querySelector("p").textContent = step.p;
+  card.querySelector(".onb-dots").innerHTML = L.onb.steps.map((_, k) => `<i class="${k === onb.i ? "on" : ""}"></i>`).join("");
+  card.querySelector(".onb-next").textContent = onb.i === L.onb.steps.length - 1 ? L.onb.done : L.onb.next; card.querySelector(".onb-skip").textContent = L.onb.skip;
+  const below = r.top + r.height + 20, cw = Math.min(360, innerWidth - 36); let left = Math.min(Math.max(r.left + r.width / 2 - cw / 2, 18), innerWidth - cw - 18);
+  card.style.width = cw + "px"; card.style.left = left + "px";
+  if (below + 190 < innerHeight) { card.style.top = below + "px"; card.style.bottom = "auto"; } else { card.style.top = "auto"; card.style.bottom = (innerHeight - r.top + 20) + "px"; }
+}
+function onbStart() { onb.i = 0; onb.active = true; onb.el.classList.add("show"); closeMenu(); onbPlace(); }
+function onbEnd() { onb.active = false; onb.el.classList.remove("show"); localStorage.setItem("holi-onb-done", "1"); }
+onb.el.querySelector(".onb-next").onclick = () => { if (onb.i >= L.onb.steps.length - 1) return onbEnd(); onb.i++; onbPlace(); };
+onb.el.querySelector(".onb-skip").onclick = onbEnd;
+$("onb-replay").onclick = onbStart; $("onb-replay").title = L.onb.replay;
+addEventListener("resize", () => onb.active && onbPlace());
 // ===================== WIRING =====================
 applyUiTexts(); buildDropdowns($("dds-world")); buildDropdowns($("dds-site")); buildMenu(); buildPage();
 menuBtn.onclick = () => menu.classList.contains("open") ? closeMenu() : openMenu();
@@ -313,11 +346,12 @@ $("s-world").onclick = closePage; $("sb-close").onclick = closePage; $("sb-full"
 $("spin").onclick = () => tour.spin360();
 const infoBtn = $("info-toggle"), bookBtn = $("info-book");
 infoBtn.onmouseenter = () => ui.card.classList.add("peek"); infoBtn.onmouseleave = () => ui.card.classList.remove("peek");
-infoBtn.onclick = () => { ui.card.classList.toggle("pin"); infoBtn.classList.toggle("on", ui.card.classList.contains("pin")); };
+infoBtn.onclick = () => { const on = !ui.card.classList.contains("pin"); ui.card.classList.toggle("pin", on); if (!on) ui.card.classList.remove("peek"); infoBtn.classList.toggle("on", on); };
 ui.card.onmouseenter = () => ui.card.classList.add("peek"); ui.card.onmouseleave = () => { if (!ui.card.classList.contains("pin")) ui.card.classList.remove("peek"); };
 bookBtn.onclick = () => { const f = ui.card.querySelector(".book-form"); if (!f) return openPage("booking", settings.mode); ui.card.classList.add("pin"); infoBtn.classList.add("on"); f.hidden = false; };
 // intro video → first station
 const vid = $("intro-video"), box = $("video"); let started = false;
-function endIntro() { if (started) return; started = true; box.classList.add("hide"); gsap.to(ui.fade, { opacity: 0, duration: 1.2 }); setTimeout(() => vid.pause(), 1200); }
+function endIntro() { if (started) return; started = true; box.classList.add("hide"); gsap.to(ui.fade, { opacity: 0, duration: 1.2 }); setTimeout(() => vid.pause(), 1200);
+  if (!localStorage.getItem("holi-onb-done")) setTimeout(onbStart, 1400); }
 vid.addEventListener("ended", endIntro); vid.addEventListener("error", endIntro); $("skip").onclick = endIntro;
 vid.play().catch(endIntro); setTimeout(() => { if (!started && (vid.paused || vid.readyState < 2)) endIntro(); }, 4000);
