@@ -8,10 +8,10 @@ const BOOKING_ENDPOINT = "";
 // Facts from Tomek's brand bible, project description 01.09.2026, facts & checklist, DOME 4A drawings. "(proposal)" = not decided yet.
 const TXT = {
 en: {
-  onb: { next: "Read it? Click me →", done: "Read it? Click me, we are done →", replay: "Show the guide again", steps: [
+  onb: { next: "Read it? Click me →", done: "Read it? Click me, we are done →", replay: "Show the guide again", auto: "next in", steps: [
+    { t: "#m-page", h: "The simple version is always here", p: "Watch: I open the ordinary page, scroll through it, then show it half-and-half with the world. Click “Full page” any time to get it back." },
     { t: "#menu-toggle", h: "Everything is here", p: "I just opened the menu for you: every section, the most needed first. One click opens it, one click closes it." },
     { t: ".spot", h: "Dots are the same sections", p: "Watch: I hover a dot, a one-line summary appears. Then I click it and we fly into that place." },
-    { t: "#split-bar", h: "The ordinary page, any time", p: "I opened the split screen: the classic page on the left, the picture still alive on the right. Full page shows only the page." },
     { t: "#infobar", h: "Book where you stand", p: "We are inside a suite. The gold Book button opens a small reception: dates, guests, name. The request lands in our booking list." },
     { t: "#minimap", h: "The map", p: "Real islands, then our resort from above. Hover a dot for its name, click to fly there. ⤢ opens the full satellite map, where you can zoom down to a single dome." },
     { t: ".lang-btn", h: "English or Polish", p: "Switch the language here on any screen. That is all. Now the place is yours." } ] },
@@ -62,10 +62,10 @@ en: {
   },
 },
 pl: {
-  onb: { next: "Przeczytane? Kliknij mnie →", done: "Przeczytane? Kliknij, to już wszystko →", replay: "Pokaż przewodnik ponownie", steps: [
+  onb: { next: "Przeczytane? Kliknij mnie →", done: "Przeczytane? Kliknij, to już wszystko →", replay: "Pokaż przewodnik ponownie", auto: "dalej za", steps: [
+    { t: "#m-page", h: "Prosta wersja jest zawsze tutaj", p: "Patrz: otwieram zwykłą stronę, przewijam ją, a potem pokazuję pół na pół ze światem. Kliknij „Zwykła strona” w każdej chwili, żeby do niej wrócić." },
     { t: "#menu-toggle", h: "Wszystko jest tutaj", p: "Właśnie otworzyłem dla Ciebie menu: wszystkie działy, od najpotrzebniejszych. Jedno kliknięcie otwiera, jedno zamyka." },
     { t: ".spot", h: "Kropki to te same działy", p: "Patrz: najeżdżam na kropkę, pojawia się jedno zdanie. Potem klikam i wlatujemy do tego miejsca." },
-    { t: "#split-bar", h: "Zwykła strona w każdej chwili", p: "Otworzyłem podzielony ekran: klasyczna strona po lewej, obraz nadal żywy po prawej. „Full page” pokazuje samą stronę." },
     { t: "#infobar", h: "Rezerwuj tam, gdzie stoisz", p: "Jesteśmy w apartamencie. Złoty przycisk Book otwiera małą recepcję: daty, goście, imię. Zapytanie trafia na naszą listę rezerwacji." },
     { t: "#minimap", h: "Mapa", p: "Prawdziwe wyspy, potem nasz resort z góry. Najedź na punkt, żeby zobaczyć nazwę, kliknij, żeby tam polecieć. ⤢ otwiera pełną mapę satelitarną, na której przybliżysz się do pojedynczej kopuły." },
     { t: ".lang-btn", h: "English albo polski", p: "Tu zmienisz język na każdym ekranie. To wszystko. Teraz to miejsce jest Twoje." } ] },
@@ -347,6 +347,7 @@ function buildSideNav() {
   const go = k => { const el = $("sec-" + k); el && el.scrollIntoView({ behavior: "smooth", block: "start" }); nav.classList.remove("open"); };
   nav.querySelectorAll(".sn-dot, .sn-list button").forEach(b => b.onclick = () => go(b.dataset.k));
   nav.querySelector(".sn-open").onclick = () => nav.classList.toggle("open");
+  nav.insertBefore($("corner-sound"), nav.firstChild); $("corner-sound").classList.add("in-nav");
   ui.site.addEventListener("click", e => { if (!e.target.closest("#sidenav")) nav.classList.remove("open"); });
   $("totop").onclick = () => ui.site.scrollTo({ top: 0, behavior: "smooth" });
   $("corner-menu").onclick = () => nav.classList.toggle("open");
@@ -512,6 +513,7 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
 const waitIdle = async (ms = 7000) => { const t0 = Date.now(); while (tour.state.busy && Date.now() - t0 < ms) await wait(100); await wait(250); };
 function onbPlace() {
   const step = L.onb.steps[onb.i]; let t = onb.target || document.querySelector(step.t);
+  if (t && t.offsetParent === null && step.t === "#m-page") t = document.querySelector("#s-world");
   if (t && step.t === ".spot" && t.style.display === "none") t = [...document.querySelectorAll(".spot")].find(e => e.style.display !== "none");
   const ring = onb.el.querySelector(".onb-ring"), card = onb.el.querySelector(".onb-card");
   const r = t ? t.getBoundingClientRect() : { left: innerWidth / 2 - 30, top: innerHeight / 2 - 20, width: 60, height: 40 };
@@ -525,20 +527,28 @@ function onbPlace() {
   if (below + 200 < innerHeight) { card.style.top = below + "px"; card.style.bottom = "auto"; } else { card.style.top = "auto"; card.style.bottom = (innerHeight - r.top + 20) + "px"; }
 }
 const DEMO = [
-  async () => { openMenu(); await wait(500); },                                                    // 1: menu opens by itself
-  async () => { closeMenu(); await wait(300);                                                        // 2: hover a dot, then fly into it
+  async () => {                                                                                       // 1: the simple version, like a recording
+    closeMenu(); openPage(null, "full"); await wait(900);
+    const site = ui.site, max = Math.max(0, site.scrollHeight - site.clientHeight); const o = { y: 0 };
+    await new Promise(r => gsap.to(o, { y: max, duration: 9, ease: "sine.inOut", onUpdate() { site.scrollTop = o.y; }, onComplete: r }));
+    await wait(400); await new Promise(r => gsap.to(o, { y: 0, duration: 1.2, ease: "power2.inOut", onUpdate() { site.scrollTop = o.y; }, onComplete: r }));
+    if (innerWidth > 900) { openPage(null, "split"); await wait(2600); }
+    closePage(); await wait(500); },
+  async () => { openMenu(); await wait(500); },                                                        // 2: menu opens by itself
+  async () => { closeMenu(); await wait(300);                                                          // 3: hover a dot, then fly into it
     const sp = tour.state.spots.find(x => x.el.style.display !== "none" && x.def.to && !x.def.action);
     if (!sp) return; onb.target = sp.el; onbPlace(); sp.el.classList.add("demo-hover"); await wait(1600); sp.el.classList.remove("demo-hover");
     onb.target = null; tour.go(sp.def); await waitIdle(); },
-  async () => { openPage(tour.state.def && tour.state.def.section, "split"); await wait(700); },   // 3: split screen opens by itself
-  async () => { closePage(); await wait(300); if (tour.state.key !== "interior-4a") { tour.go({ to: "interior-4a", _virtual: true }); await waitIdle(); }
-    $("info-book").click(); await wait(400); },                                                      // 4: inside a suite, the reception opens
+  async () => { if (tour.state.key !== "interior-4a") { tour.go({ to: "interior-4a", _virtual: true }); await waitIdle(); }   // 4: inside a suite, the reception opens
+    $("info-book").click(); await wait(400); },
   async () => { ui.card.classList.remove("pin", "peek"); $("info-toggle").classList.remove("on"); const site = document.querySelector("#minimap .pt.site[data-resort=kohrong]"); if (site) { site.dispatchEvent(new MouseEvent("click", { bubbles: true })); await wait(900); } },   // 5: map: islands → resort level
-  async () => { await wait(200); },   // 6: language
+  async () => { await wait(200); },                                                                    // 6: language
 ];
-async function onbShow() { onb.busy = true; onb.el.querySelector(".onb-next").disabled = true; onbPlace(); try { await DEMO[onb.i](); } catch (e) { console.warn(e); } onbPlace(); onb.busy = false; onb.el.querySelector(".onb-next").disabled = false; }
+let onbTimer = null;
+async function onbShow() { clearInterval(onbTimer); onb.busy = true; const btn = onb.el.querySelector(".onb-next"); btn.disabled = true; onbPlace(); try { await DEMO[onb.i](); } catch (e) { console.warn(e); } onbPlace(); onb.busy = false; btn.disabled = false;
+  if (onb.i < L.onb.steps.length - 1) { let left = 6; const base = btn.textContent; btn.textContent = `${base}  ·  ${left}`; onbTimer = setInterval(() => { left--; if (!onb.active) return clearInterval(onbTimer); if (left <= 0) { clearInterval(onbTimer); btn.click(); } else btn.textContent = `${base}  ·  ${left}`; }, 1000); } }
 function onbStart() { onb.i = 0; onb.active = true; onb.el.classList.add("show"); onbShow(); }
-function onbEnd() { onb.active = false; onb.el.classList.remove("show"); localStorage.setItem("holi-onb-done", "1"); }
+function onbEnd() { clearInterval(onbTimer); onb.active = false; onb.el.classList.remove("show"); localStorage.setItem("holi-onb-done", "1"); }
 onb.el.querySelector(".onb-next").onclick = () => { if (onb.busy) return; if (onb.i >= L.onb.steps.length - 1) return onbEnd(); onb.i++; onbShow(); };
 addEventListener("resize", () => onb.active && onbPlace());
 // ===================== WIRING =====================
