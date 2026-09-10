@@ -76,7 +76,7 @@ export function createTour(opts) {
     state.meshes = state.geos.map(g => g.mesh); state.meshes.forEach(m => scene.add(m));
     const g = state.geos[0]; state.geo = g; state.mesh = g.mesh;
     cam.x = cam.y = cam.z = 0; cam.yaw = def.yaw || 0; cam.pitch = def.pitch || 0; look.yaw = cam.yaw; look.pitch = cam.pitch; base.yaw = cam.yaw;
-    cam.fov = entry ? 34 : 46; applyCam(); updateLimits();
+    zoomFov = 46; cam.fov = entry ? 34 : 46; applyCam(); updateLimits();
     state.spots = (def.spots || []).map(s => makeSpot(s, state.geos[s.panel || 0]));
     ui.deg && (ui.deg.style.display = state.full360 ? "flex" : "none");
     ui.loader && ui.loader.classList.add("hide");
@@ -134,8 +134,15 @@ export function createTour(opts) {
 
   // ---------- input: mouse position = gentle look-around; drag also works; click on picture = fly to nearest hotspot ----------
   let down = null, dragged = false;
+  // pinch with two fingers (or trackpad pinch = wheel+ctrl) = zoom the view
+  const pz = new Map(); let pinchStart = null; let zoomFov = 46;
+  const setZoom = f => { zoomFov = Math.min(64, Math.max(26, f)); cam.fov = zoomFov; updateLimits(); };
+  renderer.domElement.addEventListener("pointerdown", e => { pz.set(e.pointerId, [e.clientX, e.clientY]); if (pz.size === 2) { const [a, b] = [...pz.values()]; pinchStart = { d: Math.hypot(a[0] - b[0], a[1] - b[1]), fov: zoomFov }; down = null; } });
+  addEventListener("pointermove", e => { if (pz.has(e.pointerId)) { pz.set(e.pointerId, [e.clientX, e.clientY]); if (pz.size === 2 && pinchStart) { const [a, b] = [...pz.values()]; const d = Math.hypot(a[0] - b[0], a[1] - b[1]); setZoom(pinchStart.fov * pinchStart.d / Math.max(20, d)); } } });
+  const pzUp = e => { pz.delete(e.pointerId); if (pz.size < 2) pinchStart = null; }; addEventListener("pointerup", pzUp); addEventListener("pointercancel", pzUp);
+  renderer.domElement.addEventListener("wheel", e => { if (e.ctrlKey || e.metaKey) { e.preventDefault(); setZoom(zoomFov * (e.deltaY > 0 ? 1.05 : 0.95)); } }, { passive: false });
   addEventListener("pointermove", e => {
-    if (state.busy) return;
+    if (state.busy || pinchStart) return;
     const nx = THREE.MathUtils.clamp(((e.clientX - view.x) / view.w) * 2 - 1, -1, 1), ny = (e.clientY / view.h) * 2 - 1;
     if (!down && e.clientX < view.x) return;                      // mouse over the page half: leave the world still
     if (down) { const dx = e.clientX - down.x, dy = e.clientY - down.y; if (Math.abs(dx) + Math.abs(dy) > 4) dragged = true;
@@ -157,7 +164,7 @@ export function createTour(opts) {
   let paused = false; const loop = () => {
     const t = clock.getElapsedTime(), dt = 0.016;
     if (!state.busy) { cam.yaw += (look.yaw - cam.yaw) * 0.06; cam.pitch += (look.pitch - cam.pitch) * 0.06;
-      cam.y = Math.sin(t * 0.5) * 0.02; cam.x = Math.sin(t * 0.31) * 0.015; cam.fov = 46 + Math.sin(t * 0.25) * 0.5; }
+      cam.y = Math.sin(t * 0.5) * 0.02; cam.x = Math.sin(t * 0.31) * 0.015; cam.fov = zoomFov + Math.sin(t * 0.25) * 0.5; }
     const P = dust.geometry.attributes.position.array;
     for (let i = 0; i < N; i++) { const v = dustVel[i];
       P[i * 3] += v[0] * dt + Math.sin(t + i) * 0.0006; P[i * 3 + 1] += v[1] * dt; P[i * 3 + 2] += v[2] * dt + rush * 0.35;
