@@ -39,7 +39,7 @@ en: {
     beach: { label: "Koh Rong · beach" },
     aerial: { label: "Koh Rong · stage 1 · domes from above", title: "Koh Rong · stage 1 · domes", text: "Domes on removable woven platforms on stilts, with terraces: 6 m cabins and 5 m + 3.5 m sets. A pool zone, a rebuilt restaurant, a spa with jacuzzi. Cabins without a sea view have a jacuzzi in the bathroom. Start: December 2026, for 2–3 seasons; later the stage-2 hotel stands here." },
     "dome-day": { label: "Dome · day (next to it: pool, spa)", link: "See the suite →", nightName: "The dome at night", nightTip: "The same dome after dark." },
-    "dome-night": { label: "Dome · night", title: "The dome at night · a cocoon", text: "After dark the dome becomes a cocoon: full blackout, separate light scenes for relaxing, intimacy and sleep, very quiet air-conditioning, no disturbing indicator lights or intrusive screens. At night the domes are lit from below: a levitation effect.", link: "Step inside →", enterName: "Step inside", enterTip: "The RECONNECT suite for couples.", dayName: "The dome by day", dayTip: "The same dome in daylight." },
+    "dome-night": { label: "Dome · night · look around", title: "The dome at night · a cocoon", text: "After dark the dome becomes a cocoon: full blackout, separate light scenes for relaxing, intimacy and sleep, very quiet air-conditioning, no disturbing indicator lights or intrusive screens. At night the domes are lit from below: a levitation effect.", link: "Step inside →", enterName: "Step inside", enterTip: "The RECONNECT suite for couples.", dayName: "The dome by day", dayTip: "The same dome in daylight." },
     "interior-4a": { label: "RETURN suite", link: "Contact · booking →", otherName: "The other suite", otherTip: "The RECONNECT suite.", exitName: "Step outside" },
     "interior-7d": { label: "RECONNECT suite", title: "RECONNECT · 4 nights · for couples", text: "Privacy, touch, conversation, closeness. Rituals for two from the brand document: a shared intention, a private phone-free dinner, a guided conversation about gratitude, learning partner massage, a shared bath, sauna or jacuzzi, breath and movement for two, a sunrise or sunset in silence, a letter to your partner.", exitName: "Step outside" },
     pool: { label: "Pool" },
@@ -93,7 +93,7 @@ pl: {
     beach: { label: "Koh Rong · plaża" },
     aerial: { label: "Koh Rong · etap 1 · kopuły z lotu ptaka", title: "Koh Rong · etap 1 · kopuły", text: "Kopuły na demontowalnych, plecionych platformach na palach, z tarasami: domki 6 m i zestawy 5 m + 3,5 m. Strefa basenowa, przebudowana restauracja, spa z jacuzzi. Domki bez widoku na morze mają jacuzzi w łazience. Start: grudzień 2026, na 2–3 sezony, potem w tym miejscu hotel etapu 2." },
     "dome-day": { label: "Kopuła · dzień (obok: basen, spa)", link: "Zobacz apartament →", nightName: "Kopuła nocą", nightTip: "Ta sama kopuła po zmroku." },
-    "dome-night": { label: "Kopuła · noc", title: "Kopuła nocą · kokon", text: "Po zmroku kopuła staje się kokonem: pełne zaciemnienie, osobne światło na relaks, intymność i sen, bardzo cicha klimatyzacja, brak zakłócających kontrolek i inwazyjnych ekranów. Nocą kopuły są podświetlone od spodu: efekt lewitacji.", link: "Wejdź do środka →", enterName: "Wejdź do środka", enterTip: "Apartament RECONNECT dla par.", dayName: "Kopuła w dzień", dayTip: "Ta sama kopuła za dnia." },
+    "dome-night": { label: "Kopuła · noc · rozejrzyj się", title: "Kopuła nocą · kokon", text: "Po zmroku kopuła staje się kokonem: pełne zaciemnienie, osobne światło na relaks, intymność i sen, bardzo cicha klimatyzacja, brak zakłócających kontrolek i inwazyjnych ekranów. Nocą kopuły są podświetlone od spodu: efekt lewitacji.", link: "Wejdź do środka →", enterName: "Wejdź do środka", enterTip: "Apartament RECONNECT dla par.", dayName: "Kopuła w dzień", dayTip: "Ta sama kopuła za dnia." },
     "interior-4a": { label: "Apartament RETURN", link: "Kontakt · rezerwacja →", otherName: "Drugi apartament", otherTip: "Apartament RECONNECT.", exitName: "Wyjdź na zewnątrz" },
     "interior-7d": { label: "Apartament RECONNECT", title: "RECONNECT · 4 noce · dla par", text: "Prywatność, dotyk, rozmowa, bliskość. Rytuały dla dwojga z dokumentu marki: wspólna intencja, prywatna kolacja bez telefonów, prowadzona rozmowa o wdzięczności, nauka masażu partnerskiego, wspólna kąpiel, sauna lub jacuzzi, oddech i ruch dla dwojga, wschód lub zachód w ciszy, list do partnera.", exitName: "Wyjdź na zewnątrz" },
     pool: { label: "Basen" },
@@ -130,7 +130,7 @@ const sec = k => L.sections[k];
 const st = k => L.stations[k] || {};
 
 // ===================== STATIONS (pictures; hotspots always carry section names) =====================
-const S = (key, u, v, extra = {}) => Object.assign({ name: sec(key).name, tip: sec(key).tip, u, v, to: STATION_OF[key], action: PAGE_ONLY.has(key) ? "page" : undefined, section: key }, extra);
+const S = (key, u, v, extra = {}) => Object.assign({ name: sec(key).name, tip: sec(key).tip, u: Math.min(0.82, Math.max(0.18, u)), v: Math.min(0.82, Math.max(0.22, v)), to: STATION_OF[key], action: PAGE_ONLY.has(key) ? "page" : undefined, section: key }, extra);
 const card = (skey, stKey, extra = {}) => Object.assign({ title: (st(stKey).title || sec(skey).title), text: (st(stKey).text || sec(skey).text), section: skey, station: stKey }, extra);
 const link = (stKey, to, action) => st(stKey).link ? { label: st(stKey).link, to, action } : undefined;
 function buildStations() {
@@ -142,10 +142,10 @@ function buildStations() {
       spots: [ S("philosophy", 0.5, 0.35), S("spheres", 0.85, 0.3) ] },
     aerial: { img: A + "kr-aerial.jpg", arc: 72, label: st("aerial").label, section: "spheres", card: card("locations", "aerial"),
       spots: [ S("programs", 0.62, 0.35), S("suites", 0.73, 0.62, { to: "dome-night" }), S("spa", 0.32, 0.23), S("nature", 0.33, 0.69, { to: "pool" }), S("stay", 0.23, 0.5, { cls: "final" }), S("locations", 0.9, 0.5) ] },
-    "dome-day": { panels: [ { img: A + "kr-dome-day.jpg", yaw: 0, arc: 121 }, { img: A + "bali-pool-day.jpg", yaw: 120, arc: 121 }, { img: A + "bali-restaurant-day.jpg", yaw: 240, arc: 121 } ], label: st("dome-day").label, section: "programs", card: card("programs", "dome-day", { link: link("dome-day", "interior-4a") }),
-      spots: [ S("suites", 0.53, 0.6, { cls: "final" }), S("spheres", 0.08, 0.86), Sx("dome-day", "night", S("suites", 0.93, 0.32, { to: "dome-night" })), S("nature", 0.6, 0.72, { panel: 1, to: "pool" }), S("spa", 0.45, 0.6, { panel: 2 }) ] },
-    "dome-night": { img: A + "kr-dome-night.jpg", arc: 84, label: st("dome-night").label, section: "suites", card: card("suites", "dome-night", { link: link("dome-night", "interior-7d") }),
-      spots: [ Sx("dome-night", "enter", S("suites", 0.5, 0.6, { to: "interior-7d", cls: "final" })), Sx("dome-night", "day", S("programs", 0.93, 0.32, { to: "dome-day" })), S("spheres", 0.08, 0.86) ] },
+    "dome-day": { panels: [ { img: A + "kr-dome-day.jpg", yaw: 0, arc: 121 }, { img: A + "kr-dome-concept-day.jpg", yaw: 120, arc: 121 }, { img: A + "bali-pool-day.jpg", yaw: 240, arc: 121 } ], label: st("dome-day").label, section: "programs", card: card("programs", "dome-day", { link: link("dome-day", "interior-4a") }),
+      spots: [ S("suites", 0.53, 0.6, { cls: "final" }), S("spheres", 0.08, 0.86), Sx("dome-day", "night", S("suites", 0.93, 0.32, { to: "dome-night" })), Sx("dome-day", "night", S("suites", 0.5, 0.55, { panel: 1, to: "dome-night" })), S("nature", 0.5, 0.65, { panel: 2, to: "pool" }) ] },
+    "dome-night": { panels: [ { img: A + "kr-dome-night.jpg", yaw: 0, arc: 121 }, { img: A + "kr-dome-concept-night1.jpg", yaw: 120, arc: 121 }, { img: A + "kr-dome-concept-night2.jpg", yaw: 240, arc: 121 } ], label: st("dome-night").label, section: "suites", card: card("suites", "dome-night", { link: link("dome-night", "interior-7d") }),
+      spots: [ Sx("dome-night", "enter", S("suites", 0.5, 0.6, { to: "interior-7d", cls: "final" })), Sx("dome-night", "day", S("programs", 0.5, 0.5, { panel: 1, to: "dome-day" })), S("spheres", 0.5, 0.6, { panel: 2 }) ] },
     "interior-4a": { panels: [ { img: A + "bali-int-4a.jpg", yaw: 0, arc: 91 }, { img: A + "bali-int-4a-v2.jpg", yaw: 90, arc: 91 }, { img: A + "bali-int-4a-v3.jpg", yaw: 180, arc: 91 }, { img: A + "bali-int-4a-v4.jpg", yaw: 270, arc: 91 } ], label: st("interior-4a").label, section: "suites", room: "RETURN", card: card("suites", "interior-4a"),
       spots: [ Sx("interior-4a", "other", S("suites", 0.28, 0.45, { to: "interior-7d" })), Sx("interior-4a", "exit", S("programs", 0.5, 0.84)), S("booking", 0.8, 0.5, { cls: "final" }) ] },
     "interior-7d": { panels: [ { img: A + "bali-int-7d.jpg", yaw: 0, arc: 121 }, { img: A + "bali-int-7d-v2.jpg", yaw: 120, arc: 121 }, { img: A + "bali-int-7d-v3.jpg", yaw: 240, arc: 121 } ], label: st("interior-7d").label, section: "suites", room: "RECONNECT", card: card("programs", "interior-7d"),
@@ -181,7 +181,7 @@ function openPage(anchor, mode) {
   if (anchor) setTimeout(() => { const el = $("sec-" + anchor); el && el.scrollIntoView({ behavior: "smooth", block: "start" }); }, 60);
   setTimeout(() => { scrollSpy(); saveState(); }, 120);
 }
-function closePage() { ui.site.classList.remove("show"); document.body.classList.remove("site-full", "site-split"); tour.setViewport(1); tour.setPaused(false); const hv = ui.site.querySelector(".hero video"); hv && hv.pause(); $("sidenav").classList.remove("show"); $("totop").classList.remove("show"); saveState(); }
+function closePage() { ui.site.classList.remove("show"); document.body.classList.remove("site-full", "site-split"); tour.setViewport(1); tour.setPaused(false); const hv = ui.site.querySelector(".hero video"); hv && hv.pause(); $("sidenav").classList.remove("show"); $("totop").classList.remove("show"); $("corner-menu").classList.remove("show"); $("corner-sound").classList.remove("show"); saveState(); }
 const GROUP_KEYS = ["stay", "place", "about", "help"];
 function buildDropdowns(host) {
   host.innerHTML = "";
@@ -349,13 +349,14 @@ function buildSideNav() {
   nav.querySelector(".sn-open").onclick = () => nav.classList.toggle("open");
   ui.site.addEventListener("click", e => { if (!e.target.closest("#sidenav")) nav.classList.remove("open"); });
   $("totop").onclick = () => ui.site.scrollTo({ top: 0, behavior: "smooth" });
+  $("corner-menu").onclick = () => nav.classList.toggle("open");
 }
 let spyRaf = 0;
 function scrollSpy() {
   const top = ui.site.scrollTop, h = ui.site.clientHeight; let cur = PAGE_KEYS[0];
   PAGE_KEYS.forEach(k => { const el = $("sec-" + k); if (el && el.offsetTop - 140 <= top) cur = k; });
   document.querySelectorAll("#sidenav .sn-dot").forEach(d => d.classList.toggle("on", d.dataset.k === cur));
-  $("totop").classList.toggle("show", top > h * 0.6);
+  $("totop").classList.toggle("show", top > h * 0.6); $("corner-menu").classList.toggle("show", ui.site.classList.contains("show")); $("corner-sound").classList.toggle("show", ui.site.classList.contains("show"));
   $("sidenav").classList.toggle("show", ui.site.classList.contains("show"));
 }
 ui.site.addEventListener("scroll", () => { if (!spyRaf) spyRaf = requestAnimationFrame(() => { spyRaf = 0; scrollSpy(); saveState(); }); }, { passive: true });
@@ -574,7 +575,8 @@ function oceanStart() {
   } catch (e) { console.warn("no audio", e); }
 }
 function oceanStop(fade = 2) { if (!ocean.ctx) return; ocean.gain.gain.cancelScheduledValues(ocean.ctx.currentTime); ocean.gain.gain.linearRampToValueAtTime(0, ocean.ctx.currentTime + fade); ocean.on = false; $("sound").textContent = "🔇"; }
-$("sound").onclick = () => ocean.on ? oceanStop(0.6) : oceanStart();
+function soundToggle(force) { const a = $("bgm"); if (!a) return; const on = force !== undefined ? force : a.paused; if (on) { a.volume = 0.28; a.play().catch(() => {}); } else a.pause(); localStorage.setItem("holi-sound", on ? "1" : "0"); document.querySelectorAll("#sound, #corner-sound").forEach(b => b.textContent = on ? "🔊" : "🔇"); }
+$("sound").onclick = () => soundToggle(); $("corner-sound").onclick = () => soundToggle();
 const wl = $("welcome");
 function showWelcome() {
   wl.classList.add("show"); const v = wl.querySelector("video"); v.play().catch(() => {});
@@ -583,7 +585,7 @@ function showWelcome() {
     .to(wl.querySelector(".wl-pl"), { opacity: 1, duration: 0.8 }, "-=0.3").to($("wl-begin"), { opacity: 1, duration: 0.8 }, "-=0.4");
 }
 let langChosen = false;
-$("wl-begin").onclick = () => { localStorage.setItem("holi-welcome-done", "1");
+$("wl-begin").onclick = () => { localStorage.setItem("holi-welcome-done", "1"); if (localStorage.getItem("holi-sound") !== "0") soundToggle(true);
   gsap.to(wl, { opacity: 0, duration: 1.2, onComplete() { wl.classList.remove("show"); wl.style.opacity = ""; wl.querySelector("video").pause(); $("langpick").classList.add("show"); } }); };
 
 // intro video → first station
