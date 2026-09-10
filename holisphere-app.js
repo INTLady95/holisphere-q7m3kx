@@ -130,7 +130,7 @@ const sec = k => L.sections[k];
 const st = k => L.stations[k] || {};
 
 // ===================== STATIONS (pictures; hotspots always carry section names) =====================
-const S = (key, u, v, extra = {}) => Object.assign({ name: sec(key).name, tip: sec(key).tip, u: Math.min(0.82, Math.max(0.18, u)), v: Math.min(0.82, Math.max(0.22, v)), to: STATION_OF[key], action: PAGE_ONLY.has(key) ? "page" : undefined, section: key }, extra);
+const S = (key, u, v, extra = {}) => Object.assign({ name: sec(key).name, tip: sec(key).tip, u: Math.min(0.68, Math.max(0.32, u)), v: Math.min(0.74, Math.max(0.3, v)), to: STATION_OF[key], action: PAGE_ONLY.has(key) ? "page" : undefined, section: key }, extra);
 const card = (skey, stKey, extra = {}) => Object.assign({ title: (st(stKey).title || sec(skey).title), text: (st(stKey).text || sec(skey).text), section: skey, station: stKey }, extra);
 const link = (stKey, to, action) => st(stKey).link ? { label: st(stKey).link, to, action } : undefined;
 function buildStations() {
