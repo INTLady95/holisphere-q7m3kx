@@ -8,7 +8,7 @@ const BOOKING_ENDPOINT = "";
 // Facts from Tomek's brand bible, project description 01.09.2026, facts & checklist, DOME 4A drawings. "(proposal)" = not decided yet.
 const TXT = {
 en: {
-  onb: { next: "Read it? Click me →", done: "Read it? Click me, we are done →", replay: "Show the guide again", auto: "next in", steps: [
+  onb: { next: "Read it? Click me →", done: "Read it? Click me, we are done →", replay: "Show the guide again", pause: "⏸ Pause", resume: "▶ Resume", skip: "Skip ▾", skipLater: "Skip for now, show me next time", skipNever: "Skip and don't show again", steps: [
     { t: "#m-page", h: "The simple version is always here", p: "Watch: I open the ordinary page, scroll through it, then show it half-and-half with the world. Click “Full page” any time to get it back." },
     { t: "#menu-toggle", h: "Everything is here", p: "I just opened the menu for you: every section, the most needed first. One click opens it, one click closes it." },
     { t: ".spot", h: "Dots are the same sections", p: "Watch: I hover a dot, a one-line summary appears. Then I click it and we fly into that place." },
@@ -62,7 +62,7 @@ en: {
   },
 },
 pl: {
-  onb: { next: "Przeczytane? Kliknij mnie →", done: "Przeczytane? Kliknij, to już wszystko →", replay: "Pokaż przewodnik ponownie", auto: "dalej za", steps: [
+  onb: { next: "Przeczytane? Kliknij mnie →", done: "Przeczytane? Kliknij, to już wszystko →", replay: "Pokaż przewodnik ponownie", pause: "⏸ Pauza", resume: "▶ Wznów", skip: "Pomiń ▾", skipLater: "Pomiń teraz, pokaż następnym razem", skipNever: "Pomiń i nie pokazuj więcej", steps: [
     { t: "#m-page", h: "Prosta wersja jest zawsze tutaj", p: "Patrz: otwieram zwykłą stronę, przewijam ją, a potem pokazuję pół na pół ze światem. Kliknij „Zwykła strona” w każdej chwili, żeby do niej wrócić." },
     { t: "#menu-toggle", h: "Wszystko jest tutaj", p: "Właśnie otworzyłem dla Ciebie menu: wszystkie działy, od najpotrzebniejszych. Jedno kliknięcie otwiera, jedno zamyka." },
     { t: ".spot", h: "Kropki to te same działy", p: "Patrz: najeżdżam na kropkę, pojawia się jedno zdanie. Potem klikam i wlatujemy do tego miejsca." },
@@ -521,6 +521,8 @@ function onbPlace() {
   card.querySelector("h3").textContent = step.h; card.querySelector("p").textContent = step.p;
   card.querySelector(".onb-dots").innerHTML = L.onb.steps.map((_, k) => `<i class="${k === onb.i ? "on" : ""}"></i>`).join("");
   card.querySelector(".onb-next").textContent = onb.i === L.onb.steps.length - 1 ? L.onb.done : L.onb.next;
+  card.querySelector(".onb-pause").textContent = onb.paused ? L.onb.resume : L.onb.pause; card.querySelector(".onb-skip").textContent = L.onb.skip;
+  card.querySelector("[data-skip=later]").textContent = L.onb.skipLater; card.querySelector("[data-skip=never]").textContent = L.onb.skipNever;
   const below = r.top + r.height + 20, cw = Math.min(380, innerWidth - 36); let left = Math.min(Math.max(r.left + r.width / 2 - cw / 2, 18), innerWidth - cw - 18);
   if (step.t === "#infobar" && innerWidth > 900) left = Math.min(innerWidth - cw - 18, 420);
   card.style.width = cw + "px"; card.style.left = left + "px";
@@ -546,9 +548,13 @@ const DEMO = [
 ];
 let onbTimer = null;
 async function onbShow() { clearInterval(onbTimer); onb.busy = true; const btn = onb.el.querySelector(".onb-next"); btn.disabled = true; onbPlace(); try { await DEMO[onb.i](); } catch (e) { console.warn(e); } onbPlace(); onb.busy = false; btn.disabled = false;
-  if (onb.i < L.onb.steps.length - 1) { let left = 6; const base = btn.textContent; btn.textContent = `${base}  ·  ${left}`; onbTimer = setInterval(() => { left--; if (!onb.active) return clearInterval(onbTimer); if (left <= 0) { clearInterval(onbTimer); btn.click(); } else btn.textContent = `${base}  ·  ${left}`; }, 1000); } }
-function onbStart() { onb.i = 0; onb.active = true; onb.el.classList.add("show"); onbShow(); }
-function onbEnd() { clearInterval(onbTimer); onb.active = false; onb.el.classList.remove("show"); localStorage.setItem("holi-onb-done", "1"); }
+  if (onb.i < L.onb.steps.length - 1) { let left = 6; const base = btn.textContent; btn.textContent = `${base}  ·  ${left}`; onbTimer = setInterval(() => { if (!onb.active) return clearInterval(onbTimer); if (onb.paused) return; left--; if (left <= 0) { clearInterval(onbTimer); btn.click(); } else btn.textContent = `${base}  ·  ${left}`; }, 1000); } }
+function onbStart() { onb.i = 0; onb.paused = false; onb.active = true; onb.el.classList.add("show"); onb.el.querySelector(".onb-skipmenu").hidden = true;
+  if (localStorage.getItem("holi-sound") !== "0") soundToggle(true); const sb = $("sound"); sb.classList.add("blink"); setTimeout(() => sb.classList.remove("blink"), 9000); onbShow(); }
+function onbEnd(mode) { clearInterval(onbTimer); onb.active = false; onb.el.classList.remove("show"); if (mode === "later") localStorage.removeItem("holi-onb-done"); else localStorage.setItem("holi-onb-done", "1"); localStorage.setItem("holi-lang-chosen", "1"); }
+onb.el.querySelector(".onb-pause").onclick = () => { onb.paused = !onb.paused; onb.el.querySelector(".onb-pause").textContent = onb.paused ? L.onb.resume : L.onb.pause; };
+onb.el.querySelector(".onb-skip").onclick = () => { const m = onb.el.querySelector(".onb-skipmenu"); m.hidden = !m.hidden; };
+onb.el.querySelectorAll("[data-skip]").forEach(b => b.onclick = () => onbEnd(b.dataset.skip));
 onb.el.querySelector(".onb-next").onclick = () => { if (onb.busy) return; if (onb.i >= L.onb.steps.length - 1) return onbEnd(); onb.i++; onbShow(); };
 addEventListener("resize", () => onb.active && onbPlace());
 // ===================== WIRING =====================
@@ -601,8 +607,8 @@ $("wl-begin").onclick = () => { localStorage.setItem("holi-welcome-done", "1"); 
 // intro video → first station
 const vid = $("intro-video"), box = $("video"); let started = false;
 function endIntro() { if (started) return; started = true; tour.setPaused(false); box.classList.add("hide"); gsap.to(ui.fade, { opacity: 0, duration: 1.2 }); setTimeout(() => { vid.pause(); vid.removeAttribute("src"); vid.load(); }, 1200);
-  if (!localStorage.getItem("holi-onb-done")) { if (langChosen) setTimeout(onbStart, 900); else setTimeout(() => $("langpick").classList.add("show"), 900); } }
-$("langpick").querySelectorAll("button").forEach(b => b.onclick = () => { $("langpick").classList.remove("show"); if (settings.lang !== b.dataset.lang) setLanguage(b.dataset.lang); else saveSettings(); langChosen = true;
+  if (!localStorage.getItem("holi-onb-done")) { if (langChosen || localStorage.getItem("holi-lang-chosen")) setTimeout(onbStart, 900); else setTimeout(() => $("langpick").classList.add("show"), 900); } }
+$("langpick").querySelectorAll("button").forEach(b => b.onclick = () => { $("langpick").classList.remove("show"); localStorage.setItem("holi-lang-chosen", "1"); if (settings.lang !== b.dataset.lang) setLanguage(b.dataset.lang); else saveSettings(); langChosen = true;
   if (started) setTimeout(onbStart, 500); else { $("video").classList.remove("hide"); vid.play().catch(endIntro); setTimeout(() => { if (!started && (vid.paused || vid.readyState < 2)) endIntro(); }, 4000); } });
 vid.addEventListener("ended", endIntro); vid.addEventListener("error", endIntro); $("skip").onclick = endIntro;
 if (localStorage.getItem("holi-onb-done") && SAVED_STATE) { restoreState(); endIntro(); }
