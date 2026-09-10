@@ -8,7 +8,7 @@ const BOOKING_ENDPOINT = "";
 // Facts from Tomek's brand bible, project description 01.09.2026, facts & checklist, DOME 4A drawings. "(proposal)" = not decided yet.
 const TXT = {
 en: {
-  onb: { next: "Read it? Click me →", done: "Read it? Click me, we are done →", replay: "Show the guide again", pause: "⏸ Pause", resume: "▶ Resume", skip: "Skip ▾", skipLater: "Skip for now, show me next time", skipNever: "Skip and don't show again", steps: [
+  onb: { next: "Read it? Click me →", done: "Read it? Click me, we are done →", replay: "Show the guide again", pause: "⏸ Pause", resume: "▶ Resume", skip: "Skip ▾ (not recommended)", skipNote: "Not recommended: this is a new visual concept, and the guide shows how to find your way around.", skipLater: "Skip for now, show me next time", skipNever: "Skip and don't show again", steps: [
     { t: "#m-page", h: "The simple version is always here", p: "Watch: I open the ordinary page, scroll through it, then show it half-and-half with the world. Click “Full page” any time to get it back." },
     { t: "#menu-toggle", h: "Everything is here", p: "I just opened the menu for you: every section, the most needed first. One click opens it, one click closes it." },
     { t: ".spot", h: "Dots are the same sections", p: "Watch: I hover a dot, a one-line summary appears. Then I click it and we fly into that place." },
@@ -62,7 +62,7 @@ en: {
   },
 },
 pl: {
-  onb: { next: "Przeczytane? Kliknij mnie →", done: "Przeczytane? Kliknij, to już wszystko →", replay: "Pokaż przewodnik ponownie", pause: "⏸ Pauza", resume: "▶ Wznów", skip: "Pomiń ▾", skipLater: "Pomiń teraz, pokaż następnym razem", skipNever: "Pomiń i nie pokazuj więcej", steps: [
+  onb: { next: "Przeczytane? Kliknij mnie →", done: "Przeczytane? Kliknij, to już wszystko →", replay: "Pokaż przewodnik ponownie", pause: "⏸ Pauza", resume: "▶ Wznów", skip: "Pomiń ▾ (niezalecane)", skipNote: "Niezalecane: to nowa wizualna koncepcja, a przewodnik pokazuje, jak się w niej odnaleźć.", skipLater: "Pomiń teraz, pokaż następnym razem", skipNever: "Pomiń i nie pokazuj więcej", steps: [
     { t: "#m-page", h: "Prosta wersja jest zawsze tutaj", p: "Patrz: otwieram zwykłą stronę, przewijam ją, a potem pokazuję pół na pół ze światem. Kliknij „Zwykła strona” w każdej chwili, żeby do niej wrócić." },
     { t: "#menu-toggle", h: "Wszystko jest tutaj", p: "Właśnie otworzyłem dla Ciebie menu: wszystkie działy, od najpotrzebniejszych. Jedno kliknięcie otwiera, jedno zamyka." },
     { t: ".spot", h: "Kropki to te same działy", p: "Patrz: najeżdżam na kropkę, pojawia się jedno zdanie. Potem klikam i wlatujemy do tego miejsca." },
@@ -118,6 +118,7 @@ pl: {
 };
 
 // ===================== STATE =====================
+if (new URLSearchParams(location.search).has("fresh")) { try { localStorage.clear(); sessionStorage.clear(); } catch (e) {} }
 let pendingRestore = null;
 const SAVED_STATE = (() => { try { return JSON.parse(localStorage.getItem("holi-state") || "null"); } catch (e) { return null; } })();   // read before anything overwrites it
 const settings = Object.assign({ mode: innerWidth > 900 ? "split" : "full", lang: "en", currency: "EUR", motion: "on" }, JSON.parse(localStorage.getItem("holi-settings") || "{}"));
@@ -522,7 +523,7 @@ function onbPlace() {
   card.querySelector(".onb-dots").innerHTML = L.onb.steps.map((_, k) => `<i class="${k === onb.i ? "on" : ""}"></i>`).join("");
   card.querySelector(".onb-next").textContent = onb.i === L.onb.steps.length - 1 ? L.onb.done : L.onb.next;
   card.querySelector(".onb-pause").textContent = onb.paused ? L.onb.resume : L.onb.pause; card.querySelector(".onb-skip").textContent = L.onb.skip;
-  card.querySelector("[data-skip=later]").textContent = L.onb.skipLater; card.querySelector("[data-skip=never]").textContent = L.onb.skipNever;
+  card.querySelector("[data-skip=later]").textContent = L.onb.skipLater; card.querySelector("[data-skip=never]").textContent = L.onb.skipNever; card.querySelector(".onb-skipnote").textContent = L.onb.skipNote;
   const below = r.top + r.height + 20, cw = Math.min(380, innerWidth - 36); let left = Math.min(Math.max(r.left + r.width / 2 - cw / 2, 18), innerWidth - cw - 18);
   if (step.t === "#infobar" && innerWidth > 900) left = Math.min(innerWidth - cw - 18, 420);
   card.style.width = cw + "px"; card.style.left = left + "px";

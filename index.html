@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<link rel="stylesheet" href="shared.css?v=20260911p">
+<link rel="stylesheet" href="shared.css?v=20260911q">
 <style>
   :root { --accent:#d4b06a; --sand:#f3ecdf; --ink:#1d2a26; --sea:#1f5041; --line:rgba(29,42,38,.16); }
   body { font-family:"Inter", sans-serif; font-weight:300; }
@@ -111,7 +111,7 @@
   .onb-skip { background:none; border:0; color:#fff; opacity:.7; cursor:pointer; font:inherit; font-size:13px; margin-right:10px; }
   .onb-next[disabled] { opacity:.45; cursor:wait; }
   .onb-btns { display:flex; gap:6px; align-items:center; } .onb-pause, .onb-skip { background:none; border:1px solid rgba(212,176,106,.4); color:#fff; border-radius:999px; padding:8px 12px; cursor:pointer; font:inherit; font-size:12.5px; }
-  .onb-skipmenu { display:flex; flex-direction:column; gap:6px; margin-top:10px; } .onb-skipmenu button { background:rgba(255,255,255,.06); border:1px solid rgba(212,176,106,.35); color:#fff; border-radius:10px; padding:9px 12px; cursor:pointer; font:inherit; font-size:13px; text-align:left; } .onb-skipmenu button:hover { background:rgba(212,176,106,.2); }
+  .onb-skipmenu { display:flex; flex-direction:column; gap:6px; margin-top:10px; } .onb-skipnote { font-size:12px; color:var(--gold2); line-height:1.4; } .onb-skipmenu button { background:rgba(255,255,255,.06); border:1px solid rgba(212,176,106,.35); color:#fff; border-radius:10px; padding:9px 12px; cursor:pointer; font:inherit; font-size:13px; text-align:left; } .onb-skipmenu button:hover { background:rgba(212,176,106,.2); }
   #sound { position:relative; z-index:16; } #sound.blink { animation:blink 1s ease-in-out 8; background:var(--gold); color:var(--g1); }
   @keyframes blink { 0%,100% { box-shadow:0 0 0 0 rgba(212,176,106,.0); } 50% { box-shadow:0 0 0 8px rgba(212,176,106,.45); } }
   #top { z-index:16; }
@@ -286,12 +286,12 @@
   <button id="skip">Skip intro →</button></div>
 
 <div id="welcome"><video src="assets/holi/kr-beach-loop.mp4" muted loop playsinline autoplay preload="auto"></video><div class="wl-wash"></div>
-  <div class="wl-card"><img src="assets/logo-ring-gold.svg" alt=""><p class="wl-line l1">Welcome to HOLISPHERE Resorts</p><p class="wl-line l2">This is a new visual concept of our website: you can explore it as a world, or read it as an ordinary page.</p><p class="wl-line l3">Six short steps will show you how. Then the place is yours.</p><p class="wl-line l4">Have a beautiful journey.</p><p class="wl-pl">Witaj w HOLISPHERE Resorts. To nowa wizualna koncepcja naszej strony: możesz ją zwiedzać jak świat albo czytać jak zwykłą stronę. Sześć krótkich kroków pokaże Ci jak. Pięknej podróży.</p><button type="button" id="wl-begin">Begin the journey · Rozpocznij podróż →</button></div></div>
+  <div class="wl-card"><img src="assets/logo-ring-gold.svg" alt=""><p class="wl-line l1">Welcome to HOLISPHERE Resorts</p><p class="wl-line l2">This is a new visual concept of our website: you can explore it as a world, or read it as an ordinary page.</p><p class="wl-line l3">Six short steps will show you how. We recommend not skipping them: the place is new.</p><p class="wl-line l4">Have a beautiful journey.</p><p class="wl-pl">Witaj w HOLISPHERE Resorts. To nowa wizualna koncepcja naszej strony: możesz ją zwiedzać jak świat albo czytać jak zwykłą stronę. Sześć krótkich kroków pokaże Ci jak, nie polecamy ich pomijać. Pięknej podróży.</p><button type="button" id="wl-begin">Begin the journey · Rozpocznij podróż →</button></div></div>
 <div id="langpick"><div class="lp-card"><img src="assets/logo-ring-gold.svg" alt=""><h2>HOLISPHERE</h2><p>Choose your language · Wybierz język</p><div class="lp-row"><button type="button" data-lang="en">English</button><button type="button" data-lang="pl">Polski</button></div></div></div>
 <div id="drag-hint"><div class="dh-anim"><i class="arr l">←</i><b>☜</b><i class="arr r">→</i></div><span></span></div>
 <div id="minimap" title="Map"></div>
 <div id="bigmap"><div id="bigmap-map"></div><div class="bm-bar"><span class="brand"><img src="assets/logo-ring-gold.svg" alt=""><b>HOLISPHERE</b></span><div class="bm-btns"><button type="button" data-go="kohrong">Koh Rong</button><button type="button" data-go="bali">Bali</button><label class="bm-op"><span id="bm-op-label">Plan</span><input type="range" min="0" max="100" value="85"></label><button type="button" id="bm-close">✕</button></div></div></div>
-<div id="onb"><div class="onb-ring"></div><div class="onb-card"><h3></h3><p></p><div class="onb-row"><div class="onb-dots"></div><div class="onb-btns"><button type="button" class="onb-pause">⏸</button><button type="button" class="onb-skip">Skip ▾</button><button type="button" class="onb-next">Next</button></div></div><div class="onb-skipmenu" hidden><button type="button" data-skip="later"></button><button type="button" data-skip="never"></button></div></div></div>
+<div id="onb"><div class="onb-ring"></div><div class="onb-card"><h3></h3><p></p><div class="onb-row"><div class="onb-dots"></div><div class="onb-btns"><button type="button" class="onb-pause">⏸</button><button type="button" class="onb-skip">Skip ▾</button><button type="button" class="onb-next">Next</button></div></div><div class="onb-skipmenu" hidden><small class="onb-skipnote"></small><button type="button" data-skip="later"></button><button type="button" data-skip="never"></button></div></div></div>
 <div id="split-bar"><button id="sb-full" type="button" title="Full page">⇱</button><button id="sb-close" type="button" title="Close">✕</button></div>
 <nav id="sidenav"></nav><button id="totop" type="button" title="Top">↑</button><button id="corner-menu" type="button" title="Sections" hidden>☰</button><button id="corner-sound" type="button" title="Sound" hidden>🔇</button>
 <section id="site" class="ui">
@@ -303,6 +303,6 @@
 <script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js" } }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script type="module" src="holisphere-app.js?v=20260911p"></script>
+<script type="module" src="holisphere-app.js?v=20260911q"></script>
 </body>
 </html>
