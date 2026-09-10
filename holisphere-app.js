@@ -362,7 +362,7 @@ function scrollSpy() {
 }
 ui.site.addEventListener("scroll", () => { if (!spyRaf) spyRaf = requestAnimationFrame(() => { spyRaf = 0; scrollSpy(); saveState(); }); }, { passive: true });
 // remember where the visitor was (page open? which mode? how far scrolled? which place in the world?)
-function saveState() { if (pendingRestore) return; try { localStorage.setItem("holi-state", JSON.stringify({ page: ui.site.classList.contains("show"), split: document.body.classList.contains("site-split"), scroll: ui.site.scrollTop, station: tour.state.key, t: Date.now() })); } catch (e) {} }
+function saveState() { if (pendingRestore) return; try { sessionStorage.setItem("holi-session", "1"); localStorage.setItem("holi-state", JSON.stringify({ page: ui.site.classList.contains("show"), split: document.body.classList.contains("site-split"), scroll: ui.site.scrollTop, station: tour.state.key, t: Date.now() })); } catch (e) {} }
 function restoreState() {
   const st = SAVED_STATE; if (!st || !localStorage.getItem("holi-onb-done")) return false;
   pendingRestore = st; const t = setInterval(() => { if (!pendingRestore) return clearInterval(t); if (tour.state.key && !tour.state.busy) { clearInterval(t); applyRestore(); } }, 200); return true;
@@ -611,6 +611,6 @@ function endIntro() { if (started) return; started = true; tour.setPaused(false)
 $("langpick").querySelectorAll("button").forEach(b => b.onclick = () => { $("langpick").classList.remove("show"); localStorage.setItem("holi-lang-chosen", "1"); if (settings.lang !== b.dataset.lang) setLanguage(b.dataset.lang); else saveSettings(); langChosen = true;
   if (started) setTimeout(onbStart, 500); else { $("video").classList.remove("hide"); vid.play().catch(endIntro); setTimeout(() => { if (!started && (vid.paused || vid.readyState < 2)) endIntro(); }, 4000); } });
 vid.addEventListener("ended", endIntro); vid.addEventListener("error", endIntro); $("skip").onclick = endIntro;
-if (localStorage.getItem("holi-onb-done") && SAVED_STATE) { restoreState(); endIntro(); }
+if (localStorage.getItem("holi-onb-done") && SAVED_STATE && sessionStorage.getItem("holi-session")) { restoreState(); endIntro(); }   // only a reload of the same tab returns to the same place; a new visit starts from the beginning
 else if (!localStorage.getItem("holi-welcome-done")) { $("video").classList.add("hide"); showWelcome(); }   // first visit: welcome → language → drone intro → guide
 else { vid.play().catch(endIntro); setTimeout(() => { if (!started && (vid.paused || vid.readyState < 2)) endIntro(); }, 4000); }
