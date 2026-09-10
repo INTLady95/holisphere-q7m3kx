@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<link rel="stylesheet" href="shared.css?v=20260911n">
+<link rel="stylesheet" href="shared.css?v=20260911o">
 <style>
   :root { --accent:#d4b06a; --sand:#f3ecdf; --ink:#1d2a26; --sea:#1f5041; --line:rgba(29,42,38,.16); }
   body { font-family:"Inter", sans-serif; font-weight:300; }
@@ -213,7 +213,7 @@
   #sidenav.open .sn-list { display:flex; }
   #sidenav .sn-list button { text-align:left; background:none; border:0; color:#fff; padding:8px 10px; border-radius:8px; cursor:pointer; font:inherit; font-size:13.5px; } #sidenav .sn-list button:hover { background:rgba(212,176,106,.18); }
   #corner-menu { position:fixed; z-index:9; left:14px; bottom:18px; width:40px; height:40px; border-radius:50%; border:1px solid rgba(212,176,106,.45); background:rgba(16,50,40,.55); color:#fff; font:inherit; font-size:16px; cursor:pointer; display:none; backdrop-filter:blur(8px); }
-  #corner-sound.show { display:block; } #corner-menu { display:none !important; }
+  #corner-sound, #corner-menu, #sound { display:none !important; }
   #corner-sound.in-nav { position:static; margin-bottom:6px; width:34px; height:34px; font-size:13px; }
   #corner-sound { position:fixed; z-index:9; left:62px; bottom:18px; width:40px; height:40px; border-radius:50%; border:1px solid rgba(212,176,106,.45); background:rgba(16,50,40,.55); color:#fff; font:inherit; font-size:15px; cursor:pointer; display:none; backdrop-filter:blur(8px); } #corner-menu:hover { background:var(--gold); color:var(--g1); }
   body.site-split #corner-menu { left:14px; }
@@ -272,7 +272,7 @@
 <div id="fade" style="opacity:1; background:#f4e7cf"></div><div id="vignette"></div><div id="bars"></div>
 <div id="loader" class="ui hide"><div class="brand"><img src="assets/logo-ring-white.svg" alt=""><b>HOLISPHERE</b></div><div class="loader-text">…</div><div id="bar"><i></i></div><small id="pct"></small></div>
 <div id="spots"></div>
-<div id="top" class="ui"><span class="brand"><img src="assets/logo-ring-white.svg" alt=""><b>HOLISPHERE</b></span><nav class="dds" id="dds-world"></nav><div class="modes"><button id="menu-toggle">☰ Menu</button><button id="m-page" class="primary">Full page</button><button id="m-split">Split screen</button><button class="lang-btn" title="EN / PL">PL</button><button id="sound" type="button" title="Sound">🔇</button><audio id="bgm" loop preload="none" src="assets/holi/melody.mp3"></audio><button id="onb-replay" type="button">?</button></div></div>
+<div id="top" class="ui"><span class="brand"><img src="assets/logo-ring-white.svg" alt=""><b>HOLISPHERE</b></span><nav class="dds" id="dds-world"></nav><div class="modes"><button id="menu-toggle">☰ Menu</button><button id="m-page" class="primary">Full page</button><button id="m-split">Split screen</button><button class="lang-btn" title="EN / PL">PL</button><button id="sound" type="button" title="Sound" hidden>🔇</button><audio id="bgm" loop preload="none"></audio><button id="onb-replay" type="button">?</button></div></div>
 <img id="logo-mark" src="assets/logo-ring-gold.svg" alt="">
 
 <div id="card" class="ui"><h2></h2><img alt=""><p></p><a href="#"></a></div>
@@ -293,7 +293,7 @@
 <div id="bigmap"><div id="bigmap-map"></div><div class="bm-bar"><span class="brand"><img src="assets/logo-ring-gold.svg" alt=""><b>HOLISPHERE</b></span><div class="bm-btns"><button type="button" data-go="kohrong">Koh Rong</button><button type="button" data-go="bali">Bali</button><label class="bm-op"><span id="bm-op-label">Plan</span><input type="range" min="0" max="100" value="85"></label><button type="button" id="bm-close">✕</button></div></div></div>
 <div id="onb"><div class="onb-ring"></div><div class="onb-card"><h3></h3><p></p><div class="onb-row"><div class="onb-dots"></div><div class="onb-btns"><button type="button" class="onb-pause">⏸</button><button type="button" class="onb-skip">Skip ▾</button><button type="button" class="onb-next">Next</button></div></div><div class="onb-skipmenu" hidden><button type="button" data-skip="later"></button><button type="button" data-skip="never"></button></div></div></div>
 <div id="split-bar"><button id="sb-full" type="button" title="Full page">⇱</button><button id="sb-close" type="button" title="Close">✕</button></div>
-<nav id="sidenav"></nav><button id="totop" type="button" title="Top">↑</button><button id="corner-menu" type="button" title="Sections" hidden>☰</button><button id="corner-sound" type="button" title="Sound">🔇</button>
+<nav id="sidenav"></nav><button id="totop" type="button" title="Top">↑</button><button id="corner-menu" type="button" title="Sections" hidden>☰</button><button id="corner-sound" type="button" title="Sound" hidden>🔇</button>
 <section id="site" class="ui">
   <header class="site-header"><span class="brand"><img src="assets/logo-ring-white.svg" alt=""><b>HOLISPHERE</b></span><nav class="dds" id="dds-site"></nav><div class="modes"><a href="#sec-booking" id="s-book" class="btn gold small">Book your stay</a><button id="s-split">Split screen</button><button id="s-world" class="primary">Back to the world</button><button class="lang-btn" title="EN / PL">PL</button></div></header>
   <div id="site-body"></div>
@@ -303,6 +303,6 @@
 <script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js" } }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script type="module" src="holisphere-app.js?v=20260911n"></script>
+<script type="module" src="holisphere-app.js?v=20260911o"></script>
 </body>
 </html>

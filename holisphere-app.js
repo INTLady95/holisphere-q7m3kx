@@ -357,7 +357,7 @@ function scrollSpy() {
   const top = ui.site.scrollTop, h = ui.site.clientHeight; let cur = PAGE_KEYS[0];
   PAGE_KEYS.forEach(k => { const el = $("sec-" + k); if (el && el.offsetTop - 140 <= top) cur = k; });
   document.querySelectorAll("#sidenav .sn-dot").forEach(d => d.classList.toggle("on", d.dataset.k === cur));
-  $("totop").classList.toggle("show", top > h * 0.6); $("corner-menu").classList.toggle("show", ui.site.classList.contains("show")); $("corner-sound").classList.toggle("show", ui.site.classList.contains("show"));
+  $("totop").classList.toggle("show", top > h * 0.6); $("corner-menu").classList.toggle("show", ui.site.classList.contains("show")); 
   $("sidenav").classList.toggle("show", ui.site.classList.contains("show"));
 }
 ui.site.addEventListener("scroll", () => { if (!spyRaf) spyRaf = requestAnimationFrame(() => { spyRaf = 0; scrollSpy(); saveState(); }); }, { passive: true });
@@ -550,7 +550,7 @@ let onbTimer = null;
 async function onbShow() { clearInterval(onbTimer); onb.busy = true; const btn = onb.el.querySelector(".onb-next"); btn.disabled = true; onbPlace(); try { await DEMO[onb.i](); } catch (e) { console.warn(e); } onbPlace(); onb.busy = false; btn.disabled = false;
   if (onb.i < L.onb.steps.length - 1) { let left = 6; const base = btn.textContent; btn.textContent = `${base}  ·  ${left}`; onbTimer = setInterval(() => { if (!onb.active) return clearInterval(onbTimer); if (onb.paused) return; left--; if (left <= 0) { clearInterval(onbTimer); btn.click(); } else btn.textContent = `${base}  ·  ${left}`; }, 1000); } }
 function onbStart() { onb.i = 0; onb.paused = false; onb.active = true; onb.el.classList.add("show"); onb.el.querySelector(".onb-skipmenu").hidden = true;
-  if (localStorage.getItem("holi-sound") !== "0") soundToggle(true); const sb = $("sound"); sb.classList.add("blink"); setTimeout(() => sb.classList.remove("blink"), 9000); onbShow(); }
+  onbShow(); }
 function onbEnd(mode) { clearInterval(onbTimer); onb.active = false; onb.el.classList.remove("show"); if (mode === "later") localStorage.removeItem("holi-onb-done"); else localStorage.setItem("holi-onb-done", "1"); localStorage.setItem("holi-lang-chosen", "1"); }
 onb.el.querySelector(".onb-pause").onclick = () => { onb.paused = !onb.paused; onb.el.querySelector(".onb-pause").textContent = onb.paused ? L.onb.resume : L.onb.pause; };
 onb.el.querySelector(".onb-skip").onclick = () => { const m = onb.el.querySelector(".onb-skipmenu"); m.hidden = !m.hidden; };
@@ -601,7 +601,7 @@ function showWelcome() {
     .to(wl.querySelector(".wl-pl"), { opacity: 1, duration: 0.8 }, "-=0.3").to($("wl-begin"), { opacity: 1, duration: 0.8 }, "-=0.4");
 }
 let langChosen = false;
-$("wl-begin").onclick = () => { localStorage.setItem("holi-welcome-done", "1"); if (localStorage.getItem("holi-sound") !== "0") soundToggle(true);
+$("wl-begin").onclick = () => { localStorage.setItem("holi-welcome-done", "1");
   gsap.to(wl, { opacity: 0, duration: 1.2, onComplete() { wl.classList.remove("show"); wl.style.opacity = ""; wl.querySelector("video").pause(); $("langpick").classList.add("show"); } }); };
 
 // intro video → first station
