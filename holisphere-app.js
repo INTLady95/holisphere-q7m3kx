@@ -8,12 +8,12 @@ const BOOKING_ENDPOINT = "";
 // Facts from Tomek's brand bible, project description 01.09.2026, facts & checklist, DOME 4A drawings. "(proposal)" = not decided yet.
 const TXT = {
 en: {
-  onb: { next: "Read it? Click me →", done: "Read it? Click me, we are done →", replay: "Show the guide again", pause: "⏸ Pause", resume: "▶ Resume", skip: "Skip ▾ (not recommended)", skipNote: "Not recommended: this is a new visual concept, and the guide shows how to find your way around.", skipLater: "Skip for now, show me next time", skipNever: "Skip and don't show again", steps: [
-    { t: "#m-page", h: "The simple version is always here", p: "Watch: I open the ordinary page, scroll through it, then show it half-and-half with the world. Click “Full page” any time to get it back." },
-    { t: "#menu-toggle", h: "Everything is here", p: "I just opened the menu for you: every section, the most needed first. One click opens it, one click closes it." },
-    { t: ".spot", h: "Dots are the same sections", p: "Watch: I hover a dot, a one-line summary appears. Then I click it and we fly into that place." },
-    { t: "#infobar", h: "Book where you stand", p: "We are inside a suite. The gold Book button opens a small reception: dates, guests, name. The request lands in our booking list." },
-    { t: "#minimap", h: "The map", p: "Real islands, then our resort from above. Hover a dot for its name, click to fly there. ⤢ opens the full satellite map, where you can zoom down to a single dome." },
+  onb: { next: "Next →", done: "Finish the guide →", replay: "Show the guide again", pause: "⏸ Pause", resume: "▶ Resume", skip: "Skip guide ▾", skipNote: "You can open this guide again at any time with the ? button.", skipLater: "Close for now, show me next time", skipNever: "Close and don't show again", steps: [
+    { t: "#m-page", h: "Open the ordinary site", p: "“Full page” opens the complete, familiar website. The world stays exactly where you left it." },
+    { t: "#menu-toggle", h: "Find every section", p: "Menu contains every section, with the most useful first. It never moves you until you choose a destination." },
+    { t: ".spot", h: "The circles are doors", p: "Every labelled circle can be clicked. The camera flies only to the place named on that circle." },
+    { t: "#infobar", h: "Information stays with you", p: "Open the information panel for details and booking without leaving the place you are exploring." },
+    { t: "#minimap", h: "Use the map", p: "Choose a named point to travel there. Open the large satellite map whenever you need the wider context." },
     { t: ".lang-btn", h: "English or Polish", p: "Switch the language here on any screen. That is all. Now the place is yours." } ] },
   ui: { dragHint: "Grab the picture and drag left or right to look around", bookStay: "Book your stay", explore: "Explore", discover: "Discover", exploreWorld: "Explore the world", heroK: "Koh Rong · Cambodia  ·  Bali · Indonesia", heroH: "Return to yourself.", heroS: "Regenerative luxury in glass domes among rice terraces and on a private beach. Science for your biology. Space for your soul.", introK: "Welcome", accK: "Accommodation", progK: "Programmes", wellK: "Wellness", dineK: "Dining", natK: "Nature", locK: "Destinations", jourK: "Your journey", steps: [["Before you arrive", "A short, elegant form: sleep, fatigue, diet, allergies, temperature, pillows, privacy. Never a diagnosis."], ["The Exhale", "No desk, no paperwork. A welcome by name, silence, a cool drink, the first contact with nature."], ["The Return", "A simple personal protocol for the days after, and one or two practices to keep."]], news: "Stay in touch", newsPh: "Your e-mail", newsBtn: "Subscribe", newsNote: "(proposal) Newsletter address to be decided.", legal: "© 2026 HOLISPHERE · Return to yourself · Privacy · Terms", colExplore: "Explore", colContact: "Contact", openingBali: "Bali opens Oct/Nov 2026 · Koh Rong stage 1 Dec 2026", lookAround: "Look around", menu: "☰ Menu", collapse: "Collapse ×", menuHead: "Menu · most wanted first", page: "Full page", split: "Split screen", world: "Back to the world", worldSee: "See this place in the world →", pageSee: "See the ordinary page →", hint: "Dots = site sections. Hover = summary, click = enter. ☰ Menu = full list, “Full page” always at hand.", skip: "Skip intro →", introK: "Koh Rong · Cambodia · regenerative premium hospitality", introH: "Return <em>to yourself.</em>", introS: "In a moment you will see the site menu. Explore the pictures or open the ordinary page at any time.", pageTag: "page", imgTag: "picture", both: "picture + page", spin: "Spin", book: "Book this room", bookTitle: "Reception · book here", arrive: "Arrival", depart: "Departure", guests: "Guests", who: "Name · e-mail", send: "Send request", sent: "Request recorded", inCategory: "in category", ledger: "Booking ledger (all rooms, by category)", exportCsv: "Export CSV", noBookings: "No requests yet.", copyHint: "Copy and send (address to be decided).", groups: { stay: "Stay", place: "Place", about: "About", help: "Help" }, footer: "Texts: brand documents (Tomek, 09.2026). Items marked “(proposal)” await a decision.", lang: "PL" },
   sections: {
@@ -62,12 +62,12 @@ en: {
   },
 },
 pl: {
-  onb: { next: "Przeczytane? Kliknij mnie →", done: "Przeczytane? Kliknij, to już wszystko →", replay: "Pokaż przewodnik ponownie", pause: "⏸ Pauza", resume: "▶ Wznów", skip: "Pomiń ▾ (niezalecane)", skipNote: "Niezalecane: to nowa wizualna koncepcja, a przewodnik pokazuje, jak się w niej odnaleźć.", skipLater: "Pomiń teraz, pokaż następnym razem", skipNever: "Pomiń i nie pokazuj więcej", steps: [
-    { t: "#m-page", h: "Prosta wersja jest zawsze tutaj", p: "Patrz: otwieram zwykłą stronę, przewijam ją, a potem pokazuję pół na pół ze światem. Kliknij „Zwykła strona” w każdej chwili, żeby do niej wrócić." },
-    { t: "#menu-toggle", h: "Wszystko jest tutaj", p: "Właśnie otworzyłem dla Ciebie menu: wszystkie działy, od najpotrzebniejszych. Jedno kliknięcie otwiera, jedno zamyka." },
-    { t: ".spot", h: "Kropki to te same działy", p: "Patrz: najeżdżam na kropkę, pojawia się jedno zdanie. Potem klikam i wlatujemy do tego miejsca." },
-    { t: "#infobar", h: "Rezerwuj tam, gdzie stoisz", p: "Jesteśmy w apartamencie. Złoty przycisk Book otwiera małą recepcję: daty, goście, imię. Zapytanie trafia na naszą listę rezerwacji." },
-    { t: "#minimap", h: "Mapa", p: "Prawdziwe wyspy, potem nasz resort z góry. Najedź na punkt, żeby zobaczyć nazwę, kliknij, żeby tam polecieć. ⤢ otwiera pełną mapę satelitarną, na której przybliżysz się do pojedynczej kopuły." },
+  onb: { next: "Dalej →", done: "Zakończ przewodnik →", replay: "Pokaż przewodnik ponownie", pause: "⏸ Pauza", resume: "▶ Wznów", skip: "Pomiń przewodnik ▾", skipNote: "Przewodnik możesz ponownie otworzyć przyciskiem ?.", skipLater: "Zamknij teraz, pokaż następnym razem", skipNever: "Zamknij i nie pokazuj więcej", steps: [
+    { t: "#m-page", h: "Otwórz zwykłą stronę", p: "„Zwykła strona” otwiera pełną, znajomą wersję witryny. Świat pozostaje dokładnie tam, gdzie go zostawisz." },
+    { t: "#menu-toggle", h: "Znajdź każdy dział", p: "Menu zawiera wszystkie działy, z najważniejszymi na początku. Nie przenosi Cię, dopóki nie wybierzesz celu." },
+    { t: ".spot", h: "Kręgi są przejściami", p: "Każdy podpisany krąg można kliknąć. Kamera leci wyłącznie do miejsca wskazanego na kręgu." },
+    { t: "#infobar", h: "Informacja zostaje z Tobą", p: "Otwórz panel informacji, aby zobaczyć szczegóły i rezerwację bez opuszczania oglądanego miejsca." },
+    { t: "#minimap", h: "Korzystaj z mapy", p: "Wybierz nazwany punkt, aby się tam przenieść. Duża mapa satelitarna pokazuje szerszy kontekst." },
     { t: ".lang-btn", h: "English albo polski", p: "Tu zmienisz język na każdym ekranie. To wszystko. Teraz to miejsce jest Twoje." } ] },
   ui: { dragHint: "Złap obraz i przeciągnij w lewo lub w prawo, żeby się rozejrzeć", bookStay: "Zarezerwuj pobyt", explore: "Zobacz", discover: "Odkryj", exploreWorld: "Zwiedzaj świat", heroK: "Koh Rong · Kambodża  ·  Bali · Indonezja", heroH: "Wróć do siebie.", heroS: "Regeneracyjny luksus w szklanych kopułach wśród tarasów ryżowych i na prywatnej plaży. Nauka dla biologii. Przestrzeń dla duszy.", introK: "Witamy", accK: "Apartamenty", progK: "Programy", wellK: "Wellness", dineK: "Kuchnia", natK: "Natura", locK: "Kierunki", jourK: "Twoja podróż", steps: [["Przed przyjazdem", "Krótki, elegancki formularz: sen, zmęczenie, dieta, alergie, temperatura, poduszki, prywatność. Nigdy diagnoza."], ["The Exhale", "Bez lady, bez papierów. Powitanie po imieniu, cisza, chłodny napój, pierwszy kontakt z naturą."], ["The Return", "Prosty osobisty protokół na kolejne dni i jedna–dwie praktyki do zachowania."]], news: "Bądźmy w kontakcie", newsPh: "Twój e-mail", newsBtn: "Zapisz się", newsNote: "(propozycja) Adres newslettera do ustalenia.", legal: "© 2026 HOLISPHERE · Return to yourself · Prywatność · Regulamin", colExplore: "Odkryj", colContact: "Kontakt", openingBali: "Bali: otwarcie X/XI 2026 · Koh Rong etap 1: XII 2026", lookAround: "Rozejrzyj się", menu: "☰ Menu", collapse: "Zwiń ×", menuHead: "Menu · od najczęściej szukanego", page: "Zwykła strona", split: "Podziel ekran", world: "Wróć do świata", worldSee: "Zobacz to miejsce w świecie →", pageSee: "Zobacz zwykłą stronę →", hint: "Kropki = działy strony. Najedź = skrót, kliknij = wejdź. ☰ Menu = cała lista, „Zwykła strona” zawsze pod ręką.", skip: "Pomiń intro →", introK: "Koh Rong · Kambodża · regeneracyjna gościnność premium", introH: "Wróć <em>do siebie.</em>", introS: "Za chwilę zobaczysz menu strony. Możesz zwiedzać obrazy albo w każdej chwili otworzyć zwykłą stronę.", pageTag: "strona", imgTag: "obraz", both: "obraz + strona", spin: "Obróć", book: "Zarezerwuj ten pokój", bookTitle: "Recepcja · rezerwuj tutaj", arrive: "Przyjazd", depart: "Wyjazd", guests: "Goście", who: "Imię · e-mail", send: "Wyślij zapytanie", sent: "Zapytanie zapisane", inCategory: "w kategorii", ledger: "Rejestr rezerwacji (wszystkie pokoje, wg kategorii)", exportCsv: "Eksport CSV", noBookings: "Jeszcze nie ma zapytań.", copyHint: "Skopiuj i wyślij (adres do ustalenia).", groups: { stay: "Pobyt", place: "Miejsce", about: "O nas", help: "Pomoc" }, footer: "Teksty: dokumenty marki (Tomek, 09.2026). Fragmenty oznaczone „(propozycja)” czekają na decyzję.", lang: "EN" },
   sections: {
@@ -182,7 +182,7 @@ function openPage(anchor, mode) {
   if (anchor) setTimeout(() => { const el = $("sec-" + anchor); el && el.scrollIntoView({ behavior: "smooth", block: "start" }); }, 60);
   setTimeout(() => { scrollSpy(); saveState(); }, 120);
 }
-function closePage() { ui.site.classList.remove("show"); document.body.classList.remove("site-full", "site-split"); tour.setViewport(1); tour.setPaused(false); const hv = ui.site.querySelector(".hero video"); hv && hv.pause(); $("sidenav").classList.remove("show"); $("totop").classList.remove("show"); $("corner-menu").classList.remove("show"); $("corner-sound").classList.remove("show"); saveState(); }
+function closePage() { ui.site.classList.remove("show"); document.body.classList.remove("site-full", "site-split"); tour.setViewport(1); tour.setPaused(false); const hv = ui.site.querySelector(".hero video"); hv && hv.pause(); $("sidenav")?.classList.remove("show"); $("totop")?.classList.remove("show"); $("corner-menu")?.classList.remove("show"); $("corner-sound")?.classList.remove("show"); saveState(); }
 const GROUP_KEYS = ["stay", "place", "about", "help"];
 function buildDropdowns(host) {
   host.innerHTML = "";
@@ -210,10 +210,9 @@ function applyUiTexts() {
 }
 
 // ===================== TOUR =====================
-let firstArrival = true;
 const tour = createTour({ stations, first: "hotel", ui, onPage: s => openPage(s.section, settings.mode), onArrive(def, key) {
   Object.entries(items).forEach(([k, b]) => b.classList.toggle("on", k === def.section));
-  if (firstArrival && localStorage.getItem("holi-onb-done")) openMenu(); else if (!onb.active) closeMenu(); firstArrival = false;
+  if (!onb.active) closeMenu();
   if (onb.active) onbPlace(); updateMiniMap(key);
   showDragHint(!!def.panels); if (pendingRestore) setTimeout(applyRestore, 60); else saveState();
   decorateCard(def);
@@ -348,8 +347,7 @@ function buildSideNav() {
   const go = k => { const el = $("sec-" + k); el && el.scrollIntoView({ behavior: "smooth", block: "start" }); nav.classList.remove("open"); };
   nav.querySelectorAll(".sn-dot, .sn-list button").forEach(b => b.onclick = () => go(b.dataset.k));
   nav.querySelector(".sn-open").onclick = () => nav.classList.toggle("open");
-  nav.insertBefore($("corner-sound"), nav.firstChild); $("corner-sound").classList.add("in-nav");
-  ui.site.addEventListener("click", e => { if (!e.target.closest("#sidenav")) nav.classList.remove("open"); });
+  if (!ui.site.dataset.sideNavBound) { ui.site.addEventListener("click", e => { if (!e.target.closest("#sidenav")) nav.classList.remove("open"); }); ui.site.dataset.sideNavBound = "1"; }
   $("totop").onclick = () => ui.site.scrollTo({ top: 0, behavior: "smooth" });
   $("corner-menu").onclick = () => nav.classList.toggle("open");
 }
@@ -508,7 +506,7 @@ function goBig(k) { const g = GEO[k]; if (!bm || !g) return; bm.map.setView([g.l
 function closeBigMap() { $("bigmap").classList.remove("show"); if (!ui.site.classList.contains("show") || document.body.classList.contains("site-split")) tour.setPaused(false); }
 addEventListener("keydown", e => { if (e.key === "Escape") closeBigMap(); });
 
-// ===================== ONBOARDING: a guided demo that performs each action for the visitor (no skip) =====================
+// ===================== ONBOARDING: a calm, user-controlled guide =====================
 const onb = { i: 0, el: $("onb"), active: false, target: null, busy: false };
 const wait = ms => new Promise(r => setTimeout(r, ms));
 const waitIdle = async (ms = 7000) => { const t0 = Date.now(); while (tour.state.busy && Date.now() - t0 < ms) await wait(100); await wait(250); };
@@ -524,10 +522,13 @@ function onbPlace() {
   card.querySelector(".onb-next").textContent = onb.i === L.onb.steps.length - 1 ? L.onb.done : L.onb.next;
   card.querySelector(".onb-pause").textContent = onb.paused ? L.onb.resume : L.onb.pause; card.querySelector(".onb-skip").textContent = L.onb.skip;
   card.querySelector("[data-skip=later]").textContent = L.onb.skipLater; card.querySelector("[data-skip=never]").textContent = L.onb.skipNever; card.querySelector(".onb-skipnote").textContent = L.onb.skipNote;
-  const below = r.top + r.height + 20, cw = Math.min(380, innerWidth - 36); let left = Math.min(Math.max(r.left + r.width / 2 - cw / 2, 18), innerWidth - cw - 18);
+  const below = r.top + r.height + 20, cw = Math.min(460, innerWidth - 36); let left = Math.min(Math.max(r.left + r.width / 2 - cw / 2, 18), innerWidth - cw - 18);
   if (step.t === "#infobar" && innerWidth > 900) left = Math.min(innerWidth - cw - 18, 420);
-  card.style.width = cw + "px"; card.style.left = left + "px";
-  if (below + 200 < innerHeight) { card.style.top = below + "px"; card.style.bottom = "auto"; } else { card.style.top = "auto"; card.style.bottom = (innerHeight - r.top + 20) + "px"; }
+  card.style.width = cw + "px"; card.style.left = left + "px"; card.style.top = "18px"; card.style.bottom = "auto";
+  const ch = Math.min(card.scrollHeight || 240, innerHeight - 36);
+  if (below + ch < innerHeight - 18) card.style.top = below + "px";
+  else if (r.top - ch - 20 > 18) card.style.top = (r.top - ch - 20) + "px";
+  else card.style.top = Math.max(18, (innerHeight - ch) / 2) + "px";
 }
 const DEMO = [
   async () => {                                                                                       // 1: the simple version, like a recording
@@ -550,13 +551,14 @@ const DEMO = [
 let onbTimer = null;
 async function onbShow() { clearInterval(onbTimer); onb.busy = true; const btn = onb.el.querySelector(".onb-next"); btn.disabled = true; onbPlace(); try { await DEMO[onb.i](); } catch (e) { console.warn(e); } onbPlace(); onb.busy = false; btn.disabled = false;
   if (onb.i < L.onb.steps.length - 1) { let left = 6; const base = btn.textContent; btn.textContent = `${base}  ·  ${left}`; onbTimer = setInterval(() => { if (!onb.active) return clearInterval(onbTimer); if (onb.paused) return; left--; if (left <= 0) { clearInterval(onbTimer); btn.click(); } else btn.textContent = `${base}  ·  ${left}`; }, 1000); } }
+function onbShowStatic() { clearInterval(onbTimer); onb.busy = false; onb.target = null; onbPlace(); }
 function onbStart() { onb.i = 0; onb.paused = false; onb.active = true; onb.el.classList.add("show"); onb.el.querySelector(".onb-skipmenu").hidden = true;
-  onbShow(); }
-function onbEnd(mode) { clearInterval(onbTimer); onb.active = false; onb.el.classList.remove("show"); if (mode === "later") localStorage.removeItem("holi-onb-done"); else localStorage.setItem("holi-onb-done", "1"); localStorage.setItem("holi-lang-chosen", "1"); }
+  onbShowStatic(); }
+function onbEnd(mode) { clearInterval(onbTimer); onb.active = false; onb.busy = false; onb.target = null; onb.el.classList.remove("show"); if (mode === "later") localStorage.removeItem("holi-onb-done"); else localStorage.setItem("holi-onb-done", "1"); localStorage.setItem("holi-lang-chosen", "1"); }
 onb.el.querySelector(".onb-pause").onclick = () => { onb.paused = !onb.paused; onb.el.querySelector(".onb-pause").textContent = onb.paused ? L.onb.resume : L.onb.pause; };
-onb.el.querySelector(".onb-skip").onclick = () => { const m = onb.el.querySelector(".onb-skipmenu"); m.hidden = !m.hidden; };
+onb.el.querySelector(".onb-skip").onclick = () => { const m = onb.el.querySelector(".onb-skipmenu"); m.hidden = !m.hidden; requestAnimationFrame(onbPlace); };
 onb.el.querySelectorAll("[data-skip]").forEach(b => b.onclick = () => onbEnd(b.dataset.skip));
-onb.el.querySelector(".onb-next").onclick = () => { if (onb.busy) return; if (onb.i >= L.onb.steps.length - 1) return onbEnd(); onb.i++; onbShow(); };
+onb.el.querySelector(".onb-next").onclick = () => { if (onb.busy) return; if (onb.i >= L.onb.steps.length - 1) return onbEnd(); onb.i++; onbShowStatic(); };
 addEventListener("resize", () => onb.active && onbPlace());
 // ===================== WIRING =====================
 applyUiTexts(); buildDropdowns($("dds-world")); buildDropdowns($("dds-site")); buildMenu(); buildPage(); buildMiniMap(); buildSideNav();
